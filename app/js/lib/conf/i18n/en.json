@@ -1,0 +1,11 @@
+{
+  "err.unknown": "Unknown error",
+  "err.connection": "Could not connect to node",
+  "err.back_index": "Get back to previous screen",
+  "index.message.loading": "Loading...",
+  "index.message.current_block": "Current block {{ number }}",
+  "configuration.init.choose.title": "Initialization",
+  "configuration.init.choose.message": "Your software has to be initialized. You may either create a new currency or connect to an existing one.",
+  "configuration.init.choose.create": "Create a new currency",
+  "configuration.init.choose.connect": "Connect to an existing currency"
+}
