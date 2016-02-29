@@ -1,4 +1,5 @@
 {
+  "general.choose_option": "Choose your option",
   "err.unknown": "Unknown error",
   "err.connection": "Could not connect to node",
   "err.back_index": "Get back to previous screen",
@@ -7,5 +8,17 @@
   "configuration.init.choose.title": "Initialization",
   "configuration.init.choose.message": "Your software has to be initialized. You may either create a new currency or connect to an existing one.",
   "configuration.init.choose.create": "Create a new currency",
-  "configuration.init.choose.connect": "Connect to an existing currency"
+  "configuration.init.choose.connect": "Connect to an existing currency",
+  "configuration.create_uid.title": "Your identity",
+  "configuration.create_uid.message": "As a first step, you need to define your personal, unique identity.<br/>The following informations will be <strong>definitive</strong> for this currency: please choose them carefully.",
+  "configuration.create_uid.uid.tooltip": "The name you will be known as.",
+  "configuration.create_uid.entropy.tooltip": "An entropy source to make your key unique: an e-mail, a phone n°, ...",
+  "configuration.create_uid.password.tooltip": "A secret password to protect your key.",
+  "configuration.create_uid.create_button": "Continue",
+  "configuration.create_uid.nrp_algo_choose": "NRP algorithm",
+  "configuration.create_uid.nrp_algo_choose_1": "N = 4096 ; r = 16 ; p = 1",
+  "configuration.create_uid.modal_title": "Identity confirmation",
+  "configuration.create_uid.modal_message": "This identity will be definitive for this currency: you will be known by your User ID and will be able to access your account using your Entropy and Password values.",
+  "configuration.create_uid.modal_agree": "Agree",
+  "configuration.create_uid.modal_disagree": "Disagree"
 }

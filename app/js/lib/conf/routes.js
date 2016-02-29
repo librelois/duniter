@@ -18,10 +18,23 @@ module.exports = (app) => {
 
     state('configure.choose', {
       url: '/choose',
-      template: require('views/configure/choose'),
-      controller: () => {
-        console.log('aijjjij');
-      }
+      template: require('views/configure/choose')
+    }).
+
+    state('configure.create_uid', {
+      url: '/create/uid',
+      template: require('views/configure/create_uid'),
+      controller: 'IdentityController'
+    }).
+
+    state('configure.create_network', {
+      url: '/create/network',
+      template: require('views/configure/create_network')
+    }).
+
+    state('configure.create_parameters', {
+      url: '/create/parameters',
+      template: require('views/configure/create_parameters')
     }).
 
     state('home', {

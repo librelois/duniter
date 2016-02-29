@@ -1,1 +1,11 @@
 main(ui-view="")
+
+#modal1.modal
+  .modal-content
+    h4 {{ 'configuration.create_uid.modal_title' | translate }}
+    p {{ 'configuration.create_uid.modal_message' | translate }}
+  .modal-footer
+    a.btn.modal-action.modal-close.waves-effect.waves-light.btn-flat {{ 'configuration.create_uid.modal_disagree' | translate }}
+    a.btn.modal-action.modal-close.waves-effect.waves-orange(ui-sref="configure.create_network")
+      i.material-icons.left done
+      ="{{ 'configuration.create_uid.modal_agree' | translate }}"

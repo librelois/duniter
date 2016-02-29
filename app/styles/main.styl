@@ -4,7 +4,7 @@
 html
   background-color: black
 
-body, body > *
+body, main
   height: 100%
   width: 100%
   position: absolute
@@ -15,7 +15,10 @@ head, main
   transform: translateZ(0)
 
 main
-  height: 100%
+  overflow: overlay
 
 nav
   background-color #1A687F
+
+.modal .modal-footer .btn
+  margin-right 5px
