@@ -58,8 +58,14 @@ module.exports = (angular) => {
         }
 
         return {
+          webmin: {
+            summary: getResource('http://' + server + '/webmin/summary'),
+            network: {
+              interfaces: getResource('http://' + server + '/webmin/network/interfaces')
+            }
+          },
           node: {
-            summary: getResource('http://' + server + '/node/summary'),
+            summary: getResource('http://' + server + '/node/summary')
           },
           wot: {
             lookup: getResource('http://' + server + '/wot/lookup/:search'),

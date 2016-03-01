@@ -20,5 +20,19 @@
   "configuration.create_uid.modal_title": "Identity confirmation",
   "configuration.create_uid.modal_message": "This identity will be definitive for this currency: you will be known by your User ID and will be able to access your account using your Entropy and Password values.",
   "configuration.create_uid.modal_agree": "Agree",
-  "configuration.create_uid.modal_disagree": "Disagree"
+  "configuration.create_uid.modal_disagree": "Disagree",
+  "configuration.create_network.title": "Network",
+  "configuration.create_network.message": "uCoin is a P2P software and needs bidirectionnal access to the network. Please chose carefully the following parameters.",
+  "configuration.create_network.none": "None",
+  "configuration.create_network.local.title": "Local",
+  "configuration.create_network.local.message": "The <i>local network interface</i> is the technical interface the software will be listening to for receiving documents from the Internet as a P2P entity. This address will be <strong>private</strong>.",
+  "configuration.create_network.local_ipv4": "IPv4",
+  "configuration.create_network.local_ipv6": "IPv6",
+  "configuration.create_network.port": "Port",
+  "configuration.create_network.remote.title": "Remote",
+  "configuration.create_network.remote.message": "The <i>remote network interface</i> is the address your node will be available at. This address will be <strong>public</strong> and visible by anyone.",
+  "configuration.create_network.dns": "Domain name",
+  "configuration.create_network.upnp": "Use UPnP",
+  "configuration.create_network.button.validate": "Validate",
+  "configuration.create_network.button.autoconf": "Automatic configuration"
 }

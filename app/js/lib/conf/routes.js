@@ -29,7 +29,8 @@ module.exports = (app) => {
 
     state('configure.create_network', {
       url: '/create/network',
-      template: require('views/configure/create_network')
+      template: require('views/configure/create_network'),
+      controller: 'NetworkController'
     }).
 
     state('configure.create_parameters', {
