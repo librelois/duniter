@@ -35,7 +35,8 @@ module.exports = (app) => {
 
     state('configure.create_parameters', {
       url: '/create/parameters',
-      template: require('views/configure/create_parameters')
+      template: require('views/configure/create_parameters'),
+      controller: 'ParametersController'
     }).
 
     state('home', {

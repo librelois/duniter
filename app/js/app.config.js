@@ -17,4 +17,5 @@ module.exports = () => {
   homeControllers.controller('IndexController', require('./controllers/IndexController'));
   homeControllers.controller('IdentityController', require('./controllers/IdentityController'));
   homeControllers.controller('NetworkController', require('./controllers/NetworkController'));
+  homeControllers.controller('ParametersController', require('./controllers/ParametersController'));
 };

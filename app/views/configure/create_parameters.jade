@@ -1,5 +1,114 @@
-main
-  .container
-    .row
-      .s12.center
-        p TODO
+.container
+  .row
+    form.s12.center
+      .card
+        .card-content
+          i.fa.fa-balance-scale.fa-5x
+          h1.card-title(translate="configuration.create_parameters.title")
+          p(translate="configuration.create_parameters.message")
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.currency.title")
+          p(translate="configuration.create_parameters.currency.message")
+
+          .row
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-line-chart
+              input#c_percent(type="number" ng-model="c_percent")
+              label(for="c_percent") {{ 'configuration.create_parameters.c_percent' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-hourglass-end
+              input#dt(type="number" ng-model="dt")
+              label(for="dt") {{ 'configuration.create_parameters.dt' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-money
+              input#ud0(type="number" ng-model="ud0")
+              label(for="ud0") {{ 'configuration.create_parameters.ud0' | translate }}
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.wot.title")
+          p(translate="configuration.create_parameters.wot.message")
+
+          .row
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-database
+              input#sigStock(type="number" ng-model="sigStock")
+              label(for="sigStock") {{ 'configuration.create_parameters.sigStock' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-hourglass-end
+              input#sigPeriod(type="number" ng-model="sigPeriod")
+              label(for="sigPeriod") {{ 'configuration.create_parameters.sigPeriod' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-battery-3
+              input#sigValidity(type="number" ng-model="sigValidity")
+              label(for="sigValidity") {{ 'configuration.create_parameters.sigValidity' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-battery-3
+              input#msValidity(type="number" ng-model="msValidity")
+              label(for="msValidity") {{ 'configuration.create_parameters.msValidity' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-certificate
+              input#sigQty(type="number" ng-model="sigQty")
+              label(for="sigQty") {{ 'configuration.create_parameters.sigQty' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-object-ungroup
+              input#sigWindow(type="number" ng-model="sigWindow")
+              label(for="sigWindow") {{ 'configuration.create_parameters.sigWindow' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-map-marker
+              input#stepMax(type="number" ng-model="stepMax")
+              label(for="stepMax") {{ 'configuration.create_parameters.stepMax' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-users
+              input#xpercent(type="number" ng-model="xpercent")
+              label(for="xpercent") {{ 'configuration.create_parameters.xpercent' | translate }}
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.blockchain.title")
+          p(translate="configuration.create_parameters.blockchain.message")
+
+          .row
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-chain
+              input#medianTimeBlocks(type="number" ng-model="medianTimeBlocks")
+              label(for="medianTimeBlocks") {{ 'configuration.create_parameters.medianTimeBlocks' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-hourglass-end
+              input#avgGenTime(type="number" ng-model="avgGenTime")
+              label(for="avgGenTime") {{ 'configuration.create_parameters.avgGenTime' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-cubes
+              input#dtDiffEval(type="number" ng-model="dtDiffEval")
+              label(for="dtDiffEval") {{ 'configuration.create_parameters.dtDiffEval' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-graduation-cap
+              input#blocksRot(type="number" ng-model="blocksRot")
+              label(for="blocksRot") {{ 'configuration.create_parameters.blocksRot' | translate }}
+
+            .input-field.col.s6.m4
+              i.prefix.fa.fa-rotate-left
+              input#percentRot(type="number" ng-model="percentRot")
+              label(for="percentRot") {{ 'configuration.create_parameters.percentRot' | translate }}
+
+        .card-action
+
+          .row: a.btn-large.waves-effect.waves-light(ui-sref="configure.create_parameters")
+            i.left.fa.fa-check
+            span(translate="configuration.create_parameters.button.validate")
