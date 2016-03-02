@@ -10,17 +10,17 @@
           .row
             .input-field.col.s12
               i.prefix.fa.fa-user
-              input#idty_uid.tooltipped(type="text" ng-model="idty_uid" data-position="top" data-tooltip="{{ 'configuration.create_uid.uid.tooltip' | translate }}")
+              input#idty_uid.tooltipped(type="text" ng-model="$parent.conf.idty_uid" data-position="top" data-tooltip="{{ 'configuration.create_uid.uid.tooltip' | translate }}")
               label(for="idty_uid") User ID
           .row
             .input-field.col.s12
               i.material-icons.prefix vpn_key
-              input#idty_entropy.tooltipped(type="text" ng-model="idty_entropy" data-position="top" data-tooltip="{{ 'configuration.create_uid.entropy.tooltip' | translate }}")
+              input#idty_entropy.tooltipped(type="text" ng-model="$parent.conf.idty_entropy" data-position="top" data-tooltip="{{ 'configuration.create_uid.entropy.tooltip' | translate }}")
               label(for="idty_entropy") Entropy
           .row
             .input-field.col.s12
               i.material-icons.prefix vpn_key
-              input#idty_password.tooltipped(type="password" ng-model="idty_password" data-position="top" data-tooltip="{{ 'configuration.create_uid.password.tooltip' | translate }}")
+              input#idty_password.tooltipped(type="password" ng-model="$parent.conf.idty_password" data-position="top" data-tooltip="{{ 'configuration.create_uid.password.tooltip' | translate }}")
               label(for="idty_password") Password
           .row
             .input-field.col.s12
@@ -28,5 +28,6 @@
                 option(value="" disabled translate="general.choose_option")
                 option(value="1" selected translate="configuration.create_uid.nrp_algo_choose_1")
                 label {{ 'configuration.create_uid.nrp_algo_choose' | translate }}
-          .row: a.btn-large.waves-effect.waves-light.modal-trigger(ng-class="{ disabled: !idty_uid || !idty_entropy || !idty_password }" ng-disabled="!idty_uid || !idty_entropy || !idty_password" href="#modal1" )
+          .row: button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_uid || !$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="accept()")
             span(translate="configuration.create_uid.create_button")
+

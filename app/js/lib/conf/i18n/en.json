@@ -1,5 +1,7 @@
 {
   "general.choose_option": "Choose your option",
+  "global.button.validate": "Validate",
+  "global.button.start": "Start",
   "err.unknown": "Unknown error",
   "err.connection": "Could not connect to node",
   "err.back_index": "Get back to previous screen",
@@ -38,7 +40,8 @@
   "configuration.create_parameters.title": "Currency",
   "configuration.create_parameters.message": "Initial parameters of the currency. It should be carefully chosen, as these parameters never change once the currency is started.",
   "configuration.create_parameters.currency.title": "Money units",
-  "configuration.create_parameters.currency.message": "These 3 parameters configure the way new money units are created.",
+  "configuration.create_parameters.currency.message": "Give a name to your currency. The 3 following parameters configure the way new money units are created.",
+  "configuration.create_parameters.currency": "Currency name",
   "configuration.create_parameters.c_percent": "c",
   "configuration.create_parameters.dt": "UD period",
   "configuration.create_parameters.ud0": "UD(0)",
@@ -59,5 +62,13 @@
   "configuration.create_parameters.avgGenTime": "Block gen. duration",
   "configuration.create_parameters.dtDiffEval": "Blocks count for diff.",
   "configuration.create_parameters.blocksRot": "Personal diff. blocks",
-  "configuration.create_parameters.percentRot": "Personal diff. rotation"
+  "configuration.create_parameters.percentRot": "Personal diff. rotation",
+  "configuration.create_root.title": "Root block creation",
+  "configuration.create_root.message": "This is the final step to create the new currency! The root block or <i>genesis</i> will include the first members and define the currency parameters. Once generated and submitted, the blockchain will be started.",
+  "configuration.create_root.button.start": "Start HTTP",
+  "configuration.create_root.button.stop": "Stop HTTP",
+  "configuration.create_root.button.generate": "Give a try",
+  "configuration.create_root.need_a_try": "You need to generate a first block with the « Give a try » button. Start HTTP server to do so.",
+  "configuration.create_root.button.accept_and_send": "Accept this block and start currency",
+  "configuration.create_root.button.cancel": "Cancel creation and go to home screen"
 }

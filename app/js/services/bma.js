@@ -14,9 +14,10 @@ module.exports = (angular) => {
             return $q.when(Q.Promise((resolve, reject) => {
               var config = {
                 timeout: 4000
-              }, suffix = '', pkeys = [], queryParams = {};
+              }, suffix = '', pkeys = [], queryParams = null;
               if (typeof params == 'object') {
                 pkeys = _.keys(params);
+                queryParams = {};
               }
               pkeys.forEach(function(pkey){
                 var prevURI = uri;
@@ -26,7 +27,37 @@ module.exports = (angular) => {
                 }
               });
               config.params = queryParams;
-              $http.get(uri + suffix, config)
+              $http.get('http://' + server + uri + suffix, config)
+                .success(function(data, status, headers, config) {
+                  resolve(data);
+                })
+                .error(function(data, status, headers, config) {
+                  console.log(data);
+                  reject(data);
+                });
+            }));
+          }
+        }
+
+        function postResource(uri) {
+          return function(data, params) {
+            return $q.when(Q.Promise((resolve, reject) => {
+              var config = {
+                timeout: 4000
+              }, suffix = '', pkeys = [], queryParams = null;
+              if (typeof params == 'object') {
+                pkeys = _.keys(params);
+                queryParams = {};
+              }
+              pkeys.forEach(function(pkey){
+                var prevURI = uri;
+                uri = uri.replace(new RegExp(':' + pkey), params[pkey]);
+                if (prevURI == uri) {
+                  queryParams[pkey] = params[pkey];
+                }
+              });
+              config.params = queryParams;
+              $http.post('http://' + server + uri + suffix, data, config)
                 .success(function(data, status, headers, config) {
                   resolve(data);
                 })
@@ -59,33 +90,45 @@ module.exports = (angular) => {
 
         return {
           webmin: {
-            summary: getResource('http://' + server + '/webmin/summary'),
+            summary: getResource('/webmin/summary'),
+            server: {
+              http: {
+                start: getResource('/webmin/server/http/start'),
+                stop: getResource('/webmin/server/http/stop')
+              },
+              services: {
+                startAll: getResource('/webmin/server/services/start_all')
+              },
+              sendConf: postResource('/webmin/server/send_conf'),
+              previewNext: getResource('/webmin/server/preview_next')
+            },
             network: {
-              interfaces: getResource('http://' + server + '/webmin/network/interfaces')
+              interfaces: getResource('/webmin/network/interfaces')
             }
           },
           node: {
-            summary: getResource('http://' + server + '/node/summary')
+            summary: getResource('/node/summary')
           },
           wot: {
-            lookup: getResource('http://' + server + '/wot/lookup/:search'),
-            members: getResource('http://' + server + '/wot/members')
+            lookup: getResource('/wot/lookup/:search'),
+            members: getResource('/wot/members')
           },
           network: {
             peering: {
-              peers: getResource('http://' + server + '/network/peering/peers')
+              peers: getResource('/network/peering/peers')
             },
-            peers: getResource('http://' + server + '/network/peers')
+            peers: getResource('/network/peers')
           },
           currency: {
-            parameters: getResource('http://' + server + '/blockchain/parameters')
+            parameters: getResource('/blockchain/parameters')
           },
           blockchain: {
-            current: getResource('http://' + server + '/blockchain/current'),
-            block: getResource('http://' + server + '/blockchain/block/:block'),
+            current: getResource('/blockchain/current'),
+            block: getResource('/blockchain/block/:block'),
+            block_add: postResource('/blockchain/block'),
             stats: {
-              ud: getResource('http://' + server + '/blockchain/with/ud'),
-              tx: getResource('http://' + server + '/blockchain/with/tx')
+              ud: getResource('/blockchain/with/ud'),
+              tx: getResource('/blockchain/with/tx')
             }
           },
           websocket: {

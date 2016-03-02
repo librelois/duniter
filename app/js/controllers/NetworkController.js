@@ -7,26 +7,26 @@ module.exports = ($scope, $http, $state, BMA) => {
 
   let autoconf = { local: {}, remote: {} };
 
-  $scope.local_ipv4 = '127.0.0.1';
-
   co(function *() {
     let netinterfaces = yield BMA.webmin.network.interfaces();
     $scope.local_neti = toArrayOfAddresses(netinterfaces.local);
     $scope.remote_neti = toArrayOfAddresses(netinterfaces.remote);
-    $scope.lport = conf.default_port;
-    $scope.rport = conf.default_port;
+    $scope.$parent.conf.lport = conf.default_port;
+    $scope.$parent.conf.rport = conf.default_port;
     autoconf = netinterfaces.auto;
+    // Trigger autoconfig
+    $scope.autoconfig();
   });
 
   $scope.autoconfig = () => {
-    $scope.local_ipv4 = autoconf.local.ipv4 || '';
-    $scope.local_ipv6 = autoconf.local.ipv6 || '';
-    $scope.remote_ipv4 = autoconf.remote.ipv4 || '';
-    $scope.remote_ipv6 = autoconf.remote.ipv6 || '';
-    $scope.lport = autoconf.local.port || $scope.lport;
-    $scope.rport = autoconf.remote.port || $scope.rport;
-    $scope.upnp = autoconf.remote.upnp || $scope.upnp;
-    $scope.dns = autoconf.remote.dns || $scope.dns;
+    $scope.$parent.conf.local_ipv4 = autoconf.local.ipv4 || '';
+    $scope.$parent.conf.local_ipv6 = autoconf.local.ipv6 || '';
+    $scope.$parent.conf.remote_ipv4 = autoconf.remote.ipv4 || '';
+    $scope.$parent.conf.remote_ipv6 = autoconf.remote.ipv6 || '';
+    $scope.$parent.conf.lport = autoconf.local.port || $scope.$parent.conf.lport;
+    $scope.$parent.conf.rport = autoconf.remote.port || $scope.$parent.conf.rport;
+    $scope.$parent.conf.upnp = autoconf.remote.upnp || $scope.$parent.conf.upnp;
+    $scope.$parent.conf.dns = autoconf.remote.dns || $scope.$parent.conf.dns;
   };
 
   function toArrayOfAddresses(netiScope) {

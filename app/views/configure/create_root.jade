@@ -1,0 +1,40 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-content
+          i.fa.fa-cube.fa-5x
+          h1.card-title(translate="configuration.create_root.title")
+          p(translate="configuration.create_root.message")
+        .card-action
+          .row
+            .col.s12.m4
+              button.btn-large.waves-effect.waves-light(ng-class="{ disabled: started }" ng-disabled="started" ng-click="start()")
+                i.left.fa.fa-play
+                span(translate="configuration.create_root.button.start")
+            .col.s12.m4
+              button.btn-large.waves-effect.waves-light(ng-class="{ disabled: !started }" ng-disabled="!started" ng-click="stop()")
+                i.left.fa.fa-stop
+                span(translate="configuration.create_root.button.stop")
+            .col.s12.m4
+              button.btn-large.waves-effect.waves-light(ng-class="{ disabled: !started }" ng-disabled="!started" ng-click="try()")
+                i.left.fa.fa-cube
+                span(translate="configuration.create_root.button.generate")
+
+        .card-action
+
+          pre.card-panel.teal.white-text.code.left-align.small(ng-show="generated") {{ generated }}
+          blockquote.card-panel.left-align(ng-show="!generated") {{ 'configuration.create_root.need_a_try' | translate }}
+
+
+        .card-action
+          .row
+            .col.s12
+              button.btn-large.waves-effect.waves-light(ng-class="{ disabled: !(generated) }" ng-disabled="!(generated)" ng-click="accept()")
+                i.left.fa.fa-rocket
+                span(translate="configuration.create_root.button.accept_and_send")
+          .row
+            .col.s12
+              button.btn-large.orange.waves-effect.waves-light(ui-sref="index")
+                i.left.fa.fa-sign-out
+                span(translate="configuration.create_root.button.cancel")

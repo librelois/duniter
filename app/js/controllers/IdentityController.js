@@ -2,15 +2,13 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, BMA) => {
-
-  $scope.idty_uid = 'cgeek';
-  $scope.idty_entropy = 'abc';
-  $scope.idty_password = 'abc';
+module.exports = ($scope) => {
 
   setTimeout(() => {
     $('select').material_select();
-    $('.modal-trigger').leanModal();
-    $('#modal1').openModal();
   }, 500);
+
+  $scope.accept = () => {
+    $('#modal1').openModal();
+  };
 };

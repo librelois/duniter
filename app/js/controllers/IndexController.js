@@ -9,8 +9,9 @@ module.exports = ($scope, $http, $state, BMA) => {
     let connected = false;
     try {
       let summary = yield BMA.webmin.summary();
-      connected = summary.ucoin.software == 'ucoind' && summary.ucoin.version >= '0.20';
-      if (!connected) throw 'err';
+      if (summary.current) {
+        return $state.go('home');
+      }
       return $state.go('configure.choose');
     }
     catch (e) {

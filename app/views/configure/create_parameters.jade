@@ -13,19 +13,24 @@
           p(translate="configuration.create_parameters.currency.message")
 
           .row
+            .input-field.col.s12
+              i.prefix.fa.fa-quote-left
+              input#currency(type="text" ng-model="$parent.conf.currency")
+              label(for="currency") {{ 'configuration.create_parameters.currency' | translate }}
+
             .input-field.col.s6.m4
               i.prefix.fa.fa-line-chart
-              input#c_percent(type="number" ng-model="c_percent")
-              label(for="c_percent") {{ 'configuration.create_parameters.c_percent' | translate }}
+              input#c(type="number" ng-model="$parent.conf.c")
+              label(for="c") {{ 'configuration.create_parameters.c' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-hourglass-end
-              input#dt(type="number" ng-model="dt")
+              input#dt(type="number" ng-model="$parent.conf.dt")
               label(for="dt") {{ 'configuration.create_parameters.dt' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-money
-              input#ud0(type="number" ng-model="ud0")
+              input#ud0(type="number" ng-model="$parent.conf.ud0")
               label(for="ud0") {{ 'configuration.create_parameters.ud0' | translate }}
 
         .card-action
@@ -37,42 +42,42 @@
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-database
-              input#sigStock(type="number" ng-model="sigStock")
+              input#sigStock(type="number" ng-model="$parent.conf.sigStock")
               label(for="sigStock") {{ 'configuration.create_parameters.sigStock' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-hourglass-end
-              input#sigPeriod(type="number" ng-model="sigPeriod")
+              input#sigPeriod(type="number" ng-model="$parent.conf.sigPeriod")
               label(for="sigPeriod") {{ 'configuration.create_parameters.sigPeriod' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-battery-3
-              input#sigValidity(type="number" ng-model="sigValidity")
+              input#sigValidity(type="number" ng-model="$parent.conf.sigValidity")
               label(for="sigValidity") {{ 'configuration.create_parameters.sigValidity' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-battery-3
-              input#msValidity(type="number" ng-model="msValidity")
+              input#msValidity(type="number" ng-model="$parent.conf.msValidity")
               label(for="msValidity") {{ 'configuration.create_parameters.msValidity' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-certificate
-              input#sigQty(type="number" ng-model="sigQty")
+              input#sigQty(type="number" ng-model="$parent.conf.sigQty")
               label(for="sigQty") {{ 'configuration.create_parameters.sigQty' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-object-ungroup
-              input#sigWindow(type="number" ng-model="sigWindow")
+              input#sigWindow(type="number" ng-model="$parent.conf.sigWindow")
               label(for="sigWindow") {{ 'configuration.create_parameters.sigWindow' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-map-marker
-              input#stepMax(type="number" ng-model="stepMax")
+              input#stepMax(type="number" ng-model="$parent.conf.stepMax")
               label(for="stepMax") {{ 'configuration.create_parameters.stepMax' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-users
-              input#xpercent(type="number" ng-model="xpercent")
+              input#xpercent(type="number" ng-model="$parent.conf.xpercent")
               label(for="xpercent") {{ 'configuration.create_parameters.xpercent' | translate }}
 
         .card-action
@@ -84,31 +89,31 @@
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-chain
-              input#medianTimeBlocks(type="number" ng-model="medianTimeBlocks")
+              input#medianTimeBlocks(type="number" ng-model="$parent.conf.medianTimeBlocks")
               label(for="medianTimeBlocks") {{ 'configuration.create_parameters.medianTimeBlocks' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-hourglass-end
-              input#avgGenTime(type="number" ng-model="avgGenTime")
+              input#avgGenTime(type="number" ng-model="$parent.conf.avgGenTime")
               label(for="avgGenTime") {{ 'configuration.create_parameters.avgGenTime' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-cubes
-              input#dtDiffEval(type="number" ng-model="dtDiffEval")
+              input#dtDiffEval(type="number" ng-model="$parent.conf.dtDiffEval")
               label(for="dtDiffEval") {{ 'configuration.create_parameters.dtDiffEval' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-graduation-cap
-              input#blocksRot(type="number" ng-model="blocksRot")
+              input#blocksRot(type="number" ng-model="$parent.conf.blocksRot")
               label(for="blocksRot") {{ 'configuration.create_parameters.blocksRot' | translate }}
 
             .input-field.col.s6.m4
               i.prefix.fa.fa-rotate-left
-              input#percentRot(type="number" ng-model="percentRot")
+              input#percentRot(type="number" ng-model="$parent.conf.percentRot")
               label(for="percentRot") {{ 'configuration.create_parameters.percentRot' | translate }}
 
         .card-action
 
-          .row: a.btn-large.waves-effect.waves-light(ui-sref="configure.create_parameters")
+          .row: button.btn-large.waves-effect.waves-light(ui-sref="configure.create_root")
             i.left.fa.fa-check
             span(translate="configuration.create_parameters.button.validate")

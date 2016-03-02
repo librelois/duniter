@@ -7,9 +7,9 @@ main
             h1.card-title(translate="configuration.init.choose.title")
             p(translate="configuration.init.choose.message")
           .card-action
-            .row: a.btn-large.waves-effect.waves-light(ui-sref="configure.create_uid")
+            .row: button.btn-large.waves-effect.waves-light(ui-sref="configure.create_uid")
               i.left.fa.fa-plus
               span(translate="configuration.init.choose.create")
-            .row: a.btn-large.waves-effect.waves-light.disabled
+            .row: button.btn-large.waves-effect.waves-light.disabled
               i.left.fa.fa-code-fork
               span.truncate(translate="configuration.init.choose.connect")
