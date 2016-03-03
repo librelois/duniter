@@ -1,7 +1,7 @@
 extends menu.jade
 
 block content
-  main
+  main.home
     nav
       div.nav-wrapper
         span.waves-effect.waves-light.button-collapse.stop-nav.full.hide-on-large-only(data-activates="slide-out")
@@ -13,14 +13,50 @@ block content
           li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-calendar-check-o(data-badge="3")
           li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-balance-scale(data-badge="3")
 
-    .container
-      div {{abc}}
+    .row
 
-    div.fixed-action-btn(style="bottom: 45px; right: 24px;")
-      a.btn-floating.btn-large.red
-        i.large.material-icons mode_edit
-      ul
-        li: a.btn-floating.red:             i.material-icons insert_chart
-        li: a.btn-floating.yellow.darken-1: i.material-icons format_quote
-        li: a.btn-floating.green:           i.material-icons publish
-        li: a.btn-floating.blue:            i.material-icons attach_file
+      .col.s6.m3
+        .card
+          .card-content
+            i.fa.fa-chain.fa-5x
+            .card-title
+              span {{ current.number }}
+          .card-action
+            p {{ 'home.current.number' | translate }}
+
+      .col.s6.m3
+        .card
+          .card-content
+            i.fa.fa-users.fa-5x
+            .card-title
+              span {{ current.membersCount }}
+          .card-action
+            p {{ 'home.current.membersCount' | translate }}
+
+      .col.s6.m3
+        .card.card-time
+          .card-content
+            i.fa.fa-hourglass-half.fa-5x
+            .card-title
+              p {{ current.medianTime | mt_date }}
+              p {{ current.medianTime | mt_time }}
+          .card-action
+            p {{ 'home.current.medianTime' | translate }}
+
+      .col.s6.m3
+        .card
+          .card-content
+            i.fa.fa-graduation-cap.fa-5x
+            .card-title
+              span {{ current.powMin }}
+          .card-action
+            p {{ 'home.current.powMin' | translate }}
+
+    //div.fixed-action-btn(style="bottom: 45px; right: 24px;")
+    //  a.btn-floating.btn-large.red
+    //    i.large.material-icons mode_edit
+    //  ul
+    //    li: a.btn-floating.red:             i.material-icons insert_chart
+    //    li: a.btn-floating.yellow.darken-1: i.material-icons format_quote
+    //    li: a.btn-floating.green:           i.material-icons publish
+    //    li: a.btn-floating.blue:            i.material-icons attach_file

@@ -1,8 +1,9 @@
 "use strict";
 
-module.exports = ($scope, $q) => {
+module.exports = ($scope, BMA) => {
 
-  var co = require('co');
+  let co = require('co');
+  let bmapi;
 
   $scope.phones = [];
   $scope.abc = 'abcdef';
@@ -13,22 +14,14 @@ module.exports = ($scope, $q) => {
     $(".button-collapse").sideNav({
       menuWidth: 280
     });
-    $(".button-collapse").sideNav('show');
   }
 
-  //$q.when(co(function *() {
-  //
-  //  console.log('Waiting 1s...');
-  //  var a = yield Promise.resolve(2);
-  //  console.log('Waited 1s');
-  //
-  //  $scope.phones = [
-  //    {'name': 'Nexus S' + a,
-  //      'snippet': 'Fast just got faster with Nexus S.'},
-  //    {'name': 'Motorola XOOM™ with Wi-Fi',
-  //      'snippet': 'The Next, Next Generation tablet.'},
-  //    {'name': 'MOTOROLA XOOM™',
-  //      'snippet': 'The Next, Next Generation tablet.'}
-  //  ];
-  //}));
+  return co(function *() {
+    let summary = yield BMA.webmin.summary();
+    bmapi = BMA.instance(summary.host);
+    bmapi.websocket.block().on('block', (block) => {
+      $scope.current = block;
+      $scope.$apply();
+    });
+  });
 };

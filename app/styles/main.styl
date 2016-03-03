@@ -17,6 +17,11 @@ head, main
 main
   overflow: overlay
 
+@media screen and (min-width: 400px)
+
+  main.home
+    padding-left 70px
+
 nav
   background-color #1A687F
 
@@ -25,3 +30,50 @@ nav
 
 .small
   font-size 0.8rem
+
+.home
+
+  .card
+    text-align center
+
+    .fa
+      z-index 1
+      width: 100%
+      margin-left: auto
+      margin-right: auto
+      position: absolute
+      margin-top -5px
+      margin-left -50%
+      color: rgba(187, 234, 249, 0.51)
+
+  .card-title span
+    z-index 2
+    position: relative
+    //font-weight bold
+    font-size 3rem
+    width 350px
+
+  .card-title p
+    z-index 2
+    position: relative
+    font-size 1.4rem
+    line-height 27px
+
+  .card-action
+    padding 1px
+
+  .card-time
+
+    .card-content
+      padding-top 15px
+      padding-bottom 15px
+
+      .card-title p:first-child
+        margin-bottom 9px
+
+  //.card-time .card-title span, .card-time .card-title  p
+  //  font-size 1.5rem
+
+  //.card-title span:before
+  //  content ''
+  //  width 350px

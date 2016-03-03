@@ -31,7 +31,7 @@ module.exports = (app) => {
           sigWindow: 3600 * 24 * 14, // 2 weeks
           sigValidity: 3600 * 24 * 365,
           msValidity: 3600 * 24 * 365,
-          sigQty: 5,
+          sigQty: 0,
           xpercent: 0.9,
           percentRot: 0.66,
           blocksRot: 20,
