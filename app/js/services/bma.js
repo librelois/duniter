@@ -81,7 +81,10 @@ module.exports = (angular) => {
           return {
             on: function(type, callback) {
               sock.onmessage = function(e) {
-                callback(JSON.parse(e.data));
+                let res = JSON.parse(e.data);
+                if (type === undefined || (res.type === type)) {
+                  callback(res);
+                }
               };
             }
           };
@@ -89,6 +92,9 @@ module.exports = (angular) => {
 
         return {
           webmin: {
+            ws: {
+              sync: () => ws('ws://' + server + '/webmin/ws/sync')
+            },
             summary: getResource('/webmin/summary'),
             server: {
               http: {
@@ -99,7 +105,9 @@ module.exports = (angular) => {
                 startAll: getResource('/webmin/server/services/start_all')
               },
               sendConf: postResource('/webmin/server/send_conf'),
-              previewNext: getResource('/webmin/server/preview_next')
+              startSync: postResource('/webmin/server/start_sync'),
+              previewNext: getResource('/webmin/server/preview_next'),
+              autoConfNetwork: getResource('/webmin/server/auto_conf_network')
             },
             network: {
               interfaces: getResource('/webmin/network/interfaces')

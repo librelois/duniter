@@ -74,5 +74,12 @@
   "home.current.number": "Current block #",
   "home.current.membersCount": "Members count",
   "home.current.medianTime": "Median time",
-  "home.current.powMin": "Common difficulty level"
+  "home.current.powMin": "Common difficulty level",
+  "sync.title": "Synchronize",
+  "sync.message": "Your node will be synchronized with an existing currency: just enter technical details about a node to sync with it.",
+  "sync.host": "Host",
+  "sync.port": "Port",
+  "sync.check": "Check node",
+  "sync.start": "Synchronize with this node",
+  "sync.failed": "Synchronization failed."
 }

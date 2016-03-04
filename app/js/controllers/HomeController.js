@@ -18,10 +18,13 @@ module.exports = ($scope, BMA) => {
 
   return co(function *() {
     let summary = yield BMA.webmin.summary();
+    yield BMA.webmin.server.http.start();
     bmapi = BMA.instance(summary.host);
-    bmapi.websocket.block().on('block', (block) => {
+    bmapi.websocket.block().on(undefined, (block) => {
       $scope.current = block;
       $scope.$apply();
     });
+    $scope.current = yield bmapi.blockchain.current();
+    yield BMA.webmin.server.services.startAll();
   });
 };

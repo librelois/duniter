@@ -71,6 +71,12 @@ module.exports = (app) => {
       controller: 'RootBlockController'
     }).
 
+    state('sync', {
+      url: '/sync',
+      template: require('views/sync'),
+      controller: 'SyncController'
+    }).
+
     state('home', {
       url: '/',
       template: require('views/home'),
