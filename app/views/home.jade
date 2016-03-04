@@ -1,6 +1,15 @@
 extends menu.jade
 
 block content
+
+  //ul#serveractions.dropdown-content
+  //  li: button.btn-flat.left-align(ng-click="" ng-class="{ disabled : server_started }" ng-disabled="server_started")
+  //    i.material-icons.left play_arrow
+  //    span {{ 'home.menu.server.start' | translate }}
+  //  li: button.btn-flat.left-align(ng-click="" ng-class="{ disabled : server_stopped }" ng-disabled="server_stopped")
+  //    i.material-icons.left stop
+  //    span {{ 'home.menu.server.stop' | translate }}
+
   main.home
     nav
       div.nav-wrapper
@@ -8,12 +17,22 @@ block content
           i.mdi-navigation-menu
         <!--<a href="#" class="brand-logo left">Logo</a>-->
         ul.right
-          li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-user(data-badge="{{newIdentities}}")
-          li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-certificate(data-badge="3")
-          li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-calendar-check-o(data-badge="3")
-          li: a.waves-effect.waves-light(href="#"): i.fa.fa-2x.fa-balance-scale(data-badge="3")
+          li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-user(data-badge="{{newIdentities}}")
+          li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-certificate(data-badge="3")
+          li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-calendar-check-o(data-badge="3")
+          li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-balance-scale(data-badge="3")
+          li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
 
     .row
+
+      .col.s6.m3
+        .card#server_state
+          .card-content
+            //i.fa.fa-chain.fa-5x
+            .card-title
+              a(href="#/").btn.waves-effect.waves-light Some content
+          .card-action
+            p {{ 'home.state' | translate }} {{ server_state | translate }}
 
       .col.s6.m3
         .card

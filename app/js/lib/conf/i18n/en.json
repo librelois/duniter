@@ -81,5 +81,7 @@
   "sync.port": "Port",
   "sync.check": "Check node",
   "sync.start": "Synchronize with this node",
-  "sync.failed": "Synchronization failed."
+  "sync.failed": "Synchronization failed.",
+  "home.menu.server.stop": "Stop server",
+  "home.menu.server.start": "Start server"
 }
