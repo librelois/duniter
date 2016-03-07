@@ -1,0 +1,24 @@
+extends with_menus_view
+
+block main_content
+
+  main.main-screen
+
+    .container
+      .row
+        .col.s12
+          ul.tabs
+            li.tab.col.s3: a(href="#settings.data")
+              i.fa.fa-database &nbsp;
+              = " {{ 'settings.tabs.data' | translate }}"
+            li.tab.col.s3: a(href="#settings.idty")
+              i.fa.fa-user &nbsp;
+              = " {{ 'settings.tabs.identity' | translate }}"
+            li.tab.col.s3: a(href="#settings.network")
+              i.fa.fa-globe &nbsp;
+              = " {{ 'settings.tabs.network' | translate }}"
+            li.tab.col.s3: a(href="#settings.currency")
+              i.fa.fa-balance-scale &nbsp;
+              = " {{ 'settings.tabs.currency' | translate }}"
+
+    div(ui-view="")

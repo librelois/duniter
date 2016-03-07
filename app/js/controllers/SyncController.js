@@ -2,29 +2,30 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, BMA) => {
+module.exports = ($scope, $http, $state, $stateParams, BMA) => {
 
   let syncWS = BMA.webmin.ws();
 
   $scope.synchronizing = false;
   $scope.sync_failed = false;
-  $scope.port = 8999; // default port
+  $scope.host = $stateParams.host || '';
+  $scope.port = parseInt($stateParams.port) || 8999;
+  $scope.to = parseInt($stateParams.sync);
   $scope.wrong_host = false;
 
   $scope.checkNode = () => co(function *() {
     $scope.checking = true;
-    co(function *() {
-      try {
-        let targetHost = [$scope.host, $scope.port].join(':');
-        let bmapi = BMA.instance(targetHost);
-        let current = yield bmapi.blockchain.current();
-        if (current) {
-          $scope.checked_host = targetHost;
-        }
-      } catch (e) {
+    try {
+      let targetHost = [$scope.host, $scope.port].join(':');
+      let bmapi = BMA.instance(targetHost);
+      let current = yield bmapi.blockchain.current();
+      if (current) {
+        $scope.checked_host = targetHost;
       }
-      $scope.checking = false;
-    });
+    } catch (e) {
+    }
+    $scope.checking = false;
+    return $scope.checked_host ? true : false;
   });
 
   $scope.startSync = () => {
@@ -35,7 +36,6 @@ module.exports = ($scope, $http, $state, BMA) => {
     return co(function *() {
       let sp = $scope.checked_host.split(':');
       syncWS.on(undefined, (data) => {
-        console.log(data);
         if (data.type == 'sync') {
           $scope.down_percent = 100;
           $scope.apply_percent = 100;
@@ -61,8 +61,19 @@ module.exports = ($scope, $http, $state, BMA) => {
       yield BMA.webmin.server.autoConfNetwork();
       BMA.webmin.server.startSync({
         host: sp[0],
-        port: sp[1]
+        port: sp[1],
+        to: $scope.to
       });
+    });
+  };
+
+  // Autostart
+  if ($scope.host && $scope.port) {
+    return co(function *() {
+      let nodeOK = yield $scope.checkNode();
+      if (nodeOK) {
+        return $scope.startSync();
+      }
     });
   }
 };

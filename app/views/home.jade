@@ -1,28 +1,8 @@
-extends menu.jade
+extends with_menus_view.jade
 
-block content
+block main_content
 
-  ul#serveractions.dropdown-content
-    li: button.btn-flat.left-align(ng-click="startServer()" ng-class="{ disabled : server_started || !server_stopped }" ng-disabled="server_started")
-      i.material-icons.left play_arrow
-      span {{ 'home.menu.server.start' | translate }}
-    li: button.btn-flat.left-align(ng-click="stopServer()" ng-class="{ disabled : server_stopped || !server_started }" ng-disabled="server_stopped")
-      i.material-icons.left stop
-      span {{ 'home.menu.server.stop' | translate }}
-
-  nav
-    div.nav-wrapper
-      span.waves-effect.waves-light.button-collapse.stop-nav.full.hide-on-large-only(data-activates="slide-out")
-        i.mdi-navigation-menu
-      <!--<a href="#" class="brand-logo left">Logo</a>-->
-      ul.right
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-user(data-badge="{{newIdentities}}")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-certificate(data-badge="3")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-calendar-check-o(data-badge="3")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-balance-scale(data-badge="3")
-        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
-
-  main.home
+  main.home.main-screen
 
     .row
 
@@ -78,12 +58,3 @@ block content
               span {{ current.powMin }}
           .card-action
             p {{ 'home.current.powMin' | translate }}
-
-    //div.fixed-action-btn(style="bottom: 45px; right: 24px;")
-    //  a.btn-floating.btn-large.red
-    //    i.large.material-icons mode_edit
-    //  ul
-    //    li: a.btn-floating.red:             i.material-icons insert_chart
-    //    li: a.btn-floating.yellow.darken-1: i.material-icons format_quote
-    //    li: a.btn-floating.green:           i.material-icons publish
-    //    li: a.btn-floating.blue:            i.material-icons attach_file

@@ -106,7 +106,8 @@ module.exports = (angular) => {
               sendConf: postResource('/webmin/server/send_conf'),
               startSync: postResource('/webmin/server/start_sync'),
               previewNext: getResource('/webmin/server/preview_next'),
-              autoConfNetwork: getResource('/webmin/server/auto_conf_network')
+              autoConfNetwork: getResource('/webmin/server/auto_conf_network'),
+              resetData: getResource('/webmin/server/reset/data')
             },
             network: {
               interfaces: getResource('/webmin/network/interfaces')
@@ -121,6 +122,7 @@ module.exports = (angular) => {
           },
           network: {
             peering: {
+              self: getResource('/network/peering'),
               peers: getResource('/network/peering/peers')
             },
             peers: getResource('/network/peers')

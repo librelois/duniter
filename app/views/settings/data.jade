@@ -1,0 +1,19 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-database.fa-5x
+          h1.card-title(translate="settings.data.reset.title")
+          p(translate="settings.data.reset.message")
+
+          .row
+            .col.s12
+              select.browser-default(ng-model="remote_host")
+                option(value="" selected translate="settings.data.reset.peer.none_option")
+                option(ng-repeat="p in peers" value="{{ p.host_port }}") {{ p.name }}
+              label {{ 'settings.data.reset.peer.label' | translate }}
+
+          .row: button.btn-large.waves-effect.waves-light(ng-disabled="!remote_host" ng-click="resetNode()")
+            i.left.fa.fa-check
+            span(translate="settings.data.reset.button")

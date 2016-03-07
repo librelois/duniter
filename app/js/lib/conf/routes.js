@@ -1,3 +1,6 @@
+var co = require('co');
+var _ = require('underscore');
+
 module.exports = (app) => {
 
   app.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
@@ -72,15 +75,56 @@ module.exports = (app) => {
     }).
 
     state('sync', {
-      url: '/sync',
+      url: '/sync?host=&port=&sync=',
       template: require('views/sync'),
       controller: 'SyncController'
     }).
 
     state('home', {
-      url: '/',
+      url: '/home',
       template: require('views/home'),
       controller: 'HomeController'
+    }).
+
+    state('settings', {
+      abstract: true,
+      url: '/settings',
+      template: require('views/settings'),
+      resolve: {
+        bmapi: (BMA) => co(function *() {
+          let summary = yield BMA.webmin.summary();
+          return BMA.instance(summary.host);
+        })
+      },
+      controller: 'SettingsController'
+    }).
+
+    state('settings.data', {
+      url: '/data',
+      template: require('views/settings/data'),
+      resolve: {
+        peers: (bmapi) => co(function *() {
+          let self = yield bmapi.network.peering.self();
+          let res = yield bmapi.network.peers();
+          return _.filter(res.peers, (p) => p.pubkey != self.pubkey);
+        })
+      },
+      controller: 'DataController'
+    }).
+
+    state('settings.idty', {
+      url: '/idty',
+      template: require('views/settings/idty')
+    }).
+
+    state('settings.network', {
+      url: '/network',
+      template: require('views/settings/network')
+    }).
+
+    state('settings.currency', {
+      url: '/currency',
+      template: require('views/settings/currency')
     }).
 
     state('error', {
