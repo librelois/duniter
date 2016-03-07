@@ -4,13 +4,11 @@ var co = require('co');
 
 module.exports = ($scope, $http, $state, BMA) => {
 
-  let syncWS = BMA.webmin.ws.sync();
+  let syncWS = BMA.webmin.ws();
 
   $scope.synchronizing = false;
   $scope.sync_failed = false;
-  $scope.host = '192.168.1.35'; // default port
-  $scope.port = 38017; // default port
-  //$scope.port = 8999; // default port
+  $scope.port = 8999; // default port
   $scope.wrong_host = false;
 
   $scope.checkNode = () => co(function *() {

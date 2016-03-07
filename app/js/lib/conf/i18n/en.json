@@ -83,5 +83,8 @@
   "sync.start": "Synchronize with this node",
   "sync.failed": "Synchronization failed.",
   "home.menu.server.stop": "Stop server",
-  "home.menu.server.start": "Start server"
+  "home.menu.server.start": "Start server",
+  "home.state": "Server:",
+  "home.state.started": "STARTED",
+  "home.state.stopped": "STOPPED"
 }

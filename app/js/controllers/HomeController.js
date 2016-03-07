@@ -1,6 +1,8 @@
 "use strict";
 
-module.exports = ($scope, BMA) => {
+module.exports = ($scope, BMA, $timeout) => {
+
+  let serverWS = BMA.webmin.ws();
 
   let co = require('co');
   let bmapi;
@@ -18,17 +20,55 @@ module.exports = ($scope, BMA) => {
     });
   }
 
-  //$(".dropdown-button").dropdown({ constrainwidth: false });
+  Waves.displayEffect();
 
-  //return co(function *() {
-  //  let summary = yield BMA.webmin.summary();
-  //  yield BMA.webmin.server.http.start();
-  //  bmapi = BMA.instance(summary.host);
-  //  bmapi.websocket.block().on(undefined, (block) => {
-  //    $scope.current = block;
-  //    $scope.$apply();
-  //  });
-  //  $scope.current = yield bmapi.blockchain.current();
-  //  yield BMA.webmin.server.services.startAll();
-  //});
+  $(".dropdown-button").dropdown({ constrainwidth: false });
+
+  serverWS.on(undefined, (data) => {
+    if (data.type === 'started') {
+      $scope.server_started = true;
+      $scope.server_stopped = false;
+      bindBlockWS();
+      $scope.$apply();
+    }
+    if (data.type === 'stopped') {
+      $scope.server_stopped = true;
+      $scope.server_started = false;
+      $scope.$apply();
+    }
+  });
+
+  $scope.startServer = () => {
+    $scope.server_stopped = false;
+    co(function *() {
+      yield BMA.webmin.server.http.start();
+      yield BMA.webmin.server.services.startAll();
+      $scope.server_started = true;
+    });
+  };
+
+  $scope.stopServer = () => {
+    $scope.server_started = false;
+    co(function *() {
+      yield BMA.webmin.server.http.stop();
+      yield BMA.webmin.server.services.stopAll();
+      $scope.server_stopped = true;
+    });
+  };
+
+  function bindBlockWS() {
+    bmapi.websocket.block().on(undefined, (block) => {
+      $scope.current = block;
+      $scope.$apply();
+    });
+  }
+
+  return co(function *() {
+    let summary = yield BMA.webmin.summary();
+    yield BMA.webmin.server.http.start();
+    bmapi = BMA.instance(summary.host);
+    bindBlockWS();
+    $scope.current = yield bmapi.blockchain.current();
+    yield BMA.webmin.server.services.startAll();
+  });
 };

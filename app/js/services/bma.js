@@ -92,9 +92,7 @@ module.exports = (angular) => {
 
         return {
           webmin: {
-            ws: {
-              sync: () => ws('ws://' + server + '/webmin/ws/sync')
-            },
+            ws: () => ws('ws://' + server + '/webmin/ws'),
             summary: getResource('/webmin/summary'),
             server: {
               http: {
@@ -102,7 +100,8 @@ module.exports = (angular) => {
                 stop: getResource('/webmin/server/http/stop')
               },
               services: {
-                startAll: getResource('/webmin/server/services/start_all')
+                startAll: getResource('/webmin/server/services/start_all'),
+                stopAll: getResource('/webmin/server/services/stop_all')
               },
               sendConf: postResource('/webmin/server/send_conf'),
               startSync: postResource('/webmin/server/start_sync'),
