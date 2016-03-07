@@ -1,4 +1,6 @@
 {
+  "general.server.started": "Server started",
+  "general.server.stopped": "Server stopped",
   "general.choose_option": "Choose your option",
   "global.button.validate": "Validate",
   "global.button.start": "Start",
@@ -96,5 +98,7 @@
   "settings.data.reset.warning": "This process <strong>will not</strong> reset the node identity and network settings, which will be reused.",
   "settings.data.reset.peer.none_option": "Select a node",
   "settings.data.reset.peer.label": "Synchronization peer",
-  "settings.data.reset.button": "Reset data and start sync"
+  "settings.data.reset.button": "Reset data and start sync",
+  "settings.network.button.validate": "Save and apply network settings",
+  "settings.network.saved": "Configuration saved and applied successfully"
 }

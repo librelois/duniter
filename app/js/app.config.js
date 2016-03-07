@@ -11,6 +11,7 @@ module.exports = () => {
   require('./lib/conf/translate')(duniterApp);
   require('./lib/conf/routes')(duniterApp);
   require('js/services/datetime')(duniterApp);
+  require('js/services/ui_utils')(duniterApp);
 
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 

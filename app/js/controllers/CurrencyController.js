@@ -1,9 +1,9 @@
 "use strict";
 
-module.exports = ($scope, conf) => {
+module.exports = ($scope, conf, UIUtils) => {
 
   $scope.$parent.conf = conf;
 
-  $('i.prefix, label').addClass('active');
+  UIUtils.enableInputs();
   $('input').attr('disabled', 'disabled');
 };

@@ -58,6 +58,10 @@ module.exports = (app) => {
     state('configure.create_network', {
       url: '/create/network',
       template: require('views/configure/create_network'),
+      resolve: {
+        netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
+        firstConf: () => true
+      },
       controller: 'NetworkController'
     }).
 
@@ -118,7 +122,12 @@ module.exports = (app) => {
 
     state('settings.network', {
       url: '/network',
-      template: require('views/settings/network')
+      resolve: {
+        netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
+        firstConf: () => false
+      },
+      template: require('views/settings/network'),
+      controller: 'NetworkController'
     }).
 
     state('settings.currency', {
@@ -142,4 +151,11 @@ module.exports = (app) => {
     // Default route
     $urlRouterProvider.otherwise('/');
   }]);
+
+  function resolveNetworkAutoConf(BMA) {
+    return co(function *() {
+      let netinterfaces = yield BMA.webmin.network.interfaces();
+      return netinterfaces || { local: {}, remote: {} };
+    });
+  }
 };

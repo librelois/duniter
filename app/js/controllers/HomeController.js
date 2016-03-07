@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = ($scope, BMA, $timeout) => {
+module.exports = ($scope, BMA, UIUtils) => {
 
   let serverWS = BMA.webmin.ws();
 
@@ -29,11 +29,13 @@ module.exports = ($scope, BMA, $timeout) => {
       $scope.server_started = true;
       $scope.server_stopped = false;
       bindBlockWS();
+      UIUtils.toast('general.server.started');
       $scope.$apply();
     }
     if (data.type === 'stopped') {
       $scope.server_stopped = true;
       $scope.server_started = false;
+      UIUtils.toast('general.server.stopped');
       $scope.$apply();
     }
   });
