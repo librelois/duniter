@@ -14,7 +14,7 @@ module.exports = (app) => {
     app.filter('mt_time', ($filter) => {
       return (input) => {
         if(input == null){ return ""; }
-        var _date = $filter('date')(new Date(input * 1000), 'hh:MM:ss');
+        var _date = $filter('date')(new Date(input * 1000), 'HH:MM:ss');
         return _date.toUpperCase();
       };
     });
