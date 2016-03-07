@@ -18,7 +18,6 @@ module.exports = (app) => {
       url: '/configure',
       template: require('views/configure/layout'),
       controller: ($scope) => {
-        console.log('Abstract');
         $scope.conf = {
           idty_uid: 'cgeek',
           idty_entropy: 'cat',
@@ -124,7 +123,13 @@ module.exports = (app) => {
 
     state('settings.currency', {
       url: '/currency',
-      template: require('views/settings/currency')
+      resolve: {
+        conf: (bmapi) => co(function *() {
+          return bmapi.currency.parameters();
+        })
+      },
+      template: require('views/settings/currency'),
+      controller: 'CurrencyController'
     }).
 
     state('error', {

@@ -42,7 +42,7 @@
   "configuration.create_parameters.currency.title": "Money units",
   "configuration.create_parameters.currency.message": "Give a name to your currency. The 3 following parameters configure the way new money units are created.",
   "configuration.create_parameters.currency": "Currency name",
-  "configuration.create_parameters.c_percent": "c",
+  "configuration.create_parameters.c": "c",
   "configuration.create_parameters.dt": "UD period",
   "configuration.create_parameters.ud0": "UD(0)",
   "configuration.create_parameters.button.validate": "Validate",

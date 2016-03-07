@@ -1,1 +1,18 @@
-extends ../configure/create_parameters
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-balance-scale.fa-5x
+
+          h1.card-title(translate="configuration.create_parameters.currency.title")
+
+          include ../includes/money.jade
+
+          h1.card-title(translate="configuration.create_parameters.wot.title")
+
+          include ../includes/wot.jade
+
+          h1.card-title(translate="configuration.create_parameters.blockchain.title")
+
+          include ../includes/blockchain.jade

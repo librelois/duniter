@@ -23,4 +23,5 @@ module.exports = () => {
   homeControllers.controller('SyncController', require('./controllers/SyncController'));
   homeControllers.controller('SettingsController', require('./controllers/SettingsController'));
   homeControllers.controller('DataController', require('./controllers/DataController'));
+  homeControllers.controller('CurrencyController', require('./controllers/CurrencyController'));
 };

@@ -1,0 +1,20 @@
+.row
+  .input-field.col.s12
+    i.prefix.fa.fa-quote-left
+    input#currency(type="text" ng-model="$parent.conf.currency")
+    label(for="currency") {{ 'configuration.create_parameters.currency' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-line-chart
+    input#c(type="number" ng-model="$parent.conf.c")
+    label(for="c") {{ 'configuration.create_parameters.c' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-hourglass-end
+    input#dt(type="number" ng-model="$parent.conf.dt")
+    label(for="dt") {{ 'configuration.create_parameters.dt' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-money
+    input#ud0(type="number" ng-model="$parent.conf.ud0")
+    label(for="ud0") {{ 'configuration.create_parameters.ud0' | translate }}
