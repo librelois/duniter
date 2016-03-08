@@ -83,6 +83,12 @@ module.exports = (app) => {
     state('home', {
       url: '/home',
       template: require('views/home'),
+      resolve: {
+        summary: (BMA) => BMA.webmin.summary(),
+        bmapi: (BMA, summary) => co(function *() {
+          return BMA.instance(summary.host);
+        })
+      },
       controller: 'HomeController'
     }).
 

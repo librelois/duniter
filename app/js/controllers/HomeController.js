@@ -1,12 +1,13 @@
 "use strict";
 
-module.exports = ($scope, BMA, UIUtils) => {
+module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
 
   let serverWS = BMA.webmin.ws();
 
   let co = require('co');
-  let bmapi;
 
+  bindBlockWS();
+  $scope.current = summary.current;
   $scope.server_started = true;
   $scope.server_stopped = false;
   $scope.phones = [];
@@ -42,7 +43,7 @@ module.exports = ($scope, BMA, UIUtils) => {
 
   $scope.startServer = () => {
     $scope.server_stopped = false;
-    co(function *() {
+    return co(function *() {
       yield BMA.webmin.server.http.start();
       yield BMA.webmin.server.services.startAll();
       $scope.server_started = true;
@@ -51,7 +52,7 @@ module.exports = ($scope, BMA, UIUtils) => {
 
   $scope.stopServer = () => {
     $scope.server_started = false;
-    co(function *() {
+    return co(function *() {
       yield BMA.webmin.server.http.stop();
       yield BMA.webmin.server.services.stopAll();
       $scope.server_stopped = true;
@@ -65,12 +66,5 @@ module.exports = ($scope, BMA, UIUtils) => {
     });
   }
 
-  return co(function *() {
-    let summary = yield BMA.webmin.summary();
-    yield BMA.webmin.server.http.start();
-    bmapi = BMA.instance(summary.host);
-    bindBlockWS();
-    $scope.current = yield bmapi.blockchain.current();
-    yield BMA.webmin.server.services.startAll();
-  });
+  return $scope.startServer();
 };

@@ -77,6 +77,7 @@
   "home.current.membersCount": "Members count",
   "home.current.medianTime": "Median time",
   "home.current.powMin": "Common difficulty level",
+  "home.current.mmass": "Monetary mass",
   "sync.title": "Synchronize",
   "sync.message": "Your node will be synchronized with an existing currency: just enter technical details about a node to sync with it.",
   "sync.host": "Host",
