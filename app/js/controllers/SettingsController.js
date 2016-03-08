@@ -21,4 +21,11 @@ module.exports = ($scope, $http, $state, $location, BMA) => {
   jTabs.tabs('select_tab', currentID);
 
   Waves.displayEffect();
+
+  $scope.fullReset = () => co(function *() {
+    yield BMA.webmin.server.http.stop();
+    yield BMA.webmin.server.services.stopAll();
+    yield BMA.webmin.server.resetData();
+    $state.go('index')
+  });
 };

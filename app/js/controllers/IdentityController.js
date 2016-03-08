@@ -1,7 +1,5 @@
 "use strict";
 
-var co = require('co');
-
 module.exports = ($scope) => {
 
   setTimeout(() => {
@@ -9,6 +7,9 @@ module.exports = ($scope) => {
   }, 500);
 
   $scope.accept = () => {
-    $('#modal1').openModal();
+    let modal = $('#modal1');
+    if (modal.css('display') == 'none') {
+      $('#modal1').openModal();
+    }
   };
 };

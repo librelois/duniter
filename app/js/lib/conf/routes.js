@@ -19,9 +19,6 @@ module.exports = (app) => {
       template: require('views/configure/layout'),
       controller: ($scope) => {
         $scope.conf = {
-          idty_uid: 'cgeek',
-          idty_entropy: 'cat',
-          idty_password: 'tac',
           currency: 'super_currency',
           c: 0.007376575,
           dt: 30.4375 * 24 * 3600,
@@ -78,7 +75,7 @@ module.exports = (app) => {
     }).
 
     state('sync', {
-      url: '/sync?host=&port=&sync=',
+      url: '/sync?host=&port=&sync=&to=',
       template: require('views/sync'),
       controller: 'SyncController'
     }).

@@ -1,8 +1,6 @@
 "use strict";
 
-var co = require('co');
-var conf = require('js/lib/conf/conf');
+module.exports = ($scope, UIUtils) => {
 
-module.exports = ($scope, $http, $state, BMA) => {
-
+  UIUtils.enableInputs();
 };

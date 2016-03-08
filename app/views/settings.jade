@@ -2,6 +2,16 @@ extends with_menus_view
 
 block main_content
 
+  #modalReset.modal
+    .modal-content
+      h4 {{ 'settings.data.modal_title' | translate }}
+      p {{ 'settings.data.modal_message' | translate }}
+    .modal-footer
+      a.btn.modal-action.modal-close.waves-effect.waves-light.btn-flat {{ 'settings.data.modal_disagree' | translate }}
+      a.btn.modal-action.modal-close.waves-effect.waves-light.orange(ng-click="fullReset()")
+        i.material-icons.left done
+        ="{{ 'settings.data.modal_agree' | translate }}"
+
   main.main-screen
 
     .container

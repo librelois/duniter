@@ -7,6 +7,8 @@
           h1.card-title(translate="settings.data.reset.title")
           p(translate="settings.data.reset.message")
 
+          blockquote.left-align.red.lighten-5(translate="settings.data.reset.experimental")
+
           .row
             .col.s12
               select.browser-default(ng-model="remote_host")
@@ -14,6 +16,14 @@
                 option(ng-repeat="p in peers" value="{{ p.host_port }}") {{ p.name }}
               label {{ 'settings.data.reset.peer.label' | translate }}
 
-          .row: button.btn-large.waves-effect.waves-light(ng-disabled="!remote_host" ng-click="resetNode()")
-            i.left.fa.fa-check
-            span(translate="settings.data.reset.button")
+          .row
+
+            .col.s12.m6
+              button.orange.btn-large.waves-effect.waves-light(ng-click="resetNode()")
+                i.left.fa.fa-warning
+                span(translate="settings.data.reset.button")
+
+            .col.s12.m6
+              button.btn-large.waves-effect.waves-light(ng-disabled="!remote_host" ng-click="resetNodeAndSync()")
+                i.left.fa.fa-check
+                span(translate="settings.data.reset_sync.button")

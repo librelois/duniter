@@ -7,7 +7,7 @@ module.exports = (app) => {
           return $q.when($translate(msg)).then((translated) => Materialize.toast(translated, 4000))
         },
 
-        enableInputs: () => $('i.prefix, label').addClass('active')
+        enableInputs: () => $('i.prefix, label[value!=""]').addClass('active')
       }
     });
 };

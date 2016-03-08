@@ -13,14 +13,19 @@ module.exports = ($scope, $http, $state, BMA, peers) => {
     }
   });
 
-  $scope.resetNode = () => co(function *() {
+  $scope.resetNode = () => {
+    $('#modalReset').openModal();
+  };
+
+  $scope.resetNodeAndSync = () => co(function *() {
     yield BMA.webmin.server.http.stop();
     yield BMA.webmin.server.services.stopAll();
     yield BMA.webmin.server.resetData();
     let sp = $scope.remote_host.split('|');
     $state.go('sync', {
       host: sp[0],
-      port: sp[1]
+      port: sp[1],
+      sync: true
     })
   });
 };

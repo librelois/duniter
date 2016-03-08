@@ -2,15 +2,16 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, $stateParams, BMA) => {
+module.exports = ($scope, $http, $state, $stateParams, BMA, UIUtils) => {
 
   let syncWS = BMA.webmin.ws();
 
+  UIUtils.enableInputs();
   $scope.synchronizing = false;
   $scope.sync_failed = false;
-  $scope.host = $stateParams.host || '';
-  $scope.port = parseInt($stateParams.port) || 8999;
-  $scope.to = parseInt($stateParams.sync);
+  $scope.host = $stateParams.host || localStorage.getItem('sync_host') || '';
+  $scope.port = parseInt($stateParams.port) || parseInt(localStorage.getItem('sync_port')) || 8999;
+  $scope.to = parseInt($stateParams.to);
   $scope.wrong_host = false;
 
   $scope.checkNode = () => co(function *() {
@@ -59,6 +60,8 @@ module.exports = ($scope, $http, $state, $stateParams, BMA) => {
         }
       });
       yield BMA.webmin.server.autoConfNetwork();
+      localStorage.setItem("sync_host", sp[0]);
+      localStorage.setItem("sync_port", sp[1]);
       BMA.webmin.server.startSync({
         host: sp[0],
         port: sp[1],
@@ -68,7 +71,7 @@ module.exports = ($scope, $http, $state, $stateParams, BMA) => {
   };
 
   // Autostart
-  if ($scope.host && $scope.port) {
+  if ($scope.host && $scope.port && $stateParams.sync) {
     return co(function *() {
       let nodeOK = yield $scope.checkNode();
       if (nodeOK) {
