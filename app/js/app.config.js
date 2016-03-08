@@ -25,4 +25,5 @@ module.exports = () => {
   homeControllers.controller('SettingsController', require('./controllers/SettingsController'));
   homeControllers.controller('DataController', require('./controllers/DataController'));
   homeControllers.controller('CurrencyController', require('./controllers/CurrencyController'));
+  homeControllers.controller('KeyController', require('./controllers/KeyController'));
 };

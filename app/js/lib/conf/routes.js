@@ -94,8 +94,8 @@ module.exports = (app) => {
       url: '/settings',
       template: require('views/settings'),
       resolve: {
-        bmapi: (BMA) => co(function *() {
-          let summary = yield BMA.webmin.summary();
+        summary: (BMA) => BMA.webmin.summary(),
+        bmapi: (BMA, summary) => co(function *() {
           return BMA.instance(summary.host);
         })
       },
@@ -115,9 +115,10 @@ module.exports = (app) => {
       controller: 'DataController'
     }).
 
-    state('settings.idty', {
-      url: '/idty',
-      template: require('views/settings/idty')
+    state('settings.crypto', {
+      url: '/crypto',
+      template: require('views/settings/crypto'),
+      controller: 'KeyController'
     }).
 
     state('settings.network', {

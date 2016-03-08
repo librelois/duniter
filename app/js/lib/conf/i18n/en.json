@@ -90,7 +90,7 @@
   "home.state.started": "STARTED",
   "home.state.stopped": "STOPPED",
   "settings.tabs.data": "Data",
-  "settings.tabs.identity": "Node identity",
+  "settings.tabs.identity": "Crypto",
   "settings.tabs.network": "Network",
   "settings.tabs.currency": "Currency",
   "settings.data.reset.title": "Reset this node",
@@ -100,5 +100,9 @@
   "settings.data.reset.peer.label": "Synchronization peer",
   "settings.data.reset.button": "Reset data and start sync",
   "settings.network.button.validate": "Save and apply network settings",
-  "settings.network.saved": "Configuration saved and applied successfully"
+  "settings.network.saved": "Configuration saved and applied successfully",
+  "settings.key.title": "Public key of this node:",
+  "settings.key.button.validate": "Save and use this key",
+  "settings.key.button.change": "Change keyring",
+  "settings.key.pubkey.description": "This public key is the public part of your keyring, which is composed of a public key and a private key. This public key is shared with all the peers of the network and users of the currency, while your private key is secretely kept and used by this node to process operations on the network."
 }

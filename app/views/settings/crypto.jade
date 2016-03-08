@@ -1,0 +1,25 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-key.fa-5x
+          h1.card-title(translate="settings.key.title")
+
+          .container
+            pre.pubkey {{ pubkey }}
+
+          p {{ 'settings.key.pubkey.description' | translate }}
+
+          .container
+            .row: button.btn-large.waves-effect.waves-light(ng-click="changeKey = true")
+              i.fa.fa-refresh.left
+              span(translate="settings.key.button.change")
+
+          .container(ng-show="changeKey")
+
+            include ../includes/key
+
+            .row: button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="accept()")
+              i.fa.fa-check.left
+              span(translate="settings.key.button.validate")

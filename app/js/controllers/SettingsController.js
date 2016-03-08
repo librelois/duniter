@@ -4,6 +4,8 @@ var co = require('co');
 
 module.exports = ($scope, $http, $state, $location, BMA) => {
 
+  $scope.$parent.conf = $scope.$parent.conf || {};
+
   let jTabs = $('ul.tabs');
   jTabs.tabs();
   $('ul.tabs a').click((e) => {
@@ -18,7 +20,5 @@ module.exports = ($scope, $http, $state, $location, BMA) => {
 
   jTabs.tabs('select_tab', currentID);
 
-  return co(function *() {
-
-  });
+  Waves.displayEffect();
 };
