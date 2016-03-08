@@ -68,8 +68,11 @@ module.exports = (angular) => {
           }
         }
 
+        let wsMap = {};
+
         function ws(uri) {
-          var sock = new WebSocket(uri);
+          var sock = wsMap[uri] || new WebSocket(uri);
+          wsMap[uri] = sock;
           sock.onclose = function(e) {
             console.log('close');
             console.log(e);
