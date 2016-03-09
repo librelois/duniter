@@ -1,4 +1,7 @@
 {
+  "top.menu.overview": "Overview",
+  "top.menu.graphs": "Graphs",
+  "top.menu.settings": "Settings",
   "general.server.started": "Server started",
   "general.server.stopped": "Server stopped",
   "general.choose_option": "Choose your option",

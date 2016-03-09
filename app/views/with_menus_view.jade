@@ -12,14 +12,20 @@ block content
 
   nav
     div.nav-wrapper
-      span.waves-effect.waves-light.button-collapse.stop-nav.full.hide-on-large-only(data-activates="slide-out")
+      span.waves-effect.waves-light.button-collapse.stop-nav.full.hide-on-med-and-up(data-activates="slide-out")
         i.mdi-navigation-menu
       <!--<a href="#" class="brand-logo left">Logo</a>-->
+      ul.left.hide-on-small-and-down
+        li: a.waves-effect.waves-light(ui-sref="home")
+          i.fa.fa-2x.fa-photo.left
+          span {{ 'top.menu.overview' | translate }}
+        li: a.waves-effect.waves-light(ui-sref="graphs.blockchain")
+          i.fa.fa-2x.fa-area-chart.left
+          span {{ 'top.menu.graphs' | translate }}
+        li: a.waves-effect.waves-light(ui-sref="settings.data")
+          i.fa.fa-2x.fa-gear.left
+          span {{ 'top.menu.settings' | translate }}
       ul.right
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-user(data-badge="{{newIdentities}}")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-certificate(data-badge="3")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-calendar-check-o(data-badge="3")
-        li: a.waves-effect.waves-light(href="#/"): i.fa.fa-2x.fa-balance-scale(data-badge="3")
         li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
 
   block main_content

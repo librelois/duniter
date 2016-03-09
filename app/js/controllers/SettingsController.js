@@ -22,6 +22,8 @@ module.exports = ($scope, $http, $state, $location, BMA) => {
 
   Waves.displayEffect();
 
+  $(".dropdown-button").dropdown({ constrainwidth: false });
+
   $scope.fullReset = () => co(function *() {
     yield BMA.webmin.server.http.stop();
     yield BMA.webmin.server.services.stopAll();
