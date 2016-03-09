@@ -17,5 +17,8 @@
     "angular-cookies": "1.2.5",
     "angular-ui-router": "0.2.18",
     "angular-translate": "2.10.0"
+  },
+  "resolutions": {
+    "angular": "1.2.5"
   }
 }
