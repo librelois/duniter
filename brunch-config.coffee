@@ -3,7 +3,7 @@ module.exports = config:
   files:
     javascripts:
       joinTo:
-        'libraries.js': /^(bower_components|node_modules|vendor)[\\/]/
+        'libraries.js': /(bower_components|node_modules|vendor)[\\/]/
         'app.js': /^app/
       order:
         before: [/js\/controllers\//]
