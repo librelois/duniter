@@ -66,5 +66,7 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
     });
   }
 
-  return $scope.startServer();
+  return co(function *() {
+    yield $scope.startServer();
+  });
 };

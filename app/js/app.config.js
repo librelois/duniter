@@ -12,6 +12,7 @@ module.exports = () => {
   require('./lib/conf/routes')(duniterApp);
   require('js/services/datetime')(duniterApp);
   require('js/services/ui_utils')(duniterApp);
+  require('js/services/graphs')(duniterApp);
 
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 
@@ -26,4 +27,6 @@ module.exports = () => {
   homeControllers.controller('DataController', require('./controllers/DataController'));
   homeControllers.controller('CurrencyController', require('./controllers/CurrencyController'));
   homeControllers.controller('KeyController', require('./controllers/KeyController'));
+  homeControllers.controller('GraphsController', require('./controllers/GraphsController'));
+  homeControllers.controller('BlockchainGraphsController', require('./controllers/BlockchainGraphsController'));
 };

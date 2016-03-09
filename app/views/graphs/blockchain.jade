@@ -1,0 +1,22 @@
+.row
+
+  .col.s12
+    .container
+      p {{ 'graphs.blockchain.range' | translate }}
+      .range-field
+        input(type="range" min="30" max="600" ng-model="blocksCount" ng-mouseup="updateGraphs()")
+
+  .col.s12
+    .card.graph
+      .card-content
+        #timeGraph
+
+  .col.s12
+    .card.graph
+      .card-content
+        #speedGraph
+
+  .col.s12
+    .card.graph
+      .card-content
+        #difficultyGraph

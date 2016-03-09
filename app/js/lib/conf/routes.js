@@ -85,9 +85,11 @@ module.exports = (app) => {
       template: require('views/home'),
       resolve: {
         summary: (BMA) => BMA.webmin.summary(),
+        startHttp: (BMA) => BMA.webmin.server.http.start(),
         bmapi: (BMA, summary) => co(function *() {
           return BMA.instance(summary.host);
-        })
+        }),
+        parameters: (bmapi) => bmapi.currency.parameters()
       },
       controller: 'HomeController'
     }).
@@ -144,6 +146,46 @@ module.exports = (app) => {
       template: require('views/settings/currency'),
       controller: 'CurrencyController'
     }).
+
+    state('graphs', {
+      abstract: true,
+      url: '/graphs',
+      template: require('views/graphs/graphs'),
+      controller: 'GraphsController'
+    }).
+
+    state('graphs.blockchain', {
+      url: '/blockchain',
+      template: require('views/graphs/blockchain'),
+      controller: 'BlockchainGraphsController'
+    }).
+
+    //state('graphs.crypto', {
+    //  url: '/crypto',
+    //  template: require('views/graphs/crypto'),
+    //  controller: 'KeyController'
+    //}).
+    //
+    //state('graphs.network', {
+    //  url: '/network',
+    //  resolve: {
+    //    netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
+    //    firstConf: () => false
+    //  },
+    //  template: require('views/graphs/network'),
+    //  controller: 'NetworkController'
+    //}).
+    //
+    //state('graphs.currency', {
+    //  url: '/currency',
+    //  resolve: {
+    //    conf: (bmapi) => co(function *() {
+    //      return bmapi.currency.parameters();
+    //    })
+    //  },
+    //  template: require('views/graphs/currency'),
+    //  controller: 'CurrencyController'
+    //}).
 
     state('error', {
       url: '/error\?err',

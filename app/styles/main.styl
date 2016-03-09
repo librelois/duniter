@@ -2,7 +2,7 @@
 @import 'menu'
 
 html
-  background-color: black
+  background-color: white
 
 body, main
   height: 100%
@@ -15,7 +15,7 @@ head, main
   transform: translateZ(0)
 
 main
-  overflow: overlay
+  overflow: visible
 
 @media screen and (min-width: 400px)
 
@@ -32,6 +32,9 @@ nav
   font-size 0.8rem
 
 .home
+
+  .card.graph
+    height inherit
 
   .card
     text-align center
@@ -120,3 +123,6 @@ nav
 blockquote
   padding-top 10px
   padding-bottom 10px
+
+.tabs .tab.disabled a
+  color #9EA8AC

@@ -138,6 +138,7 @@ module.exports = (angular) => {
           blockchain: {
             current: getResource('/blockchain/current'),
             block: getResource('/blockchain/block/:block'),
+            blocks: getResource('/blockchain/blocks/:count/:from'),
             block_add: postResource('/blockchain/block'),
             stats: {
               ud: getResource('/blockchain/with/ud'),

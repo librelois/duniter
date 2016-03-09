@@ -111,5 +111,8 @@
   "settings.data.modal_message": "This action will completely reset the data of your node and redirect you to initial configuration screen. Do you confirm?",
   "settings.data.modal_disagree": "No, cancel this",
   "settings.data.modal_agree": "Yes, process the reset",
-  "settings.data.reset.experimental": "This functionality is still considered experimental. If you encounters strange behaviors, please stop the software and reset manually your node by removing all the files BUT conf.json under ~/.config/ucoin/ucoin_default, and restart the software."
+  "settings.data.reset.experimental": "This functionality is still considered experimental. If you encounters strange behaviors, please stop the software and reset manually your node by removing all the files BUT conf.json under ~/.config/ucoin/ucoin_default, and restart the software.",
+  "graphs.tabs.blockchain": "Blockchain",
+  "graphs.tabs.currency": "Currency",
+  "graphs.blockchain.range": "Graphs for the last X blocks: (please choose X value)"
 }

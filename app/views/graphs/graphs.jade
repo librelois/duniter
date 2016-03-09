@@ -1,0 +1,28 @@
+extends ../with_menus_view
+
+block main_content
+
+  #modalReset.modal
+    .modal-content
+      h4 {{ 'graphs.data.modal_title' | translate }}
+      p {{ 'graphs.data.modal_message' | translate }}
+    .modal-footer
+      a.btn.modal-action.modal-close.waves-effect.waves-light.btn-flat {{ 'graphs.data.modal_disagree' | translate }}
+      a.btn.modal-action.modal-close.waves-effect.waves-light.orange(ng-click="fullReset()")
+        i.material-icons.left done
+        ="{{ 'graphs.data.modal_agree' | translate }}"
+
+  main.main-screen
+
+    .container
+      .row
+        .col.s12
+          ul.tabs
+            li.tab.col.s6: a(href="#graphs.blockchain")
+              i.fa.fa-chain &nbsp;
+              = " {{ 'graphs.tabs.blockchain' | translate }}"
+            li.tab.col.s6.disabled: a(href="#graphs.currency")
+              i.fa.fa-money &nbsp;
+              = " {{ 'graphs.tabs.currency' | translate }}"
+
+    div(ui-view="")
