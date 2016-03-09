@@ -1,5 +1,5 @@
 {
-  "server": "192.168.1.35",
+  "server": "localhost",
   "port": 9220,
   "default_port": 9220
 }
