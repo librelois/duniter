@@ -34,21 +34,27 @@ module.exports = ($scope, $state, BMA, UIUtils, Graph) => {
         accelerations.push(block.time - block.medianTime);
         medianTimeIncrements.push(block.medianTime - (i ? blocks[i-1].medianTime : block.medianTime));
       }
-      let minSpeeds = speeds.map(() => parseFloat((BY_HOUR/(parameters.avgGenTime * Math.sqrt(1.066))).toFixed(2)));
-      let maxSpeeds = speeds.map(() => parseFloat((BY_HOUR/(parameters.avgGenTime / Math.sqrt(1.066))).toFixed(2)));
+      let minSpeeds = speeds.map(() => parseFloat((BY_HOUR/Math.ceil(parameters.avgGenTime * Math.sqrt(1.066))).toFixed(2)));
+      let maxSpeeds = speeds.map(() => parseFloat((BY_HOUR/Math.floor(parameters.avgGenTime / Math.sqrt(1.066))).toFixed(2)));
       let minDurations = speeds.map(() => parseFloat(((parameters.avgGenTime / 1.066)).toFixed(2)));
       let maxDurations = speeds.map(() => parseFloat(((parameters.avgGenTime * 1.066)).toFixed(2)));
       let difficulties = blocks.map((b) => b.powMin);
 
-      Graph.speedGraph('#speedGraph', Math.max(0, summary.current.number - $scope.blocksCount), speeds, minSpeeds, maxSpeeds, (series) => {
-        $scope.series = series;
-      });
+      setTimeout(() => {
+        Graph.timeGraphs('#timeGraph', Math.max(0, summary.current.number - $scope.blocksCount + 1), accelerations, medianTimeIncrements, actualDurations, minDurations, maxDurations);
+      }, 100);
 
-      Graph.difficultyGraph('#difficultyGraph', Math.max(0, summary.current.number - $scope.blocksCount), difficulties);
+      setTimeout(() => {
+        Graph.speedGraph('#speedGraph', Math.max(0, summary.current.number - $scope.blocksCount), speeds, minSpeeds, maxSpeeds, (series) => {
+          $scope.series = series;
+        });
+      }, 600);
 
-      Graph.timeGraphs('#timeGraph', Math.max(0, summary.current.number - $scope.blocksCount + 1), accelerations, medianTimeIncrements, actualDurations, minDurations, maxDurations);
+      setTimeout(() => {
+        Graph.difficultyGraph('#difficultyGraph', Math.max(0, summary.current.number - $scope.blocksCount), difficulties);
+      }, 1000);
     });
   };
 
-  return $scope.updateGraphs();
+  setTimeout(() => $scope.updateGraphs(), 300);
 };
