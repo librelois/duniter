@@ -4,8 +4,8 @@ module.exports = config:
     javascripts:
       joinTo:
         'bowers.js': /bower_components[\\/]/
-        'libraries.js': /^(node_modules|vendor)[\\/]/
-        'app.js': /^app/
+        'libraries.js': /(node_modules|vendor)[\\/]/
+        'app.js': /app[\\/]/
       order:
         before: [/js\/controllers\//]
     stylesheets: joinTo: 'app.css'
