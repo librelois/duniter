@@ -21,4 +21,4 @@ module.exports = config:
       sourceMaps: true
 
   server:
-    hostname: '192.168.1.35'
+    hostname: '192.168.0.22'
