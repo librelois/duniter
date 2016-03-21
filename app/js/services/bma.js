@@ -114,6 +114,9 @@ module.exports = (angular) => {
               autoConfNetwork: getResource('/webmin/server/auto_conf_network'),
               resetData: getResource('/webmin/server/reset/data')
             },
+            key: {
+              preview: postResource('/webmin/key/preview')
+            },
             network: {
               interfaces: getResource('/webmin/network/interfaces')
             }
