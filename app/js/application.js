@@ -5,7 +5,10 @@ module.exports = {
   init: () => {
 
     // Hack since Node v5
-    window.jade = require('jade/runtime');
+    try {
+      window.jade = require('jade' + '/' + 'runtime');
+    } catch (e) {
+    }
 
     console.log('Configuring Angular app...');
 
