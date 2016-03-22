@@ -15,7 +15,7 @@ deploy:
   provider: npm
   email: cem.moreau@gmail.com
   on:
-    repo: ucoin-io/ucoin
+    repo: ucoin-io/ucoin-ui
     tags: true
   api_key:
     secure: ZeDc9tnfKlWRrW5Vjovms53SZHHiwun9zWoUbUT7270IDnknWVjLfVlWiC3FhDrdssXKs6LAiBUxOgZav6y3UXcQtrdZlflfIqoJmJojVF4l2c7mAxzdhwVllHsY8Gq1FKTyJMnQfCh16arA2CZAMInPIC5/wnsrdDGEEAoyNXQZtzbRQJMNYhU9mFo1+khIrvj0ikgPIVPLI5J9OSNbgQXTUhtiTLlMAjPmJiSo76qWPrMTS7qnOMTQNlTe6aPvq3XTR/GM3Fi/q000Zu9T3kbjGBQk2zpzsY/oF71+PTq1s86hjb/DaL+FMSDt1SfnnRM70dK4aHxhXnC022Wlk1iOPA74k4RXuHMI6y+FWZ4NsNk4/KP9kZPg703k7ffMi2ino9uwLlWG3jaV75f7mFN9oNpqGisfGFaYXWzJWiC1rDKHyH2EB1A0sJWlcCLo4S3JIbuMiEiw6bOZc/O7cbl851qlc3l7VGMrx9jDlU7+EcSwfHnUAGADmUkG/wejja8fGtINNByrx9nnKJxkDsu8JDv+1K0yd1iOH4m6puwTAHK0tuYBPYNM/dLLZXQjTA1MkFWNpVeqPr2Qr0VbnMPFipXfD15XcmreUc8gJo6YWoiNPc4lzKPVEVrg+bMF5LXxvuSHi+KAfS3i+/e0wx5oH4qWI7rxYTdXIAJ3BII=
