@@ -16,7 +16,7 @@ module.exports = (app) => {
     state('configure', {
       abstract: true,
       url: '/configure',
-      template: require('views/configure/layout'),
+      template: require('views/init/layout'),
       controller: ($scope) => {
         $scope.conf = {
           currency: 'super_currency',
@@ -43,18 +43,23 @@ module.exports = (app) => {
 
     state('configure.choose', {
       url: '/choose',
-      template: require('views/configure/choose')
+      template: require('views/init/choose')
     }).
 
-    state('configure.create_uid', {
+    state('configure.create', {
+      url: '/create',
+      template: '<div class="ui-scrollable" ui-view=""></div>'
+    }).
+
+    state('configure.create.uid', {
       url: '/create/uid',
-      template: require('views/configure/create_uid'),
+      template: require('views/init/create/create_uid'),
       controller: 'IdentityController'
     }).
 
-    state('configure.create_network', {
+    state('configure.create.network', {
       url: '/create/network',
-      template: require('views/configure/create_network'),
+      template: require('views/init/create/create_network'),
       resolve: {
         netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
         firstConf: () => true
@@ -62,33 +67,33 @@ module.exports = (app) => {
       controller: 'NetworkController'
     }).
 
-    state('configure.create_parameters', {
+    state('configure.create.parameters', {
       url: '/create/parameters',
-      template: require('views/configure/create_parameters'),
+      template: require('views/init/create/create_parameters'),
       controller: 'ParametersController'
     }).
 
-    state('configure.create_root', {
+    state('configure.create.root', {
       url: '/create/root',
-      template: require('views/configure/create_root'),
+      template: require('views/init/create/create_root'),
       controller: 'RootBlockController'
     }).
 
     state('sync', {
       url: '/sync?host=&port=&sync=&to=',
-      template: require('views/sync'),
+      template: require('views/init/sync/sync'),
       controller: 'SyncController'
     }).
 
     state('main', {
       abstract: true,
-      template: require('views/main'),
+      template: require('views/main/main'),
       controller: 'MainController'
     }).
 
     state('main.home', {
       url: '/home',
-      template: require('views/home'),
+      template: require('views/main/home/home'),
       resolve: {
         summary: (BMA) => BMA.webmin.summary(),
         startHttp: (BMA) => BMA.webmin.server.http.start(),
@@ -103,7 +108,7 @@ module.exports = (app) => {
     state('main.settings', {
       abstract: true,
       url: '/settings',
-      template: require('views/settings'),
+      template: require('views/main/settings/settings'),
       resolve: {
         summary: (BMA) => BMA.webmin.summary(),
         bmapi: (BMA, summary) => co(function *() {
@@ -115,7 +120,7 @@ module.exports = (app) => {
 
     state('main.settings.data', {
       url: '/data',
-      template: require('views/settings/data'),
+      template: require('views/main/settings/tabs/data'),
       resolve: {
         peers: (bmapi) => co(function *() {
           let self = yield bmapi.network.peering.self();
@@ -128,7 +133,7 @@ module.exports = (app) => {
 
     state('main.settings.crypto', {
       url: '/crypto',
-      template: require('views/settings/crypto'),
+      template: require('views/main/settings/tabs/crypto'),
       controller: 'KeyController'
     }).
 
@@ -138,7 +143,7 @@ module.exports = (app) => {
         netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
         firstConf: () => false
       },
-      template: require('views/settings/network'),
+      template: require('views/main/settings/tabs/network'),
       controller: 'NetworkController'
     }).
 
@@ -149,20 +154,20 @@ module.exports = (app) => {
           return bmapi.currency.parameters();
         })
       },
-      template: require('views/settings/currency'),
+      template: require('views/main/settings/tabs/currency'),
       controller: 'CurrencyController'
     }).
 
     state('main.graphs', {
       abstract: true,
       url: '/graphs',
-      template: require('views/graphs/graphs'),
+      template: require('views/main/graphs/graphs'),
       controller: 'GraphsController'
     }).
 
     state('main.graphs.blockchain', {
       url: '/blockchain',
-      template: require('views/graphs/blockchain'),
+      template: require('views/main/graphs/blockchain'),
       controller: 'BlockchainGraphsController'
     }).
 

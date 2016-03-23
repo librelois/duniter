@@ -13,7 +13,7 @@
               input#idty_uid.tooltipped(type="text" ng-model="$parent.conf.idty_uid" data-position="top" data-tooltip="{{ 'configuration.create_uid.uid.tooltip' | translate }}")
               label(for="idty_uid") User ID
 
-          include ../includes/key
+          include ../../includes/key
 
           .row
             button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="previewPubkey()")
