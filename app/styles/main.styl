@@ -4,6 +4,9 @@
 html
   background-color: white
 
+body
+  overflow hidden
+
 body, main
   height: 100%
   width: 100%
@@ -15,10 +18,19 @@ head, main
   transform: translateZ(0)
 
 main
-  overflow: visible
+  overflow: hidden
+  padding-top 64px
+  padding-bottom 64px
 
 nav
   background-color #1A687F
+  position fixed
+  top 0
+  z-index 10
+
+.ui-scrollable
+  overflow: auto
+  height: 100%
 
 .modal .modal-footer .btn, .idty_card button
   margin-right 5px
