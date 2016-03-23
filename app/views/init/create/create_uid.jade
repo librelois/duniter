@@ -16,9 +16,6 @@
           include ../../includes/key
 
           .row
-            button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="previewPubkey()")
-              i.left.fa.fa-photo
-              span(translate="configuration.create_uid.preview_button")
 
             button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_uid || !$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="accept()")
               span(translate="configuration.create_uid.create_button")
