@@ -1,5 +1,5 @@
 {
-  "top.menu.overview": "Overview",
+  "top.menu.overview": "Home",
   "top.menu.graphs": "Graphs",
   "top.menu.settings": "Settings",
   "general.server.started": "Server started",
@@ -85,6 +85,8 @@
   "home.current.medianTime": "Median time",
   "home.current.powMin": "Common difficulty level",
   "home.current.mmass": "Monetary mass",
+  "home.tabs.overview": "Overview",
+  "home.tabs.logs": "Logs",
   "sync.title": "Synchronize",
   "sync.message": "Your node will be synchronized with an existing currency: just enter technical details about a node to sync with it.",
   "sync.host": "Host",

@@ -17,14 +17,15 @@ module.exports = () => {
 
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 
-  homeControllers.controller('MainController',             require('./controllers/main/MainController'));
-  homeControllers.controller('HomeController',             require('./controllers/main/home/HomeController'));
   homeControllers.controller('IndexController',            require('./controllers/IndexController'));
   homeControllers.controller('IdentityController',         require('./controllers/init/create/IdentityController'));
-  homeControllers.controller('NetworkController',          require('./controllers/main/settings/tabs/NetworkController'));
   homeControllers.controller('ParametersController',       require('./controllers/init/create/ParametersController'));
   homeControllers.controller('RootBlockController',        require('./controllers/init/create/RootBlockController'));
   homeControllers.controller('SyncController',             require('./controllers/init/sync/SyncController'));
+  homeControllers.controller('MainController',             require('./controllers/main/MainController'));
+  homeControllers.controller('HomeController',             require('./controllers/main/home/HomeController'));
+  homeControllers.controller('OverviewController',         require('./controllers/main/home/tabs/OverviewController'));
+  homeControllers.controller('NetworkController',          require('./controllers/main/settings/tabs/NetworkController'));
   homeControllers.controller('SettingsController',         require('./controllers/main/settings/SettingsController'));
   homeControllers.controller('DataController',             require('./controllers/main/settings/tabs/DataController'));
   homeControllers.controller('CurrencyController',         require('./controllers/main/settings/tabs/CurrencyController'));

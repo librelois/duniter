@@ -4,6 +4,13 @@ var co = require('co');
 
 module.exports = ($scope, $state, BMA) => {
 
+  var isMobile = require('js/lib/mobileDetector');
+  if (isMobile()) {
+    $(".button-collapse").sideNav({
+      menuWidth: 280
+    });
+  }
+
   $scope.startServer = () => {
     $scope.server_stopped = false;
     return co(function *() {

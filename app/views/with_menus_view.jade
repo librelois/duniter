@@ -17,8 +17,8 @@ block content
       <!--<a href="#" class="brand-logo left">Logo</a>-->
       ul.left.hide-on-small-and-down
         li(ng-class="{ active: menu == 'home' }")
-          a.waves-effect.waves-light(ui-sref="main.home")
-            i.fa.fa-2x.fa-photo.left
+          a.waves-effect.waves-light(ui-sref="main.home.overview")
+            i.fa.fa-2x.fa-home.left
             span {{ 'top.menu.overview' | translate }}
         li(ng-class="{ active: menu == 'graphs' }")
           a.waves-effect.waves-light(ui-sref="main.graphs.blockchain")

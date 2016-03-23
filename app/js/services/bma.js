@@ -85,6 +85,9 @@ module.exports = (angular) => {
             on: function(type, callback) {
               sock.onmessage = function(e) {
                 let res = JSON.parse(e.data);
+                if (res.type == 'log') {
+                  console[res.value.level](res.value.msg);
+                }
                 if (type === undefined || (res.type === type)) {
                   callback(res);
                 }

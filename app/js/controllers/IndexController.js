@@ -10,7 +10,7 @@ module.exports = ($scope, $http, $state, BMA) => {
     try {
       let summary = yield BMA.webmin.summary();
       if (summary.current) {
-        return $state.go('main.home');
+        return $state.go('main.home.overview');
       }
       return $state.go('configure.choose');
     }

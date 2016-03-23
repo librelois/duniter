@@ -87,13 +87,21 @@ module.exports = (app) => {
 
     state('main', {
       abstract: true,
+      url: '/main',
       template: require('views/main/main'),
       controller: 'MainController'
     }).
 
     state('main.home', {
+      abstract: true,
       url: '/home',
       template: require('views/main/home/home'),
+      controller: 'HomeController'
+    }).
+
+    state('main.home.overview', {
+      url: '/overview',
+      template: require('views/main/home/tabs/overview'),
       resolve: {
         summary: (BMA) => BMA.webmin.summary(),
         startHttp: (BMA) => BMA.webmin.server.http.start(),
@@ -102,7 +110,7 @@ module.exports = (app) => {
         }),
         parameters: (bmapi) => bmapi.currency.parameters()
       },
-      controller: 'HomeController'
+      controller: 'OverviewController'
     }).
 
     state('main.settings', {

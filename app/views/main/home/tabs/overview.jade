@@ -1,0 +1,63 @@
+.container
+  .row
+    .col.s6.m3
+      .card#server_state
+        .card-content
+          .card-title
+            i.red-text.material-icons(ng-if="server_stopped") stop
+            i.green-text.material-icons(ng-if="server_started") play_arrow
+            .preloader-wrapper.active(ng-if="!server_started && !server_stopped")
+              .spinner-layer.spinner-blue-only
+                .circle-clipper.left
+                  .circle
+        .card-action
+          p {{ 'home.state' | translate }} &nbsp;
+            span.green-text(ng-if="server_started") {{ 'home.state.started' | translate }}
+            span.red-text(ng-if="server_stopped") {{ 'home.state.stopped' | translate }}
+            span.blue-text(ng-if="!server_started && !server_stopped") ...
+
+    .col.s6.m3
+      .card
+        .card-content
+          i.fa.fa-chain.fa-5x
+          .card-title
+            span {{ current.number }}
+        .card-action
+          p {{ 'home.current.number' | translate }}
+
+    .col.s6.m3
+      .card
+        .card-content
+          i.fa.fa-users.fa-5x
+          .card-title
+            span {{ current.membersCount }}
+        .card-action
+          p {{ 'home.current.membersCount' | translate }}
+
+    .col.s6.m3
+      .card.card-time
+        .card-content
+          i.fa.fa-hourglass-half.fa-5x
+          .card-title
+            p {{ current.medianTime | mt_date }}
+            p {{ current.medianTime | mt_time }}
+        .card-action
+          p {{ 'home.current.medianTime' | translate }}
+
+    .col.s6.m3
+      .card
+        .card-content
+          i.fa.fa-graduation-cap.fa-5x
+          .card-title
+            span {{ current.powMin }}
+        .card-action
+          p {{ 'home.current.powMin' | translate }}
+
+    .col.s6.m3
+      .card
+        .card-content
+          i.fa.fa-money.fa-5x
+          .card-title
+            span {{ current.monetaryMass }}
+        .card-action
+          p {{ 'home.current.mmass' | translate }}

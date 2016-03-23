@@ -17,7 +17,6 @@ module.exports = (app) => {
             let pass = $scope.$parent.conf.idty_password;
             let newConcat = [salt, pass].join('');
             if (salt && pass && newConcat != concat) {
-              console.log('different');
               concat = newConcat;
               $scope.previewPubkey(concat);
               timeout = preview();
