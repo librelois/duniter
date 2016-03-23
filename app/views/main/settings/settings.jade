@@ -1,34 +1,30 @@
-extends ../../with_menus_view
+#modalReset.modal
+  .modal-content
+    h4 {{ 'settings.data.modal_title' | translate }}
+    p {{ 'settings.data.modal_message' | translate }}
+  .modal-footer
+    a.btn.modal-action.modal-close.waves-effect.waves-light.btn-flat {{ 'settings.data.modal_disagree' | translate }}
+    a.btn.modal-action.modal-close.waves-effect.waves-light.orange(ng-click="fullReset()")
+      i.material-icons.left done
+      ="{{ 'settings.data.modal_agree' | translate }}"
 
-block main_content
+main.main-screen
 
-  #modalReset.modal
-    .modal-content
-      h4 {{ 'settings.data.modal_title' | translate }}
-      p {{ 'settings.data.modal_message' | translate }}
-    .modal-footer
-      a.btn.modal-action.modal-close.waves-effect.waves-light.btn-flat {{ 'settings.data.modal_disagree' | translate }}
-      a.btn.modal-action.modal-close.waves-effect.waves-light.orange(ng-click="fullReset()")
-        i.material-icons.left done
-        ="{{ 'settings.data.modal_agree' | translate }}"
+  .container
+    .row
+      .col.s12
+        ul.tabs
+          li.tab.col.s3: a(href="#main.settings.data")
+            i.fa.fa-database &nbsp;
+            = " {{ 'settings.tabs.data' | translate }}"
+          li.tab.col.s3: a(href="#main.settings.crypto")
+            i.fa.fa-key &nbsp;
+            = " {{ 'settings.tabs.identity' | translate }}"
+          li.tab.col.s3: a(href="#main.settings.network")
+            i.fa.fa-globe &nbsp;
+            = " {{ 'settings.tabs.network' | translate }}"
+          li.tab.col.s3: a(href="#main.settings.currency")
+            i.fa.fa-balance-scale &nbsp;
+            = " {{ 'settings.tabs.currency' | translate }}"
 
-  main.main-screen
-
-    .container
-      .row
-        .col.s12
-          ul.tabs
-            li.tab.col.s3: a(href="#main.settings.data")
-              i.fa.fa-database &nbsp;
-              = " {{ 'settings.tabs.data' | translate }}"
-            li.tab.col.s3: a(href="#main.settings.crypto")
-              i.fa.fa-key &nbsp;
-              = " {{ 'settings.tabs.identity' | translate }}"
-            li.tab.col.s3: a(href="#main.settings.network")
-              i.fa.fa-globe &nbsp;
-              = " {{ 'settings.tabs.network' | translate }}"
-            li.tab.col.s3: a(href="#main.settings.currency")
-              i.fa.fa-balance-scale &nbsp;
-              = " {{ 'settings.tabs.currency' | translate }}"
-
-    div.ui-scrollable(ui-view="")
+  div.ui-scrollable(ui-view="")
