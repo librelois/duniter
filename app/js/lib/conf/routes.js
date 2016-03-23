@@ -116,6 +116,12 @@ module.exports = (app) => {
       controller: 'OverviewController'
     }).
 
+    state('main.home.logs', {
+      url: '/logs',
+      template: require('views/main/home/tabs/logs'),
+      controller: 'LogsController'
+    }).
+
     state('main.settings', {
       abstract: true,
       url: '/settings',

@@ -1,3 +1,4 @@
+var co = require('co');
 var _ = require('underscore');
 var conf = require('../lib/conf/conf');
 
@@ -81,11 +82,19 @@ module.exports = (angular) => {
             console.log('onerror');
             console.log(e);
           };
+          let opened = false, openedCallback;
+          sock.onopen = function() {
+            opened = true;
+            openedCallback && openedCallback();
+          };
           let listener, messageType;
           sock.onmessage = function(e) {
             let res = JSON.parse(e.data);
             if (res.type == 'log') {
-              console[res.value.level](res.value.msg);
+              for (let i = 0, len = res.value.length; i < len; i++) {
+                let log = res.value[i];
+                console[log.level](log.msg);
+              }
             }
             if (listener && (messageType === undefined || (res.type === messageType))) {
               listener(res);
@@ -95,7 +104,16 @@ module.exports = (angular) => {
             on: function(type, callback) {
               messageType = type;
               listener = callback;
-            }
+            },
+            whenOpened: () => co(function *() {
+              if (opened) return true;
+              else {
+                yield Q.Promise((resolve) => {
+                  openedCallback = resolve;
+                });
+              }
+            }),
+            send: (msg) => sock.send(msg)
           };
         }
 

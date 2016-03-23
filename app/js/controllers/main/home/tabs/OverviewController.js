@@ -2,6 +2,8 @@
 
 module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
 
+  UIUtils.enableTabs();
+
   let co = require('co');
 
   bindBlockWS();

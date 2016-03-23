@@ -25,6 +25,7 @@ module.exports = () => {
   homeControllers.controller('MainController',             require('./controllers/main/MainController'));
   homeControllers.controller('HomeController',             require('./controllers/main/home/HomeController'));
   homeControllers.controller('OverviewController',         require('./controllers/main/home/tabs/OverviewController'));
+  homeControllers.controller('LogsController',             require('./controllers/main/home/tabs/LogsController'));
   homeControllers.controller('NetworkController',          require('./controllers/main/settings/tabs/NetworkController'));
   homeControllers.controller('SettingsController',         require('./controllers/main/settings/SettingsController'));
   homeControllers.controller('DataController',             require('./controllers/main/settings/tabs/DataController'));

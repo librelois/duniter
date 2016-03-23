@@ -87,6 +87,8 @@
   "home.current.mmass": "Monetary mass",
   "home.tabs.overview": "Overview",
   "home.tabs.logs": "Logs",
+  "home.tabs.logs.follow.logs": "Follow logs",
+  "home.tabs.logs.pause.logs": "Pause logs",
   "sync.title": "Synchronize",
   "sync.message": "Your node will be synchronized with an existing currency: just enter technical details about a node to sync with it.",
   "sync.host": "Host",
