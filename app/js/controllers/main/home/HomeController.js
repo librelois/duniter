@@ -2,5 +2,5 @@
 
 module.exports = ($scope) => {
 
-  $scope.menu = 'home';
+  $scope.$parent.menu = 'home';
 };

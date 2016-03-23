@@ -4,5 +4,5 @@ module.exports = ($scope, UIUtils) => {
 
   UIUtils.enableTabs();
 
-  $scope.menu = 'graphs';
+  $scope.$parent.menu = 'graphs';
 };

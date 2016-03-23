@@ -7,7 +7,7 @@ module.exports = ($scope, $http, $state, $location, BMA, UIUtils) => {
   UIUtils.enableTabs();
 
   $scope.$parent.conf = $scope.$parent.conf || {};
-  $scope.menu = 'settings';
+  $scope.$parent.menu = 'settings';
 
   $(".dropdown-button").dropdown({ constrainwidth: false });
 
