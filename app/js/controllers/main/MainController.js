@@ -4,6 +4,8 @@ var co = require('co');
 
 module.exports = ($scope, $state, BMA) => {
 
+  Waves.displayEffect();
+
   var isMobile = require('js/lib/mobileDetector');
   if (isMobile()) {
     $(".button-collapse").sideNav({

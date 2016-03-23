@@ -89,6 +89,9 @@ module.exports = (app) => {
       abstract: true,
       url: '/main',
       template: require('views/main/main'),
+      resolve: {
+        ws: (BMA) => BMA.webmin.ws()
+      },
       controller: 'MainController'
     }).
 

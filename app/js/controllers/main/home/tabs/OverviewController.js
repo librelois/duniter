@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
+module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
 
   let co = require('co');
 
@@ -12,11 +12,9 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
   $scope.abc = 'abcdef';
   $scope.newIdentities = 2;
 
-  Waves.displayEffect();
-
   $(".dropdown-button").dropdown({ constrainwidth: false });
 
-  BMA.webmin.ws().on(undefined, (data) => {
+  ws.on(undefined, (data) => {
     if (data.type === 'started') {
       $scope.server_started = true;
       $scope.server_stopped = false;
