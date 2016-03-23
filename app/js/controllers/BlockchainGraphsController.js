@@ -1,6 +1,6 @@
 "use strict";
 
-const BLOCKS_COUNT = 100;
+const BLOCKS_COUNT = 40;
 
 var co = require('co');
 
@@ -42,17 +42,17 @@ module.exports = ($scope, $state, BMA, UIUtils, Graph) => {
 
       setTimeout(() => {
         Graph.timeGraphs('#timeGraph', Math.max(0, summary.current.number - $scope.blocksCount + 1), accelerations, medianTimeIncrements, actualDurations, minDurations, maxDurations);
+
+        setTimeout(() => {
+          Graph.speedGraph('#speedGraph', Math.max(0, summary.current.number - $scope.blocksCount), speeds, minSpeeds, maxSpeeds, (series) => {
+            $scope.series = series;
+          });
+        }, 1000);
+
+        setTimeout(() => {
+          Graph.difficultyGraph('#difficultyGraph', Math.max(0, summary.current.number - $scope.blocksCount), difficulties);
+        }, 1000);
       }, 100);
-
-      setTimeout(() => {
-        Graph.speedGraph('#speedGraph', Math.max(0, summary.current.number - $scope.blocksCount), speeds, minSpeeds, maxSpeeds, (series) => {
-          $scope.series = series;
-        });
-      }, 600);
-
-      setTimeout(() => {
-        Graph.difficultyGraph('#difficultyGraph', Math.max(0, summary.current.number - $scope.blocksCount), difficulties);
-      }, 1000);
     });
   };
 
