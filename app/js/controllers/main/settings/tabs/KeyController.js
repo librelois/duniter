@@ -2,7 +2,7 @@
 
 var co = require('co');
 
-module.exports = ($scope, $state, BMA, summary) => {
+module.exports = ($scope, $state, BMA, summary, PubkeyGenerator) => {
 
   $scope.pubkey = summary.pubkey;
 
@@ -18,4 +18,6 @@ module.exports = ($scope, $state, BMA, summary) => {
     $scope.$parent.conf.idty_password = '';
     $state.reload();
   });
+
+  PubkeyGenerator($scope);
 };

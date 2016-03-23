@@ -13,6 +13,7 @@ module.exports = () => {
   require('js/services/datetime')(duniterApp);
   require('js/services/ui_utils')(duniterApp);
   require('js/services/graphs')(duniterApp);
+  require('js/services/pubkeyGenerator')(duniterApp);
 
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 
