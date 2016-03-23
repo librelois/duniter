@@ -2,6 +2,7 @@
 
 module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
 
+  $scope.menu = 'home';
   let serverWS = BMA.webmin.ws();
 
   let co = require('co');
@@ -40,24 +41,6 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
       $scope.$apply();
     }
   });
-
-  $scope.startServer = () => {
-    $scope.server_stopped = false;
-    return co(function *() {
-      yield BMA.webmin.server.http.start();
-      yield BMA.webmin.server.services.startAll();
-      $scope.server_started = true;
-    });
-  };
-
-  $scope.stopServer = () => {
-    $scope.server_started = false;
-    return co(function *() {
-      yield BMA.webmin.server.http.stop();
-      yield BMA.webmin.server.services.stopAll();
-      $scope.server_stopped = true;
-    });
-  };
 
   function bindBlockWS() {
     bmapi.websocket.block().on(undefined, (block) => {

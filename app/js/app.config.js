@@ -16,6 +16,7 @@ module.exports = () => {
 
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 
+  homeControllers.controller('MainController', require('./controllers/MainController'));
   homeControllers.controller('HomeController', require('./controllers/HomeController'));
   homeControllers.controller('IndexController', require('./controllers/IndexController'));
   homeControllers.controller('IdentityController', require('./controllers/IdentityController'));

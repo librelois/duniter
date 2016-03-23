@@ -4,6 +4,7 @@ var co = require('co');
 
 module.exports = ($scope, $http, $state, $location) => {
 
+  $scope.menu = 'graphs';
   let jTabs = $('ul.tabs');
   jTabs.tabs();
   $('ul.tabs a').click((e) => {

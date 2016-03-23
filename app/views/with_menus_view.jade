@@ -16,15 +16,18 @@ block content
         i.mdi-navigation-menu
       <!--<a href="#" class="brand-logo left">Logo</a>-->
       ul.left.hide-on-small-and-down
-        li: a.waves-effect.waves-light(ui-sref="home")
-          i.fa.fa-2x.fa-photo.left
-          span {{ 'top.menu.overview' | translate }}
-        li: a.waves-effect.waves-light(ui-sref="graphs.blockchain")
-          i.fa.fa-2x.fa-area-chart.left
-          span {{ 'top.menu.graphs' | translate }}
-        li: a.waves-effect.waves-light(ui-sref="settings.data")
-          i.fa.fa-2x.fa-gear.left
-          span {{ 'top.menu.settings' | translate }}
+        li(ng-class="{ active: menu == 'home' }")
+          a.waves-effect.waves-light(ui-sref="main.home")
+            i.fa.fa-2x.fa-photo.left
+            span {{ 'top.menu.overview' | translate }}
+        li(ng-class="{ active: menu == 'graphs' }")
+          a.waves-effect.waves-light(ui-sref="main.graphs.blockchain")
+            i.fa.fa-2x.fa-area-chart.left
+            span {{ 'top.menu.graphs' | translate }}
+        li(ng-class="{ active: menu == 'settings' }")
+          a.waves-effect.waves-light(ui-sref="main.settings.data")
+            i.fa.fa-2x.fa-gear.left
+            span {{ 'top.menu.settings' | translate }}
       ul.right
         li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
 

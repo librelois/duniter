@@ -5,6 +5,7 @@ var co = require('co');
 module.exports = ($scope, $http, $state, $location, BMA) => {
 
   $scope.$parent.conf = $scope.$parent.conf || {};
+  $scope.menu = 'settings';
 
   let jTabs = $('ul.tabs');
   jTabs.tabs();

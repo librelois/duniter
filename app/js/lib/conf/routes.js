@@ -80,7 +80,13 @@ module.exports = (app) => {
       controller: 'SyncController'
     }).
 
-    state('home', {
+    state('main', {
+      abstract: true,
+      template: require('views/main'),
+      controller: 'MainController'
+    }).
+
+    state('main.home', {
       url: '/home',
       template: require('views/home'),
       resolve: {
@@ -94,7 +100,7 @@ module.exports = (app) => {
       controller: 'HomeController'
     }).
 
-    state('settings', {
+    state('main.settings', {
       abstract: true,
       url: '/settings',
       template: require('views/settings'),
@@ -107,7 +113,7 @@ module.exports = (app) => {
       controller: 'SettingsController'
     }).
 
-    state('settings.data', {
+    state('main.settings.data', {
       url: '/data',
       template: require('views/settings/data'),
       resolve: {
@@ -120,13 +126,13 @@ module.exports = (app) => {
       controller: 'DataController'
     }).
 
-    state('settings.crypto', {
+    state('main.settings.crypto', {
       url: '/crypto',
       template: require('views/settings/crypto'),
       controller: 'KeyController'
     }).
 
-    state('settings.network', {
+    state('main.settings.network', {
       url: '/network',
       resolve: {
         netinterfaces: (BMA) => resolveNetworkAutoConf(BMA),
@@ -136,7 +142,7 @@ module.exports = (app) => {
       controller: 'NetworkController'
     }).
 
-    state('settings.currency', {
+    state('main.settings.currency', {
       url: '/currency',
       resolve: {
         conf: (bmapi) => co(function *() {
@@ -147,14 +153,14 @@ module.exports = (app) => {
       controller: 'CurrencyController'
     }).
 
-    state('graphs', {
+    state('main.graphs', {
       abstract: true,
       url: '/graphs',
       template: require('views/graphs/graphs'),
       controller: 'GraphsController'
     }).
 
-    state('graphs.blockchain', {
+    state('main.graphs.blockchain', {
       url: '/blockchain',
       template: require('views/graphs/blockchain'),
       controller: 'BlockchainGraphsController'
