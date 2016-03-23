@@ -121,5 +121,8 @@
   "settings.data.reset.experimental": "This functionality is still considered experimental. If you encounters strange behaviors, please stop the software and reset manually your node by removing all the files BUT conf.json under ~/.config/ucoin/ucoin_default, and restart the software.",
   "graphs.tabs.blockchain": "Blockchain",
   "graphs.tabs.currency": "Currency",
-  "graphs.blockchain.range": "Graphs for the last X blocks: (please choose X value)"
+  "graphs.blockchain.range": "Graphs for the last X blocks: (please choose X value)",
+  "graphs.blockchain.with.time": "Time variations graph",
+  "graphs.blockchain.with.speed": "Writing speed graph",
+  "graphs.blockchain.with.difficulty": "Difficulty graph"
 }

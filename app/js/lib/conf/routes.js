@@ -168,7 +168,7 @@ module.exports = (app) => {
     state('main.graphs.blockchain', {
       url: '/blockchain',
       template: require('views/main/graphs/blockchain'),
-      controller: 'BlockchainGraphsController'
+      controller: 'GraphsBlockchainController'
     }).
 
     //state('graphs.crypto', {
