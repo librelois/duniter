@@ -1,7 +1,7 @@
 "use strict";
 
 var co = require('co');
-var Peer = require('../lib/entity/peer');
+var Peer = require('js/lib/entity/peer');
 
 module.exports = ($scope, $http, $state, BMA, peers) => {
 

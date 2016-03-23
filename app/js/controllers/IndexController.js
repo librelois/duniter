@@ -10,11 +10,12 @@ module.exports = ($scope, $http, $state, BMA) => {
     try {
       let summary = yield BMA.webmin.summary();
       if (summary.current) {
-        return $state.go('home');
+        return $state.go('main.home');
       }
       return $state.go('configure.choose');
     }
     catch (e) {
+      console.error(connected, e);
       if (!connected) {
         return $state.go('error', { err: 'err.connection'});
       }

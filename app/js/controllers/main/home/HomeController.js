@@ -15,7 +15,7 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi) => {
   $scope.abc = 'abcdef';
   $scope.newIdentities = 2;
 
-  var isMobile = require('../lib/mobileDetector');
+  var isMobile = require('../../../lib/mobileDetector');
   if (isMobile()) {
     $(".button-collapse").sideNav({
       menuWidth: 280
