@@ -2,7 +2,7 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, $stateParams, BMA, UIUtils) => {
+module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) => {
 
   let syncWS = BMA.webmin.ws();
 
@@ -43,6 +43,10 @@ module.exports = ($scope, $http, $state, $stateParams, BMA, UIUtils) => {
           $scope.sync_failed = data.value;
           if (data.value === true) {
             $state.go('index');
+          } else {
+            $timeout(() => {
+              window.location.href = "";
+            }, 500);
           }
         } else {
           let changed = true;
