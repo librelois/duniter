@@ -1,14 +1,13 @@
-.container
-  .row
-    form.s12.center
-      .card.logs
-        .card-action.left-align
-          p
-            input#follow-logs.filled-in(type="checkbox" ng-model="follow")
-            label(for="follow-logs") {{ 'home.tabs.logs.follow.logs' | translate }}
-            input#pause-logs.filled-in(type="checkbox" ng-model="pause")
-            label(for="pause-logs") {{ 'home.tabs.logs.pause.logs' | translate }}
-          p {{ 'graphs.blockchain.range' | translate }}
-          .range-field
-            input(type="range" min="10" max="10000" ng-model="logsSize" ng-mouseup="changeSize()")
-          pre#logs {{ logsString }}
+.row
+  .s12.center
+    .card.logs
+      .card-action.left-align
+        p
+          input#follow-logs.filled-in(type="checkbox" ng-model="follow")
+          label(for="follow-logs") {{ 'home.tabs.logs.follow.logs' | translate }}
+          input#pause-logs.filled-in(type="checkbox" ng-model="pause")
+          label(for="pause-logs") {{ 'home.tabs.logs.pause.logs' | translate }}
+        p {{ 'graphs.blockchain.range' | translate }}
+        .range-field
+          input(type="range" min="10" max="10000" ng-model="logsSize" ng-mouseup="changeSize()")
+        pre#logs {{ logsString }}
