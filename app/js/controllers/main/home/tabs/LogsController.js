@@ -7,6 +7,11 @@ module.exports = ($scope, ws, UIUtils) => {
   let co = require('co');
   let _ = require('underscore');
 
+  // Default values
+  if (!localStorage.getItem('log_error')) localStorage.setItem('log_error', true);
+  if (!localStorage.getItem('log_warn')) localStorage.setItem('log_warn', true);
+  if (!localStorage.getItem('log_info')) localStorage.setItem('log_info', true);
+
   $scope.logsSize = 100;
   $scope.logs = _.range(0, $scope.logsSize).map(() => "");
   $scope.logsString = "";

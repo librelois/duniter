@@ -20,8 +20,9 @@
         p {{ 'graphs.blockchain.range' | translate }}
         .range-field
           input(type="range" min="10" max="10000" ng-model="logsSize" ng-mouseup="changeSize()")
+      .card-action.left-align.ui-scrollable
         pre#logs
           p(ng-repeat="log in logs track by $index")
             span.log-time {{ log.timestamp }}&nbsp;
             span.log-level(class="{{ log.level }}") {{ log.level }}&nbsp;
-            span {{ log.msg }}
+            span.log-msg(class="{{ log.level }}") {{ log.msg }}
