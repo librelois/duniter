@@ -182,7 +182,9 @@ module.exports = (angular) => {
           }
         }
       }
-      var service = BMA([conf.server, conf.port].join(':'));
+      let server = conf.server || window.location.hostname;
+      let port = conf.port || window.location.port;
+      var service = BMA([server, port].join(':'));
       service.instance = BMA;
       return service;
     });
