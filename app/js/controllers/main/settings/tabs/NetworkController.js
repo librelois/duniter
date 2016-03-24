@@ -16,6 +16,10 @@ module.exports = ($scope, $http, $state, BMA, UIUtils, netinterfaces, firstConf)
     $scope.$parent.conf.rport = autoconf.remote.port || $scope.$parent.conf.rport;
     $scope.$parent.conf.upnp = autoconf.remote.upnp || $scope.$parent.conf.upnp;
     $scope.$parent.conf.dns = autoconf.remote.dns || $scope.$parent.conf.dns;
+
+    if (conf.dev_autoconf) {
+      $state.go('configure.create.root');
+    }
   };
 
   $scope.local_neti = toArrayOfAddresses(netinterfaces.local);
