@@ -14,6 +14,7 @@ module.exports = ($scope, $http, $state, BMA) => {
       $scope.started = true;
     } catch (e) {
       $scope.started = false;
+      $scope.start();
     }
   });
 
