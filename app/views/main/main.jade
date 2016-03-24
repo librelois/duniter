@@ -3,6 +3,9 @@ extends ../menu.jade
 block content
 
   ul#serveractions.dropdown-content
+    li: button.btn-flat.left-align(ng-click="restartServer()")
+      i.material-icons.left replay
+      span {{ 'home.menu.server.restart' | translate }}
     li: button.btn-flat.left-align(ng-click="startServer()" ng-class="{ disabled : server_started || !server_stopped }" ng-disabled="server_started")
       i.material-icons.left play_arrow
       span {{ 'home.menu.server.start' | translate }}

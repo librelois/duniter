@@ -30,4 +30,11 @@ module.exports = ($scope, $state, BMA) => {
       $scope.server_stopped = true;
     });
   };
+
+  $scope.restartServer = () => {
+    return co(function *() {
+      yield $scope.stopServer();
+      yield $scope.startServer();
+    });
+  };
 };
