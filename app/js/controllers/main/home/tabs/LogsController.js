@@ -11,6 +11,21 @@ module.exports = ($scope, ws, UIUtils) => {
   $scope.logs = _.range(0, $scope.logsSize).map(() => "");
   $scope.logsString = "";
   $scope.follow = true;
+  $scope.levels = {
+    error: localStorage.getItem('log_error') == "true",
+    warn: localStorage.getItem('log_warn') == "true",
+    info: localStorage.getItem('log_info') == "true",
+    debug: localStorage.getItem('log_debug') == "true",
+    trace: localStorage.getItem('log_trace') == "true"
+  };
+
+  _.keys($scope.levels).map((level) => {
+    $scope.$watch('levels.' + level, (newValue) => {
+      localStorage.setItem('log_' + level, newValue);
+      $scope.logs.splice(0, $scope.logs.length);
+      ws.send();
+    });
+  });
 
   $scope.$watch('logsSize', () => {
     addLogs({ value: [] }, true);
@@ -21,16 +36,15 @@ module.exports = ($scope, ws, UIUtils) => {
   function addLogs(res, autoDigest) {
 
     if (!$scope.pause) {
-      let newlogs = res.value;
+      let newlogs = _.filter(res.value, (log) => $scope.levels[log.level]);
       // Add at max LOGS_FLOW_SIZE new lines
       newlogs.splice(0, Math.max(0, newlogs.length - $scope.logsSize));
       // Add just enough space for incoming logs
       $scope.logs.splice(0, Math.max(0, $scope.logs.length + newlogs.length - $scope.logsSize));
       for (let i = 0, len = newlogs.length; i < len; i++) {
         let log = newlogs[i];
-        $scope.logs.push(log.msg);
+        $scope.logs.push(log);
       }
-      $scope.logsString = $scope.logs.join('\n');
       if (!autoDigest) {
         $scope.$apply();
       }
