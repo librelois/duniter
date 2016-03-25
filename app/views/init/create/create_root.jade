@@ -24,7 +24,7 @@
         .card-action
 
           pre.card-panel.teal.white-text.code.left-align.small(ng-show="generated") {{ generated }}
-          blockquote.card-panel.left-align(ng-show="!generated") {{ 'configuration.create_root.need_a_try' | translate }}
+          blockquote.card-panel.left-align(ng-show="message") {{ message | translate }}
 
 
         .card-action

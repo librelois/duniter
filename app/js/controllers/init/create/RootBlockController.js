@@ -7,6 +7,7 @@ module.exports = ($scope, $http, $state, BMA) => {
 
   $scope.generated = '';
   $scope.started = false;
+  $scope.message = 'configuration.create_root.need_a_try';
 
   co(function *() {
     try {
@@ -19,12 +20,16 @@ module.exports = ($scope, $http, $state, BMA) => {
   });
 
   $scope.start = () => co(function *() {
-    yield BMA.webmin.server.http.start();
-    $scope.started = true;
-    yield BMA.webmin.server.sendConf({
-      conf: $scope.$parent.conf
-    });
-    yield $scope.try();
+    try {
+      yield BMA.webmin.server.http.start();
+      $scope.started = true;
+      yield BMA.webmin.server.sendConf({
+        conf: $scope.$parent.conf
+      });
+      yield $scope.try();
+    } catch (e) {
+      $scope.message = e.message;
+    }
   });
 
   $scope.stop = () => co(function *() {
@@ -33,8 +38,13 @@ module.exports = ($scope, $http, $state, BMA) => {
   });
 
   $scope.try = () => co(function *() {
-    $scope.block = yield BMA.webmin.server.previewNext();
-    $scope.generated = $scope.block.raw;
+    try {
+      $scope.block = yield BMA.webmin.server.previewNext();
+      $scope.generated = $scope.block.raw;
+      $scope.message = '';
+    } catch (e) {
+      $scope.message = e.message;
+    }
   });
 
   $scope.accept = () => co(function *() {

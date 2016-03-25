@@ -14,7 +14,7 @@ module.exports = (angular) => {
           return function(params) {
             return $q.when(Q.Promise((resolve, reject) => {
               var config = {
-                timeout: 4000
+                timeout: conf.api_timeout
               }, suffix = '', pkeys = [], queryParams = null;
               if (typeof params == 'object') {
                 pkeys = _.keys(params);
