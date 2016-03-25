@@ -140,9 +140,13 @@ module.exports = (app) => {
       template: require('views/main/settings/tabs/data'),
       resolve: {
         peers: (bmapi) => co(function *() {
-          let self = yield bmapi.network.peering.self();
-          let res = yield bmapi.network.peers();
-          return _.filter(res.peers, (p) => p.pubkey != self.pubkey);
+          try {
+            let self = yield bmapi.network.peering.self();
+            let res = yield bmapi.network.peers();
+            return _.filter(res.peers, (p) => p.pubkey != self.pubkey);
+          } catch (e) {
+            return [];
+          }
         })
       },
       controller: 'DataController'
