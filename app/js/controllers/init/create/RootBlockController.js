@@ -62,4 +62,11 @@ module.exports = ($scope, $http, $state, BMA) => {
     yield BMA.webmin.server.services.startAll();
     $state.go('index');
   });
+
+  $scope.cancelAndReset = () => co(function *() {
+    yield BMA.webmin.server.http.stop();
+    yield BMA.webmin.server.services.stopAll();
+    yield BMA.webmin.server.resetData();
+    $state.go('index');
+  });
 };
