@@ -21,11 +21,20 @@ module.exports = ($scope, $http, $state, BMA) => {
 
   $scope.start = () => co(function *() {
     try {
-      yield BMA.webmin.server.http.start();
+      let hosts = [];
+      if ($scope.$parent.conf.remote_ipv4) {
+        hosts.push([$scope.$parent.conf.remote_ipv4, $scope.$parent.conf.rport].join(':'));
+      }
+      if ($scope.$parent.conf.remote_ipv6) {
+        hosts.push(["[" + $scope.$parent.conf.remote_ipv6 + "]", $scope.$parent.conf.rport].join(':'));
+      }
+      $scope.host_listening = hosts.join('\n');
       $scope.started = true;
       yield BMA.webmin.server.sendConf({
         conf: $scope.$parent.conf
       });
+      yield BMA.webmin.server.http.start();
+      yield BMA.webmin.server.http.openUPnP();
       yield $scope.try();
     } catch (e) {
       $scope.message = e.message;

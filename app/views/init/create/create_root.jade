@@ -23,6 +23,10 @@
 
         .card-action
 
+          .container(ng-if="host_listening")
+            h5(translate="configuration.create_root.host_listening")
+            pre.host_listening {{ host_listening }}
+
           pre.card-panel.teal.white-text.code.left-align.small(ng-show="generated") {{ generated }}
           blockquote.card-panel.left-align(ng-show="message") {{ message | translate }}
 

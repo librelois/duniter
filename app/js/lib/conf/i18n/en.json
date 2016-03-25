@@ -79,6 +79,7 @@
   "configuration.create_root.need_a_try": "You need to generate a first block with the « Give a try » button. Start HTTP server to do so.",
   "configuration.create_root.button.accept_and_send": "Accept this block and start currency",
   "configuration.create_root.button.cancel": "Cancel creation and go to home screen",
+  "configuration.create_root.host_listening": "Host listening at:",
   "configuration.create_uid.pubkey_preview": "Public key preview",
   "home.current.number": "Current block #",
   "home.current.membersCount": "Members count",
