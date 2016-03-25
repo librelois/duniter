@@ -18,6 +18,7 @@ module.exports = ($scope, $state, BMA) => {
     return co(function *() {
       yield BMA.webmin.server.http.start();
       yield BMA.webmin.server.services.startAll();
+      yield BMA.webmin.server.http.regularUPnP();
       $scope.server_started = true;
     });
   };

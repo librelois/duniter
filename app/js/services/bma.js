@@ -125,7 +125,8 @@ module.exports = (angular) => {
               http: {
                 start: getResource('/webmin/server/http/start'),
                 stop: getResource('/webmin/server/http/stop'),
-                openUPnP: getResource('/webmin/server/http/upnp/open')
+                openUPnP: getResource('/webmin/server/http/upnp/open'),
+                regularUPnP: getResource('/webmin/server/http/upnp/regular')
               },
               services: {
                 startAll: getResource('/webmin/server/services/start_all'),
