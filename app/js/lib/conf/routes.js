@@ -170,8 +170,8 @@ module.exports = (app) => {
     state('main.settings.currency', {
       url: '/currency',
       resolve: {
-        conf: (bmapi) => co(function *() {
-          return bmapi.currency.parameters();
+        conf: (summary) => co(function *() {
+          return summary.parameters;
         })
       },
       template: require('views/main/settings/tabs/currency'),
