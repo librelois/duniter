@@ -17,7 +17,7 @@ module.exports = ($scope, $http, $state, BMA, UIUtils, netinterfaces, firstConf)
     $scope.$parent.conf.upnp = autoconf.remote.upnp || $scope.$parent.conf.upnp;
     $scope.$parent.conf.dns = autoconf.remote.dns || $scope.$parent.conf.dns;
 
-    if (conf.dev_autoconf) {
+    if (conf.dev_autoconf && firstConf) {
       $state.go('configure.create.root');
     }
   };
