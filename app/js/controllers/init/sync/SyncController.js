@@ -13,6 +13,7 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) =
   $scope.port = parseInt($stateParams.port) || parseInt(localStorage.getItem('sync_port')) || 8999;
   $scope.to = parseInt($stateParams.to);
   $scope.wrong_host = false;
+  $scope.remote_current = null;
 
   $scope.checkNode = () => co(function *() {
     $scope.checking = true;
@@ -21,6 +22,7 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) =
       let bmapi = BMA.instance(targetHost);
       let current = yield bmapi.blockchain.current();
       if (current) {
+        $scope.remote_current = current;
         $scope.checked_host = targetHost;
       }
     } catch (e) {
@@ -69,7 +71,8 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) =
       BMA.webmin.server.startSync({
         host: sp[0],
         port: sp[1],
-        to: $scope.to
+        to: $scope.to,
+        chunkLen: Math.min(25, Math.max(500, $scope.remote_current ? $scope.remote_current.number / 100 : 0))
       });
     });
   };
