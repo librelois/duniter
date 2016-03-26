@@ -110,8 +110,7 @@ module.exports = (app) => {
         startHttp: (BMA) => BMA.webmin.server.http.start(),
         bmapi: (BMA, summary) => co(function *() {
           return BMA.instance(summary.host);
-        }),
-        parameters: (bmapi) => bmapi.currency.parameters()
+        })
       },
       controller: 'OverviewController'
     }).

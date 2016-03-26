@@ -1,5 +1,23 @@
-.container.home
-  .row
+.container
+  .row(ng-show="should_reconfigure")
+    .card.network-alert
+      blockquote.card-content.left-align
+        .center
+          i.fa.fa-globe.fa-5x
+          h6.card-title(translate="configuration.create_network.title")
+        .left-align
+          p {{ 'home.tabs.overview.should_reconfigure' | translate }}
+        .center(ng-if="!reconfiguring")
+          button.btn-large.waves-effect.waves-light(ng-click="reconfigure_network()")
+            i.left.fa.fa-magic
+            span(translate="configuration.create_network.button.autoconf")
+        .center(ng-if="reconfiguring")
+          .preloader-wrapper.active
+            .spinner-layer.spinner-blue-only
+              .circle-clipper.left
+                .circle
+
+  .row.home
     .col.s6.m3
       .card#server_state
         .card-content
