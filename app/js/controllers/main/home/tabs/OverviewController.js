@@ -72,6 +72,7 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
     try {
       yield bmapi.network.peering.self();
     } catch (e) {
+      console.log(e);
       $scope.should_reconfigure = true;
     }
   });
