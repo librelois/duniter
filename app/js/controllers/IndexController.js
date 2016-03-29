@@ -2,7 +2,9 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, BMA) => {
+module.exports = ($scope, $http, $state, BMA, summary, UIUtils) => {
+
+  UIUtils.changeTitle(summary.version);
 
   $scope.message = 'index.message.loading';
   co(function *() {

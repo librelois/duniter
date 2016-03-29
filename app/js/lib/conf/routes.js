@@ -10,6 +10,10 @@ module.exports = (app) => {
     state('index', {
       url: '/',
       template: require('views/index'),
+      resolve: {
+        ws: (BMA) => BMA.webmin.ws(),
+        summary: (BMA) => BMA.webmin.summary()
+      },
       controller: 'IndexController'
     }).
 
@@ -90,7 +94,8 @@ module.exports = (app) => {
       url: '/main',
       template: require('views/main/main'),
       resolve: {
-        ws: (BMA) => BMA.webmin.ws()
+        ws: (BMA) => BMA.webmin.ws(),
+        summary: (BMA) => BMA.webmin.summary()
       },
       controller: 'MainController'
     }).
@@ -106,7 +111,6 @@ module.exports = (app) => {
       url: '/overview',
       template: require('views/main/home/tabs/overview'),
       resolve: {
-        summary: (BMA) => BMA.webmin.summary(),
         startHttp: (BMA) => BMA.webmin.server.http.start(),
         bmapi: (BMA, summary) => co(function *() {
           return BMA.instance(summary.host);

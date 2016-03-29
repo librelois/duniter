@@ -2,7 +2,7 @@
 
 var co = require('co');
 
-module.exports = ($scope, $state, BMA) => {
+module.exports = ($scope, $state, BMA, summary, UIUtils) => {
 
   Waves.displayEffect();
 
@@ -12,6 +12,8 @@ module.exports = ($scope, $state, BMA) => {
       menuWidth: 280
     });
   }
+
+  UIUtils.changeTitle(summary.version);
 
   $scope.startServer = () => {
     $scope.server_stopped = false;

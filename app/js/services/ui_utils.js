@@ -23,7 +23,9 @@ module.exports = (app) => {
             .replace(/\./, '');
 
           jTabs.tabs('select_tab', currentID);
-        }
+        },
+
+        changeTitle: (version) => document.title = 'Duniter ' + version
       }
     });
 };
