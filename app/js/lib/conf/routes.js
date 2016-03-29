@@ -115,12 +115,6 @@ module.exports = (app) => {
       controller: 'OverviewController'
     }).
 
-    state('main.home.logs', {
-      url: '/logs',
-      template: require('views/main/home/tabs/logs'),
-      controller: 'LogsController'
-    }).
-
     state('main.settings', {
       abstract: true,
       url: '/settings',
@@ -217,6 +211,15 @@ module.exports = (app) => {
     //  template: require('views/graphs/currency'),
     //  controller: 'CurrencyController'
     //}).
+
+    state('logs', {
+      url: '/logs',
+      template: require('views/logs'),
+      resolve: {
+        ws: (BMA) => BMA.webmin.ws()
+      },
+      controller: 'LogsController'
+    }).
 
     state('error', {
       url: '/error\?err',

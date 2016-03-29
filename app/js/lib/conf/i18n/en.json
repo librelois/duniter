@@ -2,6 +2,7 @@
   "top.menu.overview": "Home",
   "top.menu.graphs": "Graphs",
   "top.menu.settings": "Settings",
+  "top.menu.logs": "Logs",
   "general.server.started": "Server started",
   "general.server.stopped": "Server stopped",
   "general.choose_option": "Choose your option",

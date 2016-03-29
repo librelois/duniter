@@ -12,7 +12,7 @@ module.exports = ($scope, ws, UIUtils) => {
   if (!localStorage.getItem('log_warn')) localStorage.setItem('log_warn', true);
   if (!localStorage.getItem('log_info')) localStorage.setItem('log_info', true);
 
-  $scope.logsSize = 100;
+  $scope.logsSize = parseInt(localStorage.getItem('log_size')) || 100;
   $scope.logs = _.range(0, $scope.logsSize).map(() => "");
   $scope.logsString = "";
   $scope.follow = true;
@@ -32,7 +32,8 @@ module.exports = ($scope, ws, UIUtils) => {
     });
   });
 
-  $scope.$watch('logsSize', () => {
+  $scope.$watch('logsSize', (newValue) => {
+    localStorage.setItem('log_size', newValue);
     addLogs({ value: [] }, true);
   });
 
