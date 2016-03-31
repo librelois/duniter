@@ -1,6 +1,8 @@
 "use strict";
 
-module.exports = ($scope) => {
+module.exports = ($scope, UIUtils) => {
+
+  UIUtils.enableTabs();
 
   $scope.$parent.menu = 'home';
 };

@@ -119,6 +119,20 @@ module.exports = (app) => {
       controller: 'OverviewController'
     }).
 
+    state('main.home.network', {
+      url: '/network',
+      template: require('views/main/home/tabs/network'),
+      resolve: {
+        bmapi: (BMA, summary) => co(function *() {
+          return BMA.instance(summary.host);
+        }),
+        peers: (bmapi) => co(function *() {
+          return bmapi.network.peers();
+        })
+      },
+      controller: 'HomeNetworkController'
+    }).
+
     state('main.settings', {
       abstract: true,
       url: '/settings',

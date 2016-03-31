@@ -93,7 +93,7 @@ module.exports = (angular) => {
             if (res.type == 'log') {
               for (let i = 0, len = res.value.length; i < len; i++) {
                 let log = res.value[i];
-                console[log.level](log.msg);
+                // console[log.level](log.msg);
               }
             }
             if (listener && (messageType === undefined || (res.type === messageType))) {

@@ -90,6 +90,8 @@
   "home.current.mmass": "Monetary mass",
   "home.tabs.overview": "Overview",
   "home.tabs.overview.should_reconfigure": "Your configuration has changed and your node is no more reachable from the network. You should reconfigure it to have a functional node.",
+  "home.tabs.network": "Peers",
+  "home.tabs.network.button.update": "Check peers again",
   "home.tabs.logs": "Logs",
   "home.tabs.logs.follow.logs": "Follow logs",
   "home.tabs.logs.pause.logs": "Pause logs",
