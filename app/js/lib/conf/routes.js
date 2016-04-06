@@ -250,6 +250,13 @@ module.exports = (app) => {
     $urlRouterProvider.otherwise('/');
   }]);
 
+  app.run(($rootScope, $state) => {
+    $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+      console.error(error);
+      $state.go('error', { err: error.message });
+    });
+  });
+
   function resolveNetworkAutoConf(BMA) {
     return co(function *() {
       let netinterfaces = yield BMA.webmin.network.interfaces();
