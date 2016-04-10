@@ -2,7 +2,7 @@
 
 var co = require('co');
 
-module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) => {
+module.exports = ($scope, $http, $state, $timeout, $stateParams, $translate, BMA, UIUtils) => {
 
   let syncWS = BMA.webmin.ws();
 
@@ -38,17 +38,18 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, BMA, UIUtils) =
     $scope.synchronizing = true;
     return co(function *() {
       let sp = $scope.checked_host.split(':');
+      let translatedErr = yield $translate('err.sync.interrupted');
       syncWS.on(undefined, (data) => {
         if (data.type == 'sync') {
           $scope.down_percent = 100;
           $scope.apply_percent = 100;
           $scope.sync_failed = data.value;
+          let errorMessage = data.msg && (data.msg.message || data.msg);
+          errorMessage = translatedErr + ' « ' + errorMessage + ' »';
           if (data.value === true) {
             $state.go('index');
           } else {
-            $timeout(() => {
-              window.location.href = "";
-            }, 500);
+            $state.go('error', { err: errorMessage });
           }
         } else {
           let changed = true;

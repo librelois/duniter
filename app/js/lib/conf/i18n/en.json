@@ -12,6 +12,7 @@
   "err.unknown": "Unknown error",
   "err.connection": "Could not connect to node",
   "err.back_index": "Get back to previous screen",
+  "err.sync.interrupted": "Sync interrupted because the following error occured:",
   "index.message.loading": "Loading...",
   "index.message.current_block": "Current block {{ number }}",
   "configuration.init.choose.title": "Initialization",
