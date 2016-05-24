@@ -1,6 +1,6 @@
 {
   "top.menu.overview": "Home",
-  "top.menu.graphs": "Graphs",
+  "top.menu.data": "Explore",
   "top.menu.settings": "Settings",
   "top.menu.logs": "Logs",
   "general.server.started": "Server started",
@@ -138,8 +138,19 @@
   "settings.data.reset.experimental": "This functionality is still considered experimental. If you encounters strange behaviors, please stop the software and reset manually your node by removing all the files BUT conf.json under ~/.config/ucoin/ucoin_default, and restart the software.",
   "graphs.tabs.blockchain": "Blockchain",
   "graphs.tabs.currency": "Currency",
+  "graphs.tabs.accounts": "Accounts",
   "graphs.blockchain.range": "Graphs for the last X blocks: (please choose X value)",
   "graphs.blockchain.with.time": "Time variations graph",
   "graphs.blockchain.with.speed": "Writing speed graph",
-  "graphs.blockchain.with.difficulty": "Difficulty graph"
+  "graphs.blockchain.with.difficulty": "Difficulty graph",
+  "graphs.accounts.title": "Accounts",
+  "graphs.accounts.message": "Here are few utilities to visualize account evolution over time, and download a dump of all acounts at current time.",
+  "graphs.accounts.one_on_c": "1/c curve",
+  "graphs.accounts.m_on_n": "M/N curve",
+  "graphs.accounts.with_members": "Member accounts",
+  "graphs.accounts.with_non_members": "Libre accounts",
+  "graphs.accounts.chart.curves": "Accounts evolution",
+  "graphs.accounts.chart.pie": "Money share",
+  "graphs.accounts.generate.button": "Generate the graph",
+  "graphs.accounts.full_csv.button": "Save full accounts .csv file"
 }
