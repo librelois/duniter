@@ -20,14 +20,8 @@ module.exports = ($scope, $state, $timeout, summary, bmapi, BMA, UIUtils, Graph)
     });
   };
 
-  $scope.download = () => {
-    return co(function *() {
-      let csv = yield bmapi.utils.accounts.csv();
-      window.open(encodeURI("data:text/csv;charset=utf-8," + csv));
-    });
-  };
-
   return co(function *() {
+    $scope.csv = yield bmapi.utils.accounts.csv();
     yield $scope.updateGraphs();
     $scope.$apply();
   });

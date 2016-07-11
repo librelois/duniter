@@ -8,6 +8,10 @@ module.exports = () => {
     'pascalprecht.translate'
   ]);
 
+  duniterApp.config( [
+    '$compileProvider', ($compileProvider) => $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|data):/)
+  ]);
+
   require('./lib/conf/translate')(duniterApp);
   require('./lib/conf/routes')(duniterApp);
   require('js/services/datetime')(duniterApp);

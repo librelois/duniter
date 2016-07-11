@@ -20,6 +20,6 @@
           .row
           .row
             .col.s12
-              a.btn-large.waves-effect.waves-light(ng-click="download()")
+              a#csvfile.btn-large.waves-effect.waves-light(ng-disabled="!csv", ng-href="data:text/csv;charset=utf-8,a;b;c", download="accounts.csv")
                 i.left.fa.fa-download
                 span(translate="graphs.accounts.full_csv.button")
