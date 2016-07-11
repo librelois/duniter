@@ -14,7 +14,6 @@
     "jade-brunch": "2.0.0",
     "javascript-brunch": "2.0.0",
     "json-brunch": "1.5.4",
-    "request": "2.31.0",
     "sass-brunch": "2.0.0",
     "stylus-brunch": "2.0.0",
     "uglify-js-brunch": "2.0.1",
@@ -24,5 +23,9 @@
   },
   "scripts": {
     "postinstall": "node \"node_modules/bower/bin/bower\" install --allow-root && node \"node_modules/brunch/bin/brunch\" build && node cesium.js && mv cesium public/"
+  },
+  "devDependencies": {
+    "request": "2.31.0",
+    "unzip": "0.1.11"
   }
 }
