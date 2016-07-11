@@ -2,6 +2,7 @@
   "top.menu.overview": "Home",
   "top.menu.data": "Explore",
   "top.menu.settings": "Settings",
+  "top.menu.wallet": "Wallet",
   "top.menu.logs": "Logs",
   "general.server.started": "Server started",
   "general.server.stopped": "Server stopped",
