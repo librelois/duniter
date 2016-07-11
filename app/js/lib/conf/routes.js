@@ -154,7 +154,7 @@ module.exports = (app) => {
           try {
             let self = yield bmapi.network.peering.self();
             let res = yield bmapi.network.peers();
-            return _.filter(res.peers, (p) => p.pubkey != self.pubkey);
+            return _.filter(res.peers, (p) => p.pubkey != self.pubkey && p.status == 'UP');
           } catch (e) {
             return [];
           }
