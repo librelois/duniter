@@ -4,6 +4,15 @@ var co = require('co');
 
 module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUtils) => {
 
+  const DEFAULT_CESIUM_CONF = {
+    "useRelative": true,
+    "timeWarningExpire": 2592000,
+    "useLocalStorage": true,
+    "rememberMe": true,
+    "node": summary.host,
+    "showUDHistory": true
+  };
+
   $scope.notifications = {
     help: []
   };
@@ -27,15 +36,30 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     gui.Window.open (window.location.origin + '/cesium/index.html', {
       position: 'center',
       height: walletHeight,
-      width: walletWidth
+      width: walletWidth,
+      show: false
     }, function(win) {
-      console.log(win.window.localStorage.getItem('CESIUM_SETTINGS'));
-      win.showDevTools();
-      win.on('closed', function() {
-        localStorage.setItem('wallet_height', win.window.innerHeight - 8); // Seems to always have 8 pixels more
-        localStorage.setItem('wallet_width', win.window.innerWidth - 16); // Seems to always have 16 pixels more
-        mainWindow.focus();
-      });
+      let settingsStr = win.window.localStorage.getItem('CESIUM_SETTINGS');
+      let settings = (settingsStr && JSON.parse(settingsStr));
+      if (!settings || settings.node != summary.host) {
+        settings = settings || DEFAULT_CESIUM_CONF;
+        console.debug('Configuring Cesium...');
+        settings.node = summary.host;
+        win.window.localStorage.setItem('CESIUM_SETTINGS', JSON.stringify(settings));
+        win.on('closed', () => {
+          // Reopen the wallet
+          $timeout(() => $scope.openWallet(), 1);
+        });
+        win.close();
+      } else {
+        // Cesium is correctly configured for the network part
+        win.show();
+        win.on('closed', function() {
+          localStorage.setItem('wallet_height', win.window.innerHeight - 8); // Seems to always have 8 pixels more
+          localStorage.setItem('wallet_width', win.window.innerWidth - 16); // Seems to always have 16 pixels more
+          mainWindow.focus();
+        });
+      }
     });
   };
 
