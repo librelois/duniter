@@ -2,6 +2,11 @@ extends ../menu.jade
 
 block content
 
+  ul#about.dropdown-content
+    li: button.btn-flat.left-align(ng-click="showAbout()")
+      i.material-icons.left info_outline
+      span {{ 'help.about_duniter' | translate }}
+
   ul#serveractions.dropdown-content
     li: button.btn-flat.left-align(ng-click="restartServer()")
       i.material-icons.left replay
@@ -40,6 +45,7 @@ block content
             i.fa.fa-2x.fa-align-left.left
             span {{ 'top.menu.logs' | translate }}
       ul.right
+        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="about"): i.material-icons info_outline
         li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
 
   div(ui-view="")

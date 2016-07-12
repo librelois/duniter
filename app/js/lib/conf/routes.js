@@ -17,6 +17,15 @@ module.exports = (app) => {
       controller: 'IndexController'
     }).
 
+    state('about', {
+      url: '/about',
+      template: require('views/about'),
+      resolve: {
+        version: () => (window.duniter && window.duniter.version) || 'unknown version'
+      },
+      controller: 'AboutController'
+    }).
+
     state('configure', {
       abstract: true,
       url: '/configure',

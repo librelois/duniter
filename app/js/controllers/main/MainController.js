@@ -32,6 +32,27 @@ module.exports = ($scope, $state, BMA, summary, UIUtils) => {
     });
   };
 
+  let aboutWin;
+
+  $scope.showAbout = () => {
+    if (aboutWin) {
+      aboutWin.focus();
+    } else {
+      gui.Window.open(window.location.origin + '/#/about', {
+        position: 'center',
+        height: 380,
+        width: 500
+      }, function(subwin) {
+        subwin.window.duniter = window.duniter;
+        subwin.window.gui = window.gui;
+        subwin.on('closed', () => {
+          aboutWin = null;
+        });
+        aboutWin = subwin;
+      });
+    }
+  };
+
   $scope.startServer = () => {
     $scope.server_stopped = false;
     return co(function *() {

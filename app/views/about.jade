@@ -1,0 +1,20 @@
+#about_card.card
+  .card-image
+    img(src="images/duniter_250x250.png")
+  .card-content
+    span.card-title.grey-text.text-darken-4 {{ 'help.about_duniter.title' | translate }}
+    p {{ 'help.about_duniter.version' | translate }}
+      i {{ version }}
+  .card-action
+    a(href="https://duniter.org" onclick="gui.Shell.openExternal(this.href); return false")
+      i.fa.fa-2x.fa-globe
+      span duniter.org
+    a(href="https://github.com/duniter" onclick="gui.Shell.openExternal(this.href); return false")
+      i.fa.fa-2x.fa-github
+      span github/duniter
+    a(href="https://forum.duniter.org" onclick="gui.Shell.openExternal(this.href); return false")
+      i.fa.fa-2x.fa-comment-o
+      span {{ 'help.about_duniter.forum' | translate }}
+    a(href="https://jappix.com?r=duniter@muc.duniter.org" onclick="gui.Shell.openExternal(this.href); return false")
+      i.fa.fa-2x.fa-comments-o
+      span {{ 'help.about_duniter.chat' | translate }}
