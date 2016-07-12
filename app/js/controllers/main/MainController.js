@@ -28,6 +28,7 @@ module.exports = ($scope, $state, BMA, summary, UIUtils) => {
       win.on('closed', function() {
         localStorage.setItem('wallet_height', win.window.innerHeight - 8); // Seems to always have 8 pixels more
         localStorage.setItem('wallet_width', win.window.innerWidth - 16); // Seems to always have 16 pixels more
+        mainWindow.focus();
       });
     });
   };
@@ -47,6 +48,7 @@ module.exports = ($scope, $state, BMA, summary, UIUtils) => {
         subwin.window.gui = window.gui;
         subwin.on('closed', () => {
           aboutWin = null;
+          mainWindow.focus();
         });
         aboutWin = subwin;
       });
