@@ -29,6 +29,8 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
       height: walletHeight,
       width: walletWidth
     }, function(win) {
+      console.log(win.window.localStorage.getItem('CESIUM_SETTINGS'));
+      win.showDevTools();
       win.on('closed', function() {
         localStorage.setItem('wallet_height', win.window.innerHeight - 8); // Seems to always have 8 pixels more
         localStorage.setItem('wallet_width', win.window.innerWidth - 16); // Seems to always have 16 pixels more
@@ -111,6 +113,6 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     });
   }
 
-  $interval(checkUpdates, 1000 * 3);
+  $interval(checkUpdates, 1000 * 3600);
   $timeout(checkUpdates, 1000);
 };
