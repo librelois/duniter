@@ -6,6 +6,10 @@ block content
     li: button.btn-flat.left-align(ng-click="showAbout()")
       i.material-icons.left info_outline
       span {{ 'help.about_duniter' | translate }}
+    li(ng-repeat="entry in notifications.help")
+      button.btn-flat.left-align(ng-click="entry.onclick()")
+        i.material-icons.left {{ entry.icon }}
+        span(data-badge="1") {{ entry.message | translate }}
 
   ul#serveractions.dropdown-content
     li: button.btn-flat.left-align(ng-click="restartServer()")
@@ -45,7 +49,7 @@ block content
             i.fa.fa-2x.fa-align-left.left
             span {{ 'top.menu.logs' | translate }}
       ul.right
-        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="about"): i.material-icons info_outline
+        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="about" data-badge="{{ notifications.help.length }}"): i.material-icons info_outline
         li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
 
   div(ui-view="")

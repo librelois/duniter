@@ -159,5 +159,6 @@
   "help.about_duniter.subtitle": "Duniter Desktop",
   "help.about_duniter.version": "Version: ",
   "help.about_duniter.forum": "Forum",
-  "help.about_duniter.chat": "Chat"
+  "help.about_duniter.chat": "Chat",
+  "help.new_version_available": "New version available"
 }

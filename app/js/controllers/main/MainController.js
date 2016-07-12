@@ -2,7 +2,11 @@
 
 var co = require('co');
 
-module.exports = ($scope, $state, BMA, summary, UIUtils) => {
+module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUtils) => {
+
+  $scope.notifications = {
+    help: []
+  };
 
   Waves.displayEffect();
 
@@ -80,4 +84,33 @@ module.exports = ($scope, $state, BMA, summary, UIUtils) => {
       yield $scope.startServer();
     });
   };
+
+  function checkUpdates() {
+    const LATEST_RELEASE_URL = 'https://api.github.com/repos/duniter/duniter/releases/latest';
+    co(function*() {
+      try {
+        const latest = yield $http.get(LATEST_RELEASE_URL);
+        const local_string_version = (window.duniter && window.duniter.version) || "";
+        const m = local_string_version.match(/(.*)([^\d]\d+)/);
+        const localVersion = (m && m[1]) || "";
+        const localSuffix = m && m[2];
+        const isLocalAPreRelease = !!(localSuffix);
+        const remoteVersion = latest.data.tag_name.substr(1);
+        if (localVersion < remoteVersion || (localVersion == remoteVersion && isLocalAPreRelease)) {
+          if ($scope.notifications.help.filter((entry) => entry.message == 'help.new_version_available').length == 0) {
+            $scope.notifications.help.push({
+              icon: 'play_for_work',
+              message: 'help.new_version_available',
+              onclick: () => gui.Shell.openExternal('https://github.com/duniter/duniter/releases/latest')
+            });
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+
+  $interval(checkUpdates, 1000 * 3);
+  $timeout(checkUpdates, 1000);
 };

@@ -1,4 +1,4 @@
-[data-badge]:after
+badge(top, right)
   content: attr(data-badge);
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,13 +19,36 @@
   -ms-flex-align: center;
   align-items: center;
   position: absolute;
-  top: 3px;
-  right: 3px;
+  top: top;
+  right: right;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 600;
   font-size: 12px;
   width: 19px;
   height: 19px;
   border-radius: 50%;
-  background: #82B6C1;
+  background: #ff8532;
   color: #fff;
+
+[data-badge^="1"]:after,
+[data-badge^="2"]:after,
+[data-badge^="3"]:after,
+[data-badge^="4"]:after,
+[data-badge^="5"]:after,
+[data-badge^="6"]:after,
+[data-badge^="7"]:after,
+[data-badge^="8"]:after,
+[data-badge^="9"]:after
+  badge: 3px 3px
+
+#about
+  [data-badge^="1"]:after,
+  [data-badge^="2"]:after,
+  [data-badge^="3"]:after,
+  [data-badge^="4"]:after,
+  [data-badge^="5"]:after,
+  [data-badge^="6"]:after,
+  [data-badge^="7"]:after,
+  [data-badge^="8"]:after,
+  [data-badge^="9"]:after
+    badge: 15px 20px
