@@ -3,6 +3,8 @@ module.exports = (app) => {
   app.factory('UIUtils', function($q, $translate, $state, $location) {
       return {
 
+        translate: (msg) => $q.when($translate(msg)),
+
         toast: (msg) => {
           return $q.when($translate(msg)).then((translated) => Materialize.toast(translated, 4000))
         },

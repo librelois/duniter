@@ -155,7 +155,8 @@
   "graphs.accounts.generate.button": "Generate the graph",
   "graphs.accounts.full_csv.button": "Save full accounts .csv file",
   "help.about_duniter": "About Duniter",
-  "help.about_duniter.title": "Duniter Desktop",
+  "help.about_duniter.title": "About",
+  "help.about_duniter.subtitle": "Duniter Desktop",
   "help.about_duniter.version": "Version: ",
   "help.about_duniter.forum": "Forum",
   "help.about_duniter.chat": "Chat"
