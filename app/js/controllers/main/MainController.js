@@ -116,7 +116,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     co(function*() {
       try {
         const latest = yield $http.get(LATEST_RELEASE_URL);
-        const local_string_version = (window.duniter && window.duniter.version) || "";
+        const local_string_version = (window.duniter && window.duniter.version) || ('v' + summary.version) || "";
         const m = local_string_version.match(/(.*)([^\d]\d+)/);
         const localVersion = (m && m[1]) || "";
         const localSuffix = m && m[2];
