@@ -33,7 +33,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     let walletHeight = parseInt(localStorage.getItem('wallet_height')) || 1000;
     let walletWidth = parseInt(localStorage.getItem('wallet_width')) || 1400;
 
-    gui.Window.open (window.location.origin + '/cesium/index.html', {
+    openWindow (window.location.origin + '/cesium/index.html', {
       position: 'center',
       height: walletHeight,
       width: walletWidth,
@@ -69,7 +69,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     if (aboutWin) {
       aboutWin.focus();
     } else {
-      gui.Window.open(window.location.origin + '/#/about', {
+      openWindow(window.location.origin + '/#/about', {
         position: 'center',
         height: 380,
         width: 500
@@ -127,7 +127,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
             $scope.notifications.help.push({
               icon: 'play_for_work',
               message: 'help.new_version_available',
-              onclick: () => gui.Shell.openExternal('https://github.com/duniter/duniter/releases/latest')
+              onclick: () => openExternal('https://github.com/duniter/duniter/releases/latest')
             });
           }
         }

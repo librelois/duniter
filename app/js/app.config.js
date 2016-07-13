@@ -19,6 +19,33 @@ module.exports = () => {
   require('js/services/graphs')(duniterApp);
   require('js/services/pubkeyGenerator')(duniterApp);
 
+  window.openWindow = function openWindow(url, options, callback) {
+    if (window.gui) {
+      // Duniter Desktop
+      window.gui.Window.open(url, options, callback);
+    } else {
+      // Browser
+      let innerHeight = options.height || 375;
+      let innerWidth = options.width || 500;
+      window.open(url, '_blank ', [
+        'top=' + (window.screenTop + (options.top || 200)),
+        'left=' + (window.screenLeft + (options.left || 200)),
+        'height=' + (innerHeight + 8),
+        'width=' + (innerWidth + 16),
+        'menubar=no',
+        'status=no'
+      ].join(','));
+    }
+  };
+
+  window.openExternal = function openExternal(url) {
+    if (window.gui) {
+      window.gui.Shell.openExternal(url);
+    } else {
+      window.open(url, '_blank');
+    }
+  };
+
   let homeControllers = angular.module('homeControllers', ['duniter.services']);
 
   homeControllers.controller('IndexController',            require('./controllers/IndexController'));
