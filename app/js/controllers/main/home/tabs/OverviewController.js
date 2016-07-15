@@ -5,7 +5,9 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
   let co = require('co');
 
   bindBlockWS();
+  const UD = summary.parameters.c * summary.current.monetaryMass / summary.current.membersCount;
   $scope.current = summary.current;
+  $scope.monetaryMass = summary.current.monetaryMass / UD;
   $scope.server_started = true;
   $scope.server_stopped = false;
   $scope.phones = [];

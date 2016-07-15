@@ -17,6 +17,10 @@
               .circle-clipper.left
                 .circle
 
+  .row
+    .col.s12
+      .card-panel.currency
+        h1 {{ current.currency }}
   .row.home
     .col.s6.m3
       .card#server_state
@@ -76,6 +80,6 @@
         .card-content
           i.fa.fa-money.fa-5x
           .card-title
-            span {{ current.monetaryMass }}
+            span {{ monetaryMass }}&nbsp;UD
         .card-action
           p {{ 'home.current.mmass' | translate }}
