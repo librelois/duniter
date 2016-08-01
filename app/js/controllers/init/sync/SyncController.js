@@ -46,6 +46,8 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, $translate, BMA
           $scope.sync_failed = data.value;
           let errorMessage = data.msg && (data.msg.message || data.msg);
           errorMessage = translatedErr + ' « ' + errorMessage + ' »';
+          BMA.webmin.server.republishNewSelfPeer()
+            .then(() => console.log('Peer republished'));
           if (data.value === true) {
             $state.go('index');
           } else {

@@ -148,7 +148,8 @@ module.exports = (angular) => {
               startSync: postResource('/webmin/server/start_sync'),
               previewNext: getResource('/webmin/server/preview_next'),
               autoConfNetwork: getResource('/webmin/server/auto_conf_network'),
-              resetData: getResource('/webmin/server/reset/data')
+              resetData: getResource('/webmin/server/reset/data'),
+              republishNewSelfPeer: getResource('/webmin/server/republish_selfpeer')
             },
             key: {
               preview: postResource('/webmin/key/preview')
