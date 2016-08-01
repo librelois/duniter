@@ -93,7 +93,7 @@
   "home.current.mmass": "Monetary mass",
   "home.pulling.network": "Network",
   "home.pulling.peer": "Peer",
-  "home.pulling.state.unkown": "Next in few minutes",
+  "home.pulling.state.unkown": "Next sync in few minutes",
   "home.pulling.state.synced": "Synced",
   "home.pulling.state.syncing": "Syncing...",
   "home.tabs.overview": "Overview",
