@@ -1,8 +1,9 @@
 "use strict";
 
-module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
+module.exports = ($scope, $interval, BMA, UIUtils, summary, bmapi, ws) => {
 
   let co = require('co');
+  let moment = require('moment');
 
   bindBlockWS();
   const UD = summary.parameters.c * summary.current.monetaryMass / summary.current.membersCount;
@@ -15,6 +16,21 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
   $scope.newIdentities = 2;
 
   $(".dropdown-button").dropdown({ constrainwidth: false });
+
+  $scope.sync_state = 'home.pulling.state.unkown';
+  $scope.network_percent = 0;
+  $scope.peer_percent = 0;
+  $scope.has_pulled = false;
+  $scope.is_pulling = false;
+  $scope.last_pulling = 0;
+  let start_block = 0;
+
+  $interval(() => {
+    if ($scope.last_pulling) {
+      $scope.sync_state = $scope.is_pulling ? 'home.pulling.state.syncing' : 'home.pulling.state.synced';
+      $scope.sync_time = moment($scope.last_pulling).fromNow();
+    }
+  }, 1000);
 
   ws.on(undefined, (data) => {
     if (data.type === 'started') {
@@ -29,6 +45,33 @@ module.exports = ($scope, BMA, UIUtils, summary, bmapi, ws) => {
       $scope.server_started = false;
       UIUtils.toast('general.server.stopped');
       $scope.$apply();
+    }
+    if (data.type === 'pulling') {
+      $scope.is_pulling = true;
+      $scope.has_pulled = true;
+      const event = data.value;
+      if (($scope.last_pulling && event.type === 'start') || (!$scope.last_pulling && event.type !== 'end')) {
+        $scope.last_pulling = moment();
+      }
+      if (event.type === 'peer') {
+        $scope.network_percent = parseInt((event.data.number + 1) / event.data.length * 100);
+        $scope.peer_percent = 0;
+        start_block = 0;
+      }
+      if (event.type === 'applying') {
+        if (!start_block) {
+          start_block = event.data.number;
+        }
+        const total = event.data.last - start_block;
+        const doneCount = event.data.number - start_block;
+        $scope.peer_percent = parseInt(doneCount / total * 100);
+      }
+      if (event.type === 'end') {
+        $scope.is_pulling = false;
+        $scope.network_percent = 0;
+        $scope.peer_percent = 0;
+        start_block = 0;
+      }
     }
   });
 

@@ -23,6 +23,23 @@
         h1 {{ current.currency }}
   .row.home
     .col.s6.m3
+      .card.sync
+        .card-content
+          .card-title(ng-show="is_pulling")
+            p {{ 'home.pulling.network' | translate }} {{ network_percent }}%
+            .progress
+              .determinate(style="width: {{ network_percent }}%")
+            p {{ 'home.pulling.peer' | translate }} {{ peer_percent }}%
+            .progress
+              .determinate(style="width: {{ peer_percent }}%")
+          .iconic.card-title(ng-show="has_pulled && !is_pulling")
+            i.green-text.material-icons done
+          .iconic.card-title(ng-show="!has_pulled && !is_pulling")
+            i.grey-text.material-icons schedule
+        .card-action
+          p(ng-show="!is_pulling") {{ sync_state | translate }} {{ sync_time }}
+          p(ng-show="is_pulling") {{ sync_state | translate }}
+    .col.s6.m3
       .card#server_state
         .card-content
           .card-title

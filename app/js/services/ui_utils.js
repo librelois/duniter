@@ -5,6 +5,10 @@ module.exports = (app) => {
 
         translate: (msg) => $q.when($translate(msg)),
 
+        toastRaw: (msg) => {
+          return Materialize.toast(msg, 4000);
+        },
+
         toast: (msg) => {
           return $q.when($translate(msg)).then((translated) => Materialize.toast(translated, 4000))
         },
