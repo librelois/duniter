@@ -117,7 +117,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
       try {
         const latest = yield $http.get(LATEST_RELEASE_URL);
         const local_string_version = (window.duniter && window.duniter.version) || ('v' + summary.version) || "";
-        const m = local_string_version.match(/(.*)([^\d]\d+)/);
+        const m = local_string_version.match(/^v([\d.]+)([ab]?\d*)/);
         const localVersion = (m && m[1]) || "";
         const localSuffix = m && m[2];
         const isLocalAPreRelease = !!(localSuffix);
@@ -137,6 +137,6 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     });
   }
 
-  $interval(checkUpdates, 1000 * 3600);
+  $interval(checkUpdates, 1000 * 10);
   $timeout(checkUpdates, 1000);
 };
