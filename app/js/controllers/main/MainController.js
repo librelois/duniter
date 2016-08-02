@@ -137,6 +137,6 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     });
   }
 
-  $interval(checkUpdates, 1000 * 10);
+  $interval(checkUpdates, 1000 * 3600);
   $timeout(checkUpdates, 1000);
 };
