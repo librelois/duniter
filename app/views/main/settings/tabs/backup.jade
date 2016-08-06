@@ -16,6 +16,7 @@
                 span(translate="settings.data.backup.button.export")
 
             .col.s12.m6
-              button.btn-large.waves-effect.waves-light(ng-click="importBackup()")
+              button.btn-large.waves-effect.waves-light(type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+              accept="zip/*" ngf-max-size="100MB")
                 i.left.fa.fa-download
                 span(translate="settings.data.backup.button.import")

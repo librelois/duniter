@@ -130,6 +130,7 @@ module.exports = (angular) => {
           },
           webmin: {
             getExportURL: () => 'http://' + server + '/webmin/data/duniter_export',
+            getImportURL: () => 'http://' + server + '/webmin/data/duniter_import',
             ws: () => ws('ws://' + server + '/webmin/ws'),
             summary: getResource('/webmin/summary'),
             server: {

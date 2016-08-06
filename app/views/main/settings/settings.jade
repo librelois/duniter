@@ -14,12 +14,12 @@ main.home-main.main-screen
     .row
       .col.s12
         ul.tabs
-          li.tab.col.s2: a(href="#main.settings.data")
-            i.fa.fa-database &nbsp;
-            = " {{ 'settings.tabs.data' | translate }}"
           li.tab.col.s2: a(href="#main.settings.backup")
             i.fa.fa-folder-open &nbsp;
             = " {{ 'settings.tabs.backup' | translate }}"
+          li.tab.col.s2: a(href="#main.settings.data")
+            i.fa.fa-database &nbsp;
+            = " {{ 'settings.tabs.data' | translate }}"
           li.tab.col.s2: a(href="#main.settings.crypto")
             i.fa.fa-key &nbsp;
             = " {{ 'settings.tabs.identity' | translate }}"

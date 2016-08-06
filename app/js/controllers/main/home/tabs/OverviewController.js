@@ -55,7 +55,7 @@ module.exports = ($scope, $interval, BMA, UIUtils, summary, bmapi, ws) => {
       }
       if (event.type === 'peer') {
         $scope.network_percent = parseInt((event.data.number + 1) / event.data.length * 100);
-        $scope.peer_percent = 0;
+        $scope.peer_percent = 100;
         start_block = 0;
       }
       if (event.type === 'applying') {

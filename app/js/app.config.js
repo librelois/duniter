@@ -46,7 +46,7 @@ module.exports = () => {
     }
   };
 
-  let homeControllers = angular.module('homeControllers', ['duniter.services']);
+  let homeControllers = angular.module('homeControllers', ['duniter.services', 'ngFileUpload']);
 
   homeControllers.controller('IndexController',            require('./controllers/IndexController'));
   homeControllers.controller('AboutController',            require('./controllers/AboutController'));
