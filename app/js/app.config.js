@@ -63,6 +63,7 @@ module.exports = () => {
   homeControllers.controller('SettingsController',         require('./controllers/main/settings/SettingsController'));
   homeControllers.controller('DataController',             require('./controllers/main/settings/tabs/DataController'));
   homeControllers.controller('BackupController',           require('./controllers/main/settings/tabs/BackupController'));
+  homeControllers.controller('CPUController',              require('./controllers/main/settings/tabs/CPUController'));
   homeControllers.controller('CurrencyController',         require('./controllers/main/settings/tabs/CurrencyController'));
   homeControllers.controller('KeyController',              require('./controllers/main/settings/tabs/KeyController'));
   homeControllers.controller('GraphsController',           require('./controllers/main/graphs/GraphsController'));

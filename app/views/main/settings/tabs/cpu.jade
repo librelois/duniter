@@ -1,0 +1,17 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-dashboard.fa-5x
+          h1.card-title(translate="settings.cpu.title")
+          p(translate="settings.cpu.message")
+
+          blockquote.left-align.blue.lighten-5(translate="settings.cpu.warning")
+
+          .row
+            p {{ 'settings.cpu.range' | translate }}
+            .range-field
+              input(ng-disabled="savingCPU" type="range" min="0" max="100" ng-model="cpuPower" ng-mouseup="updateCPUpower()")
+
+          h1.card-title {{ 'settings.cpu.power' | translate }} {{ cpuPower }}%

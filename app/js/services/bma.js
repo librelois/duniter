@@ -147,6 +147,7 @@ module.exports = (angular) => {
               sendConf: postResource('/webmin/server/send_conf'),
               netConf: postResource('/webmin/server/net_conf'),
               keyConf: postResource('/webmin/server/key_conf'),
+              cpuConf: postResource('/webmin/server/cpu_conf'),
               startSync: postResource('/webmin/server/start_sync'),
               previewNext: getResource('/webmin/server/preview_next'),
               autoConfNetwork: getResource('/webmin/server/auto_conf_network'),

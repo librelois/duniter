@@ -178,6 +178,15 @@ module.exports = (app) => {
       controller: 'BackupController'
     }).
 
+    state('main.settings.cpu', {
+      url: '/cpu',
+      template: require('views/main/settings/tabs/cpu'),
+      resolve: {
+        summary: (BMA) => BMA.webmin.summary()
+      },
+      controller: 'CPUController'
+    }).
+
     state('main.settings.crypto', {
       url: '/crypto',
       template: require('views/main/settings/tabs/crypto'),
