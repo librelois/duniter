@@ -18,9 +18,11 @@ module.exports = ($scope, $http, $state, $timeout, $stateParams, $translate, BMA
   $scope.checkNode = () => co(function *() {
     $scope.checking = true;
     try {
-      let targetHost = [$scope.host, $scope.port].join(':');
-      let bmapi = BMA.instance(targetHost);
-      let current = yield bmapi.blockchain.current();
+      const current = yield BMA.webmin.server.testSync({
+        host: $scope.host,
+        port: $scope.port
+      });
+      const targetHost = [$scope.host, $scope.port].join(':');
       if (current) {
         $scope.remote_current = current;
         $scope.checked_host = targetHost;

@@ -13,3 +13,7 @@ main
             .row: button.btn-large.waves-effect.waves-light(ui-sref="sync")
               i.left.fa.fa-code-fork
               span.truncate(translate="configuration.init.choose.connect")
+            .row: button.btn-large.waves-effect.waves-light(type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+            accept="zip/*" ngf-max-size="100MB")
+              i.left.fa.fa-download
+              span(translate="configuration.init.choose.import")

@@ -56,7 +56,10 @@ module.exports = (app) => {
 
     state('configure.choose', {
       url: '/choose',
-      template: require('views/init/choose')
+      template: require('views/init/choose'),
+      controller: ($scope, Importer) => {
+        Importer($scope);
+      }
     }).
 
     state('configure.create', {

@@ -18,6 +18,7 @@ module.exports = () => {
   require('js/services/ui_utils')(duniterApp);
   require('js/services/graphs')(duniterApp);
   require('js/services/pubkeyGenerator')(duniterApp);
+  require('js/services/importer')(duniterApp);
 
   window.openWindow = function openWindow(url, options, callback) {
     if (window.gui) {
