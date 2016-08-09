@@ -219,7 +219,7 @@ module.exports = (angular) => {
           origin: {
             network: {
               peering: {
-                self: getResource('/network/peering', 'http')
+                self: getResource('/network/peering', 'http://')
               }
             }
           }
