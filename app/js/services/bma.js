@@ -8,6 +8,14 @@ module.exports = (angular) => {
 
     .factory('BMA', function($http, $q) {
 
+      function httpProtocol() {
+        return window.location.protocol + '//';
+      }
+
+      function wsProtocol() {
+        return window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+      }
+
       function BMA(server) {
 
         function getResource(uri) {
@@ -33,7 +41,7 @@ module.exports = (angular) => {
               }
             });
             config.params = queryParams;
-            $http.get('http://' + server + uri + suffix, config)
+            $http.get(httpProtocol() + server + uri + suffix, config)
               .success(function(data, status, headers, config) {
                 resolve(data);
               })
@@ -62,7 +70,7 @@ module.exports = (angular) => {
                 }
               });
               config.params = queryParams;
-              $http.post('http://' + server + uri + suffix, data, config)
+              $http.post(httpProtocol() + server + uri + suffix, data, config)
                 .success(function(data, status, headers, config) {
                   resolve(data);
                 })
@@ -71,6 +79,18 @@ module.exports = (angular) => {
                 });
             }));
           }
+        }
+
+        function bmaGET(uri) {
+          return getResource('/bma' + uri);
+        }
+
+        function bmaPOST(uri) {
+          return postResource('/bma' + uri);
+        }
+
+        function bmaWS(server, uri) {
+          return ws(wsProtocol() + server + '/bma' + uri);
         }
 
         let wsMap = {};
@@ -129,9 +149,9 @@ module.exports = (angular) => {
             }
           },
           webmin: {
-            getExportURL: () => 'http://' + server + '/webmin/data/duniter_export',
-            getImportURL: () => 'http://' + server + '/webmin/data/duniter_import',
-            ws: () => ws('ws://' + server + '/webmin/ws'),
+            getExportURL: () => httpProtocol() + server + '/webmin/data/duniter_export',
+            getImportURL: () => httpProtocol() + server + '/webmin/data/duniter_import',
+            ws: () => ws(wsProtocol() + server + '/webmin/ws'),
             summary: getResource('/webmin/summary'),
             server: {
               http: {
@@ -162,38 +182,38 @@ module.exports = (angular) => {
             }
           },
           node: {
-            summary: getResource('/node/summary')
+            summary: bmaGET('/node/summary')
           },
           wot: {
-            lookup: getResource('/wot/lookup/:search'),
-            members: getResource('/wot/members')
+            lookup: bmaGET('/wot/lookup/:search'),
+            members: bmaGET('/wot/members')
           },
           network: {
             peering: {
-              self: getResource('/network/peering'),
-              peers: getResource('/network/peering/peers')
+              self: bmaGET('/network/peering'),
+              peers: bmaGET('/network/peering/peers')
             },
-            peers: getResource('/network/peers')
+            peers: bmaGET('/network/peers')
           },
           currency: {
-            parameters: getResource('/blockchain/parameters')
+            parameters: bmaGET('/blockchain/parameters')
           },
           blockchain: {
-            current: getResource('/blockchain/current'),
-            block: getResource('/blockchain/block/:block'),
-            blocks: getResource('/blockchain/blocks/:count/:from'),
-            block_add: postResource('/blockchain/block'),
+            current: bmaGET('/blockchain/current'),
+            block: bmaGET('/blockchain/block/:block'),
+            blocks: bmaGET('/blockchain/blocks/:count/:from'),
+            block_add: bmaPOST('/blockchain/block'),
             stats: {
-              ud: getResource('/blockchain/with/ud'),
-              tx: getResource('/blockchain/with/tx')
+              ud: bmaGET('/blockchain/with/ud'),
+              tx: bmaGET('/blockchain/with/tx')
             }
           },
           websocket: {
             block: function() {
-              return ws('ws://' + server + '/ws/block');
+              return bmaWS(server, '/ws/block');
             },
             peer: function() {
-              return ws('ws://' + server + '/ws/peer');
+              return bmaWS(server, '/ws/peer');
             }
           }
         }
