@@ -113,7 +113,7 @@ module.exports = ($scope, $interval, BMA, UIUtils, summary, bmapi, ws) => {
   return co(function *() {
     yield $scope.startServer();
     try {
-      yield bmapi.network.peering.self();
+      yield bmapi.origin.network.peering.self();
     } catch (e) {
       console.log(e);
       $scope.should_reconfigure = true;

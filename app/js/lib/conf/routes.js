@@ -159,12 +159,13 @@ module.exports = (app) => {
       url: '/data',
       template: require('views/main/settings/tabs/data'),
       resolve: {
-        peers: (bmapi) => co(function *() {
+        peers: (BMA) => co(function *() {
           try {
-            let self = yield bmapi.network.peering.self();
-            let res = yield bmapi.network.peers();
+            let self = yield BMA.network.peering.self();
+            let res = yield BMA.network.peers();
             return _.filter(res.peers, (p) => p.pubkey != self.pubkey && p.status == 'UP');
           } catch (e) {
+            console.error(e);
             return [];
           }
         })

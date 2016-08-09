@@ -215,11 +215,18 @@ module.exports = (angular) => {
             peer: function() {
               return bmaWS(server, '/ws/peer');
             }
+          },
+          origin: {
+            network: {
+              peering: {
+                self: getResource('/network/peering')
+              }
+            }
           }
         }
       }
-      let server = conf.server || window.location.hostname;
-      let port = conf.port || window.location.port;
+      let server = window.location.hostname;
+      let port = window.location.port;
       var service = BMA([server, port].join(':'));
       service.instance = BMA;
       return service;
