@@ -76,7 +76,7 @@ module.exports = ($scope, $interval, BMA, UIUtils, summary, bmapi, ws) => {
   });
 
   function bindBlockWS() {
-    bmapi.websocket.block().on(undefined, (block) => {
+    BMA.websocket.block().on(undefined, (block) => {
       $scope.current = block;
       $scope.$apply();
     });
