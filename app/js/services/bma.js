@@ -18,13 +18,13 @@ module.exports = (angular) => {
 
       function BMA(server) {
 
-        function getResource(uri) {
+        function getResource(uri, protocol) {
           return function(params) {
-            return $q.when(httpGet(uri, params));
+            return $q.when(httpGet(uri, params, protocol));
           }
         }
 
-        function httpGet(uri, params) {
+        function httpGet(uri, params, protocol) {
           return Q.Promise((resolve, reject) => {
             var config = {
               timeout: conf.api_timeout
@@ -41,7 +41,7 @@ module.exports = (angular) => {
               }
             });
             config.params = queryParams;
-            $http.get(httpProtocol() + server + uri + suffix, config)
+            $http.get((protocol || httpProtocol()) + server + uri + suffix, config)
               .success(function(data, status, headers, config) {
                 resolve(data);
               })
@@ -219,7 +219,7 @@ module.exports = (angular) => {
           origin: {
             network: {
               peering: {
-                self: getResource('/network/peering')
+                self: getResource('/network/peering', 'http')
               }
             }
           }
