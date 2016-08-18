@@ -1,21 +1,20 @@
 var _ = require('underscore');
 var conf = require('../lib/conf/conf');
+let moment = require('moment');
 
 module.exports = (app) => {
 
-    app.filter('mt_date', ($filter) => {
+    app.filter('mt_date', () => {
       return (input) => {
         if(input == null){ return ""; }
-        var _date = $filter('date')(new Date(input * 1000), 'yyyy-MM-dd');
-        return _date.toUpperCase();
+        return moment(input * 1000).format('YYYY MM DD');
       };
     });
 
-    app.filter('mt_time', ($filter) => {
+    app.filter('mt_time', () => {
       return (input) => {
         if(input == null){ return ""; }
-        var _date = $filter('date')(new Date(input * 1000), 'HH:MM:ss');
-        return _date.toUpperCase();
+        return moment(input * 1000).format('HH:mm:ss');
       };
     });
 };
