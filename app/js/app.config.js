@@ -39,6 +39,16 @@ module.exports = () => {
     }
   };
 
+  window.openNewTab = function openWindow(url, options, callback) {
+    if (window.gui) {
+      // Duniter Desktop
+      window.gui.Window.open(url, options, callback);
+    } else {
+      // Browser
+      window.open(url, '_blank ');
+    }
+  };
+
   window.openExternal = function openExternal(url) {
     if (window.gui) {
       window.gui.Shell.openExternal(url);

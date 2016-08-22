@@ -33,7 +33,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     let walletHeight = parseInt(localStorage.getItem('wallet_height')) || 1000;
     let walletWidth = parseInt(localStorage.getItem('wallet_width')) || 1400;
 
-    openWindow (window.location.origin + '/cesium/index.html', {
+    openNewTab (window.location.origin + '/cesium/index.html', {
       position: 'center',
       height: walletHeight,
       width: walletWidth,
