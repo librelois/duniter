@@ -135,11 +135,8 @@ module.exports = (app) => {
       url: '/network',
       template: require('views/main/home/tabs/network'),
       resolve: {
-        bmapi: (BMA, summary) => co(function *() {
-          return BMA.instance(summary.host);
-        }),
-        peers: (bmapi) => co(function *() {
-          return bmapi.network.peers();
+        peers: (BMA) => co(function *() {
+          return BMA.network.peers();
         })
       },
       controller: 'HomeNetworkController'
