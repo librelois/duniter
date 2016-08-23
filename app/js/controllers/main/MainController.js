@@ -14,6 +14,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
     "timeWarningExpire": 2592000,
     "useLocalStorage": true,
     "rememberMe": true,
+    "plugins": {},
     "node": {
       "host": local_host,
       "port": local_port
@@ -50,7 +51,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
       let settingsStr = win.window.localStorage.getItem('CESIUM_SETTINGS');
       let dataStr = win.window.localStorage.getItem('CESIUM_DATA');
       let settings = (settingsStr && JSON.parse(settingsStr));
-      let data = (settingsStr && JSON.parse(dataStr));
+      let data = (dataStr && JSON.parse(dataStr));
       let keyPairOK = data && data.keyPair && data.keyPair.signPk && data.keyPair.signSk && true;
       if (keyPairOK) {
         data.keyPair.signPk.length = local_sign_pk.length;
@@ -70,6 +71,7 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
           "host": local_host,
           "port": local_port
         };
+        settings.plugins = {};
         data.pubkey = summary.pubkey;
         data.keyPair = {
           signPk: local_sign_pk,
