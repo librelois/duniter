@@ -3,7 +3,7 @@ const
   fs = require('fs'),
   unzip = require('unzip');
 
-const CESIUM_RELEASE = '0.2.1';
+const CESIUM_RELEASE = '0.2.3';
 
 return request({
   followAllRedirects: true,

@@ -2,14 +2,22 @@
 
 var co = require('co');
 
-module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUtils) => {
+module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUtils, Base58) => {
 
-  const DEFAULT_CESIUM_CONF = {
+  const local_host = summary.host.split(':')[0]; // We suppose IPv4 configuration
+  const local_port = summary.host.split(':')[1];
+  const local_sign_pk = Base58.decode(summary.pubkey);
+  const local_sign_sk = Base58.decode(summary.seckey);
+
+  const DEFAULT_CESIUM_SETTINGS = {
     "useRelative": true,
     "timeWarningExpire": 2592000,
     "useLocalStorage": true,
     "rememberMe": true,
-    "node": summary.host,
+    "node": {
+      "host": local_host,
+      "port": local_port
+    },
     "showUDHistory": true
   };
 
@@ -40,12 +48,35 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
       show: false
     }, function(win) {
       let settingsStr = win.window.localStorage.getItem('CESIUM_SETTINGS');
+      let dataStr = win.window.localStorage.getItem('CESIUM_DATA');
       let settings = (settingsStr && JSON.parse(settingsStr));
-      if (!settings || settings.node != summary.host) {
-        settings = settings || DEFAULT_CESIUM_CONF;
+      let data = (settingsStr && JSON.parse(dataStr));
+      let keyPairOK = data && data.keyPair && data.keyPair.signPk && data.keyPair.signSk && true;
+      if (keyPairOK) {
+        data.keyPair.signPk.length = local_sign_pk.length;
+        data.keyPair.signSk.length = local_sign_sk.length;
+        keyPairOK = Base58.encode(Array.from(data.keyPair.signPk)) == summary.pubkey
+          && Base58.encode(Array.from(data.keyPair.signSk)) == summary.seckey
+          && data.pubkey == summary.pubkey;
+      }
+      if (!data
+        || !keyPairOK
+        || settings.node.host != local_host
+        || settings.node.port != local_port) {
+        settings = settings || DEFAULT_CESIUM_SETTINGS;
+        data = data || {};
         console.debug('Configuring Cesium...');
-        settings.node = summary.host;
+        settings.node = {
+          "host": local_host,
+          "port": local_port
+        };
+        data.pubkey = summary.pubkey;
+        data.keyPair = {
+          signPk: local_sign_pk,
+          signSk: local_sign_sk
+        };
         win.window.localStorage.setItem('CESIUM_SETTINGS', JSON.stringify(settings));
+        win.window.localStorage.setItem('CESIUM_DATA', JSON.stringify(data));
         win.on('closed', () => {
           // Reopen the wallet
           $timeout(() => $scope.openWallet(), 1);
