@@ -52,12 +52,12 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
       let dataStr = win.window.localStorage.getItem('CESIUM_DATA');
       let settings = (settingsStr && JSON.parse(settingsStr));
       let data = (dataStr && JSON.parse(dataStr));
-      let keyPairOK = data && data.keyPair && data.keyPair.signPk && data.keyPair.signSk && true;
+      let keyPairOK = data && data.keypair && data.keypair.signPk && data.keypair.signSk && true;
       if (keyPairOK) {
-        data.keyPair.signPk.length = local_sign_pk.length;
-        data.keyPair.signSk.length = local_sign_sk.length;
-        keyPairOK = Base58.encode(Array.from(data.keyPair.signPk)) == summary.pubkey
-          && Base58.encode(Array.from(data.keyPair.signSk)) == summary.seckey
+        data.keypair.signPk.length = local_sign_pk.length;
+        data.keypair.signSk.length = local_sign_sk.length;
+        keyPairOK = Base58.encode(Array.from(data.keypair.signPk)) == summary.pubkey
+          && Base58.encode(Array.from(data.keypair.signSk)) == summary.seckey
           && data.pubkey == summary.pubkey;
       }
       if (!data
@@ -72,8 +72,9 @@ module.exports = ($scope, $state, $http, $timeout, $interval, BMA, summary, UIUt
           "port": local_port
         };
         settings.plugins = {};
+        settings.rememberMe = true;
         data.pubkey = summary.pubkey;
-        data.keyPair = {
+        data.keypair = {
           signPk: local_sign_pk,
           signSk: local_sign_sk
         };
