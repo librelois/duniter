@@ -57,8 +57,7 @@ module.exports = ($scope, $http, $state, BMA) => {
   });
 
   $scope.accept = () => co(function *() {
-    let bmapi = BMA.instance([$scope.$parent.conf.local_ipv4, $scope.$parent.conf.lport].join(':'));
-    let res = yield bmapi.blockchain.block_add({
+    let res = yield BMA.blockchain.block_add({
       block: $scope.generated
     });
     if (res.number == 0) {

@@ -147,10 +147,7 @@ module.exports = (app) => {
       url: '/settings',
       template: require('views/main/settings/settings'),
       resolve: {
-        summary: (BMA) => BMA.webmin.summary(),
-        bmapi: (BMA, summary) => co(function *() {
-          return BMA.instance(summary.host);
-        })
+        summary: (BMA) => BMA.webmin.summary()
       },
       controller: 'SettingsController'
     }).
