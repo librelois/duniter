@@ -9,16 +9,6 @@ module.exports = ($scope, $http, $state, BMA) => {
   $scope.started = false;
   $scope.message = 'configuration.create_root.need_a_try';
 
-  co(function *() {
-    try {
-      yield BMA.node.summary();
-      $scope.started = true;
-    } catch (e) {
-      $scope.started = false;
-      $scope.start();
-    }
-  });
-
   $scope.start = () => co(function *() {
     try {
       let hosts = [];
@@ -76,5 +66,15 @@ module.exports = ($scope, $http, $state, BMA) => {
     yield BMA.webmin.server.services.stopAll();
     yield BMA.webmin.server.resetData();
     $state.go('index');
+  });
+
+  return co(function *() {
+    try {
+      yield $scope.start();
+      yield $scope.try();
+      $scope.started = true;
+    } catch (e) {
+      $scope.started = false;
+    }
   });
 };
