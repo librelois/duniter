@@ -1,0 +1,18 @@
+.row
+  .input-field.col.s12
+    i.material-icons.prefix vpn_key
+    input#idty_entropy.tooltipped(type="password" ng-model="$parent.conf.idty_entropy" data-position="top" data-tooltip="{{ 'configuration.create_uid.entropy.tooltip' | translate }}")
+    label(for="idty_entropy") {{ 'crypto.secret_key' | translate }}
+  .input-field.col.s12
+    i.material-icons.prefix vpn_key
+    input#idty_password.tooltipped(type="password" ng-model="$parent.conf.idty_password" data-position="top" data-tooltip="{{ 'configuration.create_uid.password.tooltip' | translate }}")
+    label(for="idty_password") Password
+  .input-field.col.s12
+    select(disabled)
+      option(value="" disabled translate="general.choose_option")
+      option(value="1" selected translate="configuration.create_uid.nrp_algo_choose_1")
+      label {{ 'configuration.create_uid.nrp_algo_choose' | translate }}
+  .input-field.col.s12
+    .container(ng-if="pubkey_preview")
+      h5(translate="configuration.create_uid.pubkey_preview")
+      pre.pubkey {{ pubkey_preview }}

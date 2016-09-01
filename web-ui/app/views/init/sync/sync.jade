@@ -1,0 +1,48 @@
+main
+  .container
+    .row
+      form.s12.center
+        .card
+          .card-content
+            i.fa.fa-cloud-download.fa-5x
+            h1.card-title(translate="sync.title")
+            p(translate="sync.message")
+
+          .card-action
+            .row
+              .input-field.col.s6.m5
+                i.prefix.material-icons language
+                input#host(type="text" ng-model="host")
+                label(for="host") {{ 'sync.host' | translate }}
+
+              .input-field.col.s6.m3
+                i.prefix.fa.fa-plug
+                input#port(type="number" ng-model="port")
+                label(for="port") {{ 'sync.port' | translate }}
+
+              .col.s12.m4
+                .preloader-wrapper.active.small(ng-if="checking")
+                  .spinner-layer.spinner-blue-only
+                    .circle-clipper.left
+                      .circle
+                button.btn-large.waves-effect.waves-light(ng-show="!checking" ng-disabled="!(host && port)|| synchronizing" ng-click="checkNode()")
+                  i.left.fa.fa-wifi
+                  span(translate="sync.check")
+
+            .row: button.btn-large.waves-effect.waves-light(ng-disabled="!checked_host || synchronizing" ng-click="startSync()")
+              i.left.fa.fa-cloud-download
+              span(translate="sync.start")
+
+            .row(ng-show="synchronizing")
+              .col.s8.m9
+                .progress
+                  .determinate(style="width: {{ down_percent }}%")
+              .col.s4.m3.left-align
+                span Downloading... ({{ down_percent }}%)
+              .col.s8.m9
+                .progress
+                  .determinate(style="width: {{ apply_percent }}%")
+              .col.s4.m3.left-align
+                span Applying... ({{ apply_percent }}%)
+
+            blockquote.card-panel.left-align(ng-show="sync_failed") {{ 'sync.failed' | translate }}

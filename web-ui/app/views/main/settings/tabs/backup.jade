@@ -1,0 +1,22 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-folder-open.fa-5x
+          h1.card-title(translate="settings.data.backup.title")
+          p(translate="settings.data.backup.message")
+
+          blockquote.left-align.blue.lighten-5(translate="settings.data.backup.warning")
+
+          .row
+            .col.s12.m6
+              a.blue.btn-large.waves-effect.waves-light(ng-href="{{ export_link }}")
+                i.left.fa.fa-save
+                span(translate="settings.data.backup.button.export")
+
+            .col.s12.m6
+              button.btn-large.waves-effect.waves-light(type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+              accept="zip/*" ngf-max-size="100MB")
+                i.left.fa.fa-download
+                span(translate="settings.data.backup.button.import")

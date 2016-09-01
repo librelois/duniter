@@ -1,0 +1,26 @@
+.row
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-chain
+    input#medianTimeBlocks(type="number" ng-model="$parent.conf.medianTimeBlocks")
+    label(for="medianTimeBlocks") {{ 'configuration.create_parameters.medianTimeBlocks' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-hourglass-end
+    input#avgGenTime(type="number" ng-model="$parent.conf.avgGenTime")
+    label(for="avgGenTime") {{ 'configuration.create_parameters.avgGenTime' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-cubes
+    input#dtDiffEval(type="number" ng-model="$parent.conf.dtDiffEval")
+    label(for="dtDiffEval") {{ 'configuration.create_parameters.dtDiffEval' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-graduation-cap
+    input#blocksRot(type="number" ng-model="$parent.conf.blocksRot")
+    label(for="blocksRot") {{ 'configuration.create_parameters.blocksRot' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-rotate-left
+    input#percentRot(type="number" ng-model="$parent.conf.percentRot")
+    label(for="percentRot") {{ 'configuration.create_parameters.percentRot' | translate }}

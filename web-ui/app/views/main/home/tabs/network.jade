@@ -1,0 +1,25 @@
+.container
+  .row
+    .col.s12
+      .card
+        .card-action.center
+          button.teal.btn-large.waves-effect.waves-light(ng-click="update()")
+            i.left.fa.fa-repeat
+            span(translate="home.tabs.network.button.update")
+        .card-action
+          .center(ng-if="searching")
+            .preloader-wrapper.active
+              .spinner-layer.spinner-blue-only
+                .circle-clipper.left
+                  .circle
+          table.bordered(ng-if="!searching")
+            thead
+              tr
+                th Pubkey
+                th Status
+                th Endpoint
+            tbody
+              tr(ng-repeat="peer in peers track by $index")
+                td {{ peer.pubkey.substr(0,6) }}
+                td {{ peer.status }}
+                td {{ peer.endpoints[0] }}

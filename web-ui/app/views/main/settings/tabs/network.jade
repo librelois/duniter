@@ -1,0 +1,26 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-action
+          i.fa.fa-globe.fa-5x
+          h1.card-title(translate="configuration.create_network.title")
+
+          .row: buttn.btn-large.waves-effect.waves-light(ng-click="autoconfig()")
+            i.left.fa.fa-magic
+            span(translate="configuration.create_network.button.autoconf")
+
+
+          h1.card-title(translate="configuration.create_network.local.title")
+          p(translate="configuration.create_network.local.message")
+
+          include ../../../includes/network_local
+
+          h1.card-title(translate="configuration.create_network.remote.title")
+          p(translate="configuration.create_network.remote.message")
+
+          include ../../../includes/network_remote
+
+          .row: button.btn-large.waves-effect.waves-light(ng-click="saveConf()")
+            i.left.fa.fa-check
+            span(translate="settings.network.button.validate")

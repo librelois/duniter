@@ -1,0 +1,35 @@
+.container
+  .row
+    form.s12.center
+      .card
+        .card-content
+          i.fa.fa-balance-scale.fa-5x
+          h1.card-title(translate="configuration.create_parameters.title")
+          p(translate="configuration.create_parameters.message")
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.currency.title")
+          p(translate="configuration.create_parameters.currency.message")
+
+          include ../../includes/money
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.wot.title")
+          p(translate="configuration.create_parameters.wot.message")
+
+          include ../../includes/wot
+
+        .card-action
+
+          h1.card-title(translate="configuration.create_parameters.blockchain.title")
+          p(translate="configuration.create_parameters.blockchain.message")
+
+          include ../../includes/blockchain
+
+        .card-action
+
+          .row: button.btn-large.waves-effect.waves-light(ui-sref="configure.create.root")
+            i.left.fa.fa-check
+            span(translate="configuration.create_parameters.button.validate")

@@ -1,0 +1,55 @@
+extends ../menu.jade
+
+block content
+
+  ul#about.dropdown-content
+    li: button.btn-flat.left-align(ng-click="showAbout()")
+      i.material-icons.left info_outline
+      span {{ 'help.about_duniter' | translate }}
+    li(ng-repeat="entry in notifications.help")
+      button.btn-flat.left-align(ng-click="entry.onclick()")
+        i.material-icons.left {{ entry.icon }}
+        span(data-badge="1") {{ entry.message | translate }}
+
+  ul#serveractions.dropdown-content
+    li: button.btn-flat.left-align(ng-click="restartServer()")
+      i.material-icons.left replay
+      span {{ 'home.menu.server.restart' | translate }}
+    li: button.btn-flat.left-align(ng-click="startServer()" ng-class="{ disabled : server_started || !server_stopped }" ng-disabled="server_started")
+      i.material-icons.left play_arrow
+      span {{ 'home.menu.server.start' | translate }}
+    li: button.btn-flat.left-align(ng-click="stopServer()" ng-class="{ disabled : server_stopped || !server_started }" ng-disabled="server_stopped")
+      i.material-icons.left stop
+      span {{ 'home.menu.server.stop' | translate }}
+
+  nav
+    div.nav-wrapper
+      span.waves-effect.waves-light.button-collapse.stop-nav.full.hide-on-med-and-up(data-activates="slide-out")
+        i.mdi-navigation-menu
+      <!--<a href="#" class="brand-logo left">Logo</a>-->
+      ul.left.hide-on-small-and-down
+        li(ng-class="{ active: menu == 'home' }")
+          a.waves-effect.waves-light(ui-sref="main.home.overview")
+            i.fa.fa-2x.fa-home.left
+            span {{ 'top.menu.overview' | translate }}
+        li(ng-class="{ active: menu == 'graphs' }")
+          a.waves-effect.waves-light(ui-sref="main.graphs.accounts")
+            i.fa.fa-2x.fa-database.left
+            span {{ 'top.menu.data' | translate }}
+        li(ng-class="{ active: menu == 'settings' }")
+          a.waves-effect.waves-light(ui-sref="main.settings.backup")
+            i.fa.fa-2x.fa-gear.left
+            span {{ 'top.menu.settings' | translate }}
+        li
+          a.waves-effect.waves-light(ng-click="openWallet()")
+            i.fa.fa-2x.fa-suitcase.left
+            span {{ 'top.menu.wallet' | translate }}
+        li
+          a.waves-effect.waves-light(ui-sref="logs" target="_blank")
+            i.fa.fa-2x.fa-align-left.left
+            span {{ 'top.menu.logs' | translate }}
+      ul.right
+        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="about" data-badge="{{ notifications.help.length }}"): i.material-icons info_outline
+        li: a.waves-effect.waves-light.dropdown-button(href="#!" data-activates="serveractions"): i.material-icons more_vert
+
+  div(ui-view="")

@@ -1,0 +1,41 @@
+.row
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-database
+    input#sigStock(type="number" ng-model="$parent.conf.sigStock")
+    label(for="sigStock") {{ 'configuration.create_parameters.sigStock' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-hourglass-end
+    input#sigPeriod(type="number" ng-model="$parent.conf.sigPeriod")
+    label(for="sigPeriod") {{ 'configuration.create_parameters.sigPeriod' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-battery-3
+    input#sigValidity(type="number" ng-model="$parent.conf.sigValidity")
+    label(for="sigValidity") {{ 'configuration.create_parameters.sigValidity' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-battery-3
+    input#msValidity(type="number" ng-model="$parent.conf.msValidity")
+    label(for="msValidity") {{ 'configuration.create_parameters.msValidity' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-certificate
+    input#sigQty(type="number" ng-model="$parent.conf.sigQty")
+    label(for="sigQty") {{ 'configuration.create_parameters.sigQty' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-object-ungroup
+    input#sigWindow(type="number" ng-model="$parent.conf.sigWindow")
+    label(for="sigWindow") {{ 'configuration.create_parameters.sigWindow' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-map-marker
+    input#stepMax(type="number" ng-model="$parent.conf.stepMax")
+    label(for="stepMax") {{ 'configuration.create_parameters.stepMax' | translate }}
+
+  .input-field.col.s6.m4
+    i.prefix.fa.fa-users
+    input#xpercent(type="number" ng-model="$parent.conf.xpercent")
+    label(for="xpercent") {{ 'configuration.create_parameters.xpercent' | translate }}

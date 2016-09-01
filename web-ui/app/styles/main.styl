@@ -1,0 +1,275 @@
+@import 'vendor'
+@import 'menu'
+
+html
+  background-color: white
+
+body
+  overflow hidden
+
+body, main
+  height: 100%
+  width: 100%
+  position: absolute
+  
+head, main
+  background-color: white !important
+  transitionb: opacity 0.3s ease-in-out
+  transform: translateZ(0)
+
+main
+  overflow: hidden
+
+.home-main
+  padding-top 64px
+  padding-bottom 64px
+
+nav
+  background-color #1A687F
+  position fixed
+  top 0
+  z-index 10
+
+.ui-scrollable
+  overflow: auto
+  height: 100%
+
+.modal .modal-footer .btn, .idty_card button
+  margin-right 5px
+
+.small
+  font-size 0.8rem
+
+.home
+
+  .card.graph
+    height inherit
+
+  .card
+    text-align center
+    height 166px
+
+    .fa
+      z-index 1
+      width: 100%
+      margin-left: auto
+      margin-right: auto
+      position: absolute
+      margin-top -5px
+      margin-left -50%
+      color: rgba(187, 234, 249, 0.51)
+
+  .card-title span
+    z-index 2
+    position: relative
+    //font-weight bold
+    font-size 3rem
+    width 350px
+
+  .card-title p
+    z-index 2
+    position: relative
+    font-size 1.4rem
+    line-height 27px
+
+  .card-action
+    padding 1px
+
+  .card-time
+
+    .card-content
+      padding-top 15px
+      padding-bottom 15px
+
+      .card-title p:first-child
+        margin-bottom 9px
+
+#serveractions
+  width 170px !important
+
+  button
+    height: 50px
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 5px;
+    //line-height 1.5rem
+
+  i, span
+    line-height: 50px
+    height: 50px
+
+#about
+  width 260px !important
+
+  button
+    height: 50px
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 12px;
+    text-transform: none
+    overflow visible
+    //line-height 1.5rem
+
+  li
+    position relative
+
+  i, span
+    line-height: 50px
+    height: 50px
+
+#server_state
+  .card-title
+    height 53px
+  i
+    font-size 4.5rem
+
+.card-content
+  width 100%
+
+.tabs
+  overflow hidden
+
+  .indicator
+    background-color #82B6C1
+
+  .tab a
+    color #1A687F
+  .tab a:hover
+    color #82B6C1
+
+.pubkey
+  background-color #d7edf5
+  line-height 60px
+
+.host_listening
+  background-color #d7edf5
+  line-height 21px
+  padding-top 20px
+  padding-bottom 20px
+
+blockquote
+  padding-top 10px
+  padding-bottom 10px
+
+blockquote.blue
+    border-left 5px solid #1B76BF
+
+.tabs .tab.disabled a
+  color #9EA8AC
+
+#card-logs
+  position fixed
+  margin: 0
+  width 90%
+
+  label
+    margin-right 30px
+
+#logs
+  font-size 12px
+  padding 10px
+  padding-top 200px
+  margin 0
+  overflow: auto
+  height 100%
+
+#logs p
+  line-height 21px
+  margin-top 0
+  margin-bottom 0
+
+#follow-logs
+  float right
+
+.log-level.info
+  color: blue
+
+.log-level.warn
+  color: #C9C826
+
+.log-level.error
+  color: red
+
+.log-level.debug
+  color: cyan
+
+.log-level.trace
+  color: #d0f
+
+.log-msg.info
+  background-color: none
+
+.log-msg.warn
+  background-color: #FFFE99
+
+.log-msg.error
+  background-color: #F8D5D2
+
+.log-msg.debug
+  background-color: rgba(29, 255, 255, 0.23)
+
+.log-msg.trace
+  background-color: rgba(217, 0, 255, 0.14)
+
+.log-time
+  color: #888888
+
+.network-alert .card-content
+  p
+    margin-top 10px
+    margin-bottom 20px
+
+#about_card
+  border 0
+  box-shadow none
+  padding-top 30px
+
+  .card-image
+    width 170px
+    margin-left auto
+    margin-right auto
+
+  a
+    margin-right 25px
+
+    span
+      position: relative;
+      top -4px;
+      left 5px;
+
+.currency
+  background-color rgb(105, 156, 171)
+  margin 0
+  padding 5px
+
+  h1
+    text-align center
+    font-size 18px
+    margin 0
+    color white
+
+.card.sync
+
+
+  .iconic.card-title
+    padding-top 15px
+    height 83px
+    i
+      font-size 4.5rem
+
+  .card-content
+
+    padding-top 5px
+    padding-bottom 5px
+    p
+      font-size 16px
+
+    .progress
+      margin-bottom 10px
+
+.file-field.input-field
+  margin-top 0
+
+.file-field .btn-large, .btn-large input
+  height 54px !important
+  line-height 56px !important

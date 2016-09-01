@@ -1,0 +1,25 @@
+ul#slide-out.side-nav
+  li
+    div.card.hide-on-med-and-up
+      div.card-image
+        img(src="images/menu_bg.jpg")
+        p.card-title
+          span.menu-title meta_brouzouf
+          span.menu-speach 22 members
+          span.menu-footer DuniterUI v0.21.0
+
+  li: a.waves-effect.waves-teal(ui-sref="home")
+    i.fa.fa-2x.fa-photo
+    ='Overview'
+  li: a.waves-effect.waves-teal(ui-sref="graphs.blockchain")
+    i.fa.fa-2x.fa-area-chart
+    ='Charts'
+  li: a.waves-effect.waves-teal(href="#!")
+    i.fa.fa-2x.fa-heartbeat
+    ='Status'
+  li: a.waves-effect.waves-teal(ui-sref="settings.data")
+    i.fa.fa-2x.fa-gear
+    ='Settings'
+
+block content
+block footer

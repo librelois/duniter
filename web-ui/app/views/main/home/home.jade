@@ -1,0 +1,14 @@
+main.home-main.main-screen
+
+  .container
+    .row
+      .col.s12
+        ul.tabs
+          li.tab.col.s3: a(href="#main.home.overview")
+            i.fa.fa-photo &nbsp;
+            = " {{ 'home.tabs.overview' | translate }}"
+          li.tab.col.s3: a(href="#main.home.network")
+            i.fa.fa-globe &nbsp;
+            = " {{ 'home.tabs.network' | translate }}"
+
+  div.ui-scrollable(ui-view="")

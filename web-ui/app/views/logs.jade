@@ -1,0 +1,29 @@
+extends menu.jade
+
+block content
+  .card#card-logs
+    .card-action.left-align
+      p
+        input#follow-logs.filled-in(type="checkbox" ng-model="follow")
+        label(for="follow-logs") {{ 'home.tabs.logs.follow.logs' | translate }}
+        input#pause-logs.filled-in(type="checkbox" ng-model="pause")
+        label(for="pause-logs") {{ 'home.tabs.logs.pause.logs' | translate }}
+        input#level-error.filled-in(type="checkbox" ng-model="levels.error")
+        label(for="level-error") {{ 'home.tabs.logs.level.error' | translate }}
+        input#level-warn.filled-in(type="checkbox" ng-model="levels.warn")
+        label(for="level-warn") {{ 'home.tabs.logs.level.warn' | translate }}
+        input#level-info.filled-in(type="checkbox" ng-model="levels.info")
+        label(for="level-info") {{ 'home.tabs.logs.level.info' | translate }}
+        input#level-debug.filled-in(type="checkbox" ng-model="levels.debug")
+        label(for="level-debug") {{ 'home.tabs.logs.level.debug' | translate }}
+        input#level-trace.filled-in(type="checkbox" ng-model="levels.trace")
+        label(for="level-trace") {{ 'home.tabs.logs.level.trace' | translate }}
+      p {{ 'graphs.blockchain.range' | translate }}
+      .range-field
+        input(type="range" min="10" max="10000" ng-model="logsSize" ng-mouseup="changeSize()")
+
+  pre#logs
+    p(ng-repeat="log in logs track by $index")
+      span.log-time {{ log.timestamp }}&nbsp;
+      span.log-level(class="{{ log.level }}") {{ log.level }}&nbsp;
+      span.log-msg(class="{{ log.level }}") {{ log.msg }}

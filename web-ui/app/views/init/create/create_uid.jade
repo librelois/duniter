@@ -1,0 +1,22 @@
+.container
+  .row
+    form.s12.center
+      .card.idty_card
+        .card-content
+          i.fa.fa-user.fa-5x
+          h1.card-title(translate="configuration.create_uid.title")
+          p(translate="configuration.create_uid.message")
+        .card-action
+          .row
+            .input-field.col.s12
+              i.prefix.fa.fa-user
+              input#idty_uid.tooltipped(type="text" ng-model="$parent.conf.idty_uid" data-position="top" data-tooltip="{{ 'configuration.create_uid.uid.tooltip' | translate }}")
+              label(for="idty_uid") User ID
+
+          include ../../includes/key
+
+          .row
+
+            button.btn-large.waves-effect.waves-light(ng-disabled="!$parent.conf.idty_uid || !$parent.conf.idty_entropy || !$parent.conf.idty_password" ng-click="accept()")
+              span(translate="configuration.create_uid.create_button")
+

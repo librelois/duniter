@@ -1,0 +1,54 @@
+badge(top, right)
+  content: attr(data-badge);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  top: top;
+  right: right;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #ff8532;
+  color: #fff;
+
+[data-badge^="1"]:after,
+[data-badge^="2"]:after,
+[data-badge^="3"]:after,
+[data-badge^="4"]:after,
+[data-badge^="5"]:after,
+[data-badge^="6"]:after,
+[data-badge^="7"]:after,
+[data-badge^="8"]:after,
+[data-badge^="9"]:after
+  badge: 3px 3px
+
+#about
+  [data-badge^="1"]:after,
+  [data-badge^="2"]:after,
+  [data-badge^="3"]:after,
+  [data-badge^="4"]:after,
+  [data-badge^="5"]:after,
+  [data-badge^="6"]:after,
+  [data-badge^="7"]:after,
+  [data-badge^="8"]:after,
+  [data-badge^="9"]:after
+    badge: 15px 20px

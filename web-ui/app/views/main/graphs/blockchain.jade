@@ -1,0 +1,34 @@
+.container
+  .row
+    .card
+      .card-action
+        .row
+          .col.s12
+            .container
+              p {{ 'graphs.blockchain.range' | translate }}
+              .range-field
+                input(type="range" min="30" max="600" ng-model="blocksCount" ng-mouseup="updateGraphs()")
+
+              //.input-field.col.s6.m4
+              //  input#time.filled-in(type="checkbox" ng-model="withTime")
+              //  label(for="time") {{ 'graphs.blockchain.with.time' | translate }}
+
+              // Too heavy for now
+              //.input-field.col.s6.m4
+              //  input#speed.filled-in(type="checkbox" ng-model="withSpeed")
+              //  label(for="speed") {{ 'graphs.blockchain.with.speed' | translate }}
+
+              //.input-field.col.s6.m4
+              //  input#difficulty.filled-in(type="checkbox" ng-model="withDifficulty")
+              //  label(for="difficulty") {{ 'graphs.blockchain.with.difficulty' | translate }}
+            .s12.center(ng-if="loading")
+              .row
+              .row
+              .preloader-wrapper.active
+                .spinner-layer.spinner-blue-only
+                  .circle-clipper.left
+                    .circle
+              p {{ message | translate:'{number: current_number}' }}
+          #timeGraph
+          //#speedGraph
+          #difficultyGraph
