@@ -74,6 +74,9 @@ after_test:
   - if [%APPVEYOR_REPO_TAG_NAME%] neq [] iscc %cd%\duniter_release\sources\duniter.iss /DROOT_PATH=%cd%\duniter_release
   - if [%APPVEYOR_REPO_TAG_NAME%] neq [] move %cd%\duniter_release\Duniter.exe %cd%\duniter\duniter-%APPVEYOR_REPO_TAG_NAME%-windows-x64.exe
 
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 artifacts:
   - path: duniter*.exe
     name: Duniter
