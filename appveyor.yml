@@ -1,7 +1,7 @@
 environment:
   matrix:
-    - nodejs_version: "5.9.1"
-      ADDON_VERSION: "47"
+    - nodejs_version: "6.7.0"
+      ADDON_VERSION: "48"
 
 platform:
   - x64
@@ -29,8 +29,8 @@ after_test:
   - set SRC=%cd%
   - echo %SRC%
   - copy misc\MSVSVersion.py %APPDATA%\npm\node_modules\nw-gyp\gyp\pylib\gyp\MSVSVersion.py
-  - set NW_VERSION=0.14.5
-  - set NW_RELEASE=v0.14.5
+  - set NW_VERSION=0.17.6
+  - set NW_RELEASE=v0.17.6
   - echo %NW_RELEASE%
   - cd node_modules/wotb
   - npm install --build-from-source
@@ -60,7 +60,7 @@ after_test:
   - echo %NW%
   - set NW_GZ=%NW%.zip
   - echo %NW_GZ%
-  - curl -fS -o %NW_GZ% https://s3.eu-central-1.amazonaws.com/duniter/binaries/%NW_GZ%
+  - curl -fS -o %NW_GZ% http://dl.nwjs.io/%NW_RELEASE%/nwjs-%NW_RELEASE%-win-x64.zip
   - 7z x %NW_GZ% 1> null
   - move %NW% %cd%\duniter_release\nw
   - mkdir %cd%\duniter_release\sources
@@ -84,6 +84,3 @@ deploy:
 #  prerelease: true
   on:
     appveyor_repo_tag: true
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
