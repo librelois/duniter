@@ -8,7 +8,7 @@ platform:
 
 install:
   - echo %ADDON_VERSION%
-  - ps: Install-Product node $env:nodejs_version $env:platform
+  - ps: Update-NodeJsInstallation $env:nodejs_version $env:platform
   - node -v
   - npm install -g npm
   - npm install -g nw-gyp node-pre-gyp
