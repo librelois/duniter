@@ -51,7 +51,7 @@ after_test:
   - npm install --build-from-source
   - node-pre-gyp --runtime=node-webkit --target=%NW_VERSION% --msvs_version=2015 configure
   - node-pre-gyp --runtime=node-webkit --target=%NW_VERSION% --msvs_version=2015 build
-  - copy %cd%\lib\binding\node-webkit-%NW_RELEASE%-win32-x64\node_sqlite3.node %cd%\lib\binding\Release\node-v%ADDON_VERSION%-win32-x64\node_sqlite3.node /Y
+  - copy %cd%\lib\binding\node-webkit-%NW_RELEASE%-win32-x64\node_sqlite3.node %cd%\lib\binding\node-v%ADDON_VERSION%-win32-x64\node_sqlite3.node /Y
   - cd ../..
   - npm prune --production
   - cd ..
@@ -84,3 +84,6 @@ deploy:
 #  prerelease: true
   on:
     appveyor_repo_tag: true
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
