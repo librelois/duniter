@@ -54,7 +54,7 @@
     "moment": "2.6.0",
     "morgan": "1.6.1",
     "multimeter": "0.1.1",
-    "naclb": "1.3.5",
+    "naclb": "c-geek/naclb#f83e3cb50b4983fe6204f026c268ec72b8194f40",
     "node-pre-gyp": "0.6.23",
     "nnupnp": "1.0.1",
     "optimist": "0.6.1",
